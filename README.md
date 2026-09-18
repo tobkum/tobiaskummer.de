@@ -15,3 +15,13 @@ Platzhalter, siehe docs/release.md im App-Repo.)
 Hosting: GitHub Pages unter der Domain aus `CNAME`; DNS beim Registrar mit vier
 A-Records auf GitHubs Pages-Adressen und einem CNAME für www. Kein Jekyll
 (`.nojekyll`), kein JavaScript, nichts nachgeladen.
+
+## Vor jedem Push
+
+    python bauen.py
+
+schreibt `sitemap.xml` (alle Seiten ohne `noindex`, letztes Commit-Datum je Datei) und die
+Stand-Zeile im Fuss der Startseite. `python bauen.py --check` sagt, ob beides aktuell ist;
+das ist die einzige Wache dieses Repos. Nach einem Subtree-Pull also: `bauen.py`, dann
+committen, dann pushen.
+

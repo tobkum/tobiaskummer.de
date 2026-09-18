@@ -43,11 +43,20 @@ body {
   font: 400 17px/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
 }
-a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: .18em; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: .18em; transition: color .15s ease; }
 a:hover { color: var(--accent-ink); }
+/* Bewegung nur, wo eine Hand liegt: 150 ms, und wer keine mag, bekommt keine. */
+.button, .play img, .app, .card img { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
+.play:hover img, .button:hover { transform: translateY(-1px); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -.01em; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; }
+/* Die Startseite: eine Aussage, die die Breite besitzt. */
+.hero.portal { padding: 4rem 0 3.5rem; }
+.hero.portal .wrap { display: block; }
+.hero.portal h1 { font-size: clamp(2.5rem, 7vw, 4.75rem); max-width: 14ch; margin-bottom: 1.5rem; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
 h3 { font-size: 1.15rem; font-weight: 600; }
 p { margin: 0 0 1rem; }
@@ -102,11 +111,19 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
              padding: .3rem .6rem; display: inline-block; margin-left: .5rem; vertical-align: middle; }
 .apps { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
 .app {
-  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
-  padding: 2rem; border: 1px solid var(--rule); border-radius: 24px; background: var(--raised);
+  display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: end;
+  padding: 2.5rem 2.5rem 0; border: 1px solid var(--rule); border-radius: 24px; background: var(--raised);
+  overflow: hidden; position: relative;
 }
+.app > div { padding-bottom: 2.5rem; }
 .app h2 { margin-bottom: .5rem; }
 .app p { color: var(--muted); }
+/* Der Bildschirm im flachen Rahmen, unten aus der Karte laufend, wie die Ladenbilder. */
+.app .schirm { display: block; width: min(100%, 300px); margin: 1rem auto -2px; border: 1px solid var(--rule); border-bottom: 0;
+               border-radius: 28px 28px 0 0; overflow: hidden; box-shadow: var(--shadow); background: var(--paper); }
+.app .schirm img { display: block; width: 100%; height: auto; margin-bottom: -18%; }
+.app:hover .schirm { transform: translateY(-4px); }
+.app .schirm { transition: transform .2s ease; }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
 .cols ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
@@ -138,7 +155,9 @@ footer.site a:hover { text-decoration: underline; }
   header.site nav { display: none; }
   .badge { height: 48px; }
   .badge.klein { height: 36px; }
-  .app .phone.small { margin: 0 auto; }
+  .app { padding: 1.75rem 1.5rem 0; }
+  .app > div { padding-bottom: 1.5rem; }
+  .app .schirm { width: min(75%, 260px); }
   .ueber { grid-template-columns: 5rem 1fr; gap: 1.25rem; }
   .ueber .portrait { width: 5rem; height: 5rem; }
 }
