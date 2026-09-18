@@ -66,10 +66,13 @@ p { margin: 0 0 1rem; }
 .narrow { max-width: 40rem; margin: 0 auto; }
 section { padding: 4.5rem 0; }
 section + section { border-top: 1px solid var(--rule); }
-header.site { padding: 1.5rem 0; }
-header.site .wrap { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+header.site { padding: 1rem 0; }
+header.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 header.site nav a { text-decoration: none; color: var(--muted); font-size: .95rem; margin-left: 1.25rem; }
 header.site nav a:hover { color: var(--ink); }
+header.site .marke { font-weight: 600; text-decoration: none; }
+/* Klebt oben, damit der Laden-Link auf jeder Bildschirmhöhe da ist. */
+header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
 
 /* Zwei Spalten: Wort links, Telefon rechts. */
 .hero { padding: 3rem 0 4.5rem; }
@@ -118,6 +121,7 @@ footer.site a:hover { text-decoration: underline; }
 @media (max-width: 760px) {
   section { padding: 3rem 0; }
   .hero .wrap, .cards, .cols, .app { grid-template-columns: 1fr; }
-  .hero .phone { order: -1; width: min(70%, 260px); }
+  .hero .phone { width: min(70%, 260px); margin-top: 1rem; }
+  header.site nav { display: none; }
   .app .phone.small { margin: 0 auto; }
 }
