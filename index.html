@@ -10,23 +10,29 @@
 <link rel="stylesheet" href="/bzf-pruefung/style.css">
 </head>
 <body>
-  <header class="site">
+  <header class="site sticky">
     <div class="wrap">
-      <a class="eyebrow" href="/" style="margin:0">Tobias Kummer</a>
+      <a class="marke" href="/bzf-pruefung/">BZF-Prüfung</a>
       <nav><a href="#frage">Eine Frage</a><a href="#flug">Ein Flug</a><a href="#kostenlos">Was es kostet</a></nav>
+      <a class="play" href="https://play.google.com/store/apps/details?id=aero.bzf.app"><img class="badge klein" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
     </div>
   </header>
 
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">BZF-Prüfung · Android · BZF I und BZF II</p>
+        <p class="eyebrow">Android · BZF I und BZF II</p>
         <h1>Das Sprechfunkzeugnis. Alle 261 Fragen, jede erklärt.</h1>
-        <p class="lead">Prüfungsvorbereitung mit dem amtlichen Fragenkatalog der Bundesnetzagentur, einem Funksimulator, der spricht und zuhört, und 489 Sprechgruppen zum Nachschlagen. Für PPL, LAPL, SPL, Ultraleicht, Segelflug und Motorsegler.</p>
+        <p class="lead">Der amtliche Fragenkatalog der Bundesnetzagentur mit einer Erklärung zu jeder Antwort, ein Funksimulator, der spricht und zuhört, und 489 Sprechgruppen zum Nachschlagen.</p>
         <div class="actions">
-          <a class="button" href="https://play.google.com/store/apps/details?id=aero.bzf.app">Bei Google Play laden</a>
-          <span class="price">Kostenlos, Pro einmalig 12,99 €, kein Abo</span>
+          <a class="play" href="https://play.google.com/store/apps/details?id=aero.bzf.app"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
+          <span class="price">Kostenlos. Pro einmalig 12,99 €, kein Abo.</span>
         </div>
+        <ul class="vertrauen">
+          <li>Amtlicher Katalog, gültig ab 01.05.2024</li>
+          <li>Kein Konto, keine Werbung</li>
+          <li>Für PPL, LAPL, SPL, UL und Segelflug</li>
+        </ul>
       </div>
       <img class="phone" src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Frage 209 mit erklärter richtiger Antwort und Merksatz in der App">
     </div>
@@ -35,41 +41,41 @@
   <section id="frage">
     <div class="wrap">
       <div class="narrow">
-        <p class="eyebrow">So sieht eine Frage aus</p>
+        <p class="eyebrow">Probier eine Frage</p>
         <h2>Auswendiglernen reicht für die Prüfung. Nicht für den Funk.</h2>
-        <p class="lead" style="margin:1rem 0 2rem">Deshalb steht bei jeder Frage, warum die richtige Antwort stimmt, was an den anderen falsch ist und welche Vorschrift dahintersteht.</p>
-        <article class="frage">
+        <p class="lead" style="margin:1rem 0 2rem">Deshalb steht bei jeder Frage, warum die richtige Antwort stimmt, was an den anderen falsch ist und welche Vorschrift dahintersteht. Tipp eine Antwort an.</p>
+        <article class="frage" id="probe">
           <div class="kopf"><span><b>209</b>SICHTFLUGREGELN</span><span>Fach 3 von 5</span></div>
           <p class="stamm">Im Luftraum E unterhalb FL 100 sind Flüge nach Sichtflugregeln so durchzuführen, dass ...</p>
-          <div class="antwort richtig">
-            <span class="zeichen">✓</span>
-            <div>
-              <p>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
-              <p class="warum">Unterhalb FL 100 sind es 5 km Flugsicht, 1500 m waagerecht und 300 m senkrecht. Die 8 km gelten erst ab FL 100.</p>
-            </div>
-          </div>
+          <button class="antwort" data-richtig="ja">
+            <span class="zeichen">A</span>
+            <span>
+              <span class="text">der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</span>
+              <span class="warum">Unterhalb FL 100 sind es 5 km Flugsicht, 1500 m waagerecht und 300 m senkrecht. Die 8 km gelten erst ab FL 100.</span>
+            </span>
+          </button>
           <p class="merksatz">Fünf unten, acht oben, Grenze FL 100. Die Abstände ändern sich dabei nicht.</p>
-          <div class="antwort">
+          <button class="antwort">
             <span class="zeichen">B</span>
-            <div>
-              <p>der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
-              <p class="warum">8 km ist der Wert ab FL 100, hier also zu viel.</p>
-            </div>
-          </div>
-          <div class="antwort">
+            <span>
+              <span class="text">der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</span>
+              <span class="warum">8 km ist der Wert ab FL 100, hier also zu viel.</span>
+            </span>
+          </button>
+          <button class="antwort">
             <span class="zeichen">C</span>
-            <div>
-              <p>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält</p>
-              <p class="warum">Richtige Sicht, falsche Abstände.</p>
-            </div>
-          </div>
-          <div class="antwort">
+            <span>
+              <span class="text">der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält</span>
+              <span class="warum">Richtige Sicht, falsche Abstände.</span>
+            </span>
+          </button>
+          <button class="antwort">
             <span class="zeichen">D</span>
-            <div>
-              <p>der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
-              <p class="warum">Die Abstände stimmen, die Sicht nicht: 8 km gelten erst ab FL 100.</p>
-            </div>
-          </div>
+            <span>
+              <span class="text">der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</span>
+              <span class="warum">Die Abstände stimmen, die Sicht nicht: 8 km gelten erst ab FL 100.</span>
+            </span>
+          </button>
           <p class="quelle">Tabelle S5-1 zu SERA.5005 · Bundesnetzagentur, Prüfungsfragen im Prüfungsteil Kenntnisse (BZF II und BZF I), gültig ab 01.05.2024</p>
         </article>
         <p class="bildunterschrift">Frage 209, so wie die App sie zeigt. Weil im amtlichen PDF die richtige Antwort immer oben steht, mischt die App die Antworten. Erklärungen gibt es zu allen 261 Fragen, 27 davon kostenlos, eine je Thema.</p>
@@ -103,17 +109,17 @@
       <h2>Was noch drin ist.</h2>
       <div class="cards">
         <article class="card">
-          <img class="phone small" src="/bzf-pruefung/bilder/04-app-pruefung-dunkel.png" width="540" height="960" alt="Die Probeprüfung in der App, dunkler Modus">
+          <img class="phone small" src="/bzf-pruefung/bilder/04-app-pruefung-dunkel.png" width="540" height="960" alt="Die Probeprüfung in der App, dunkler Modus" loading="lazy">
           <h3>Probeprüfung <span class="tag">Pro</span></h3>
           <p>100 Fragen am Stück, das Ergebnis erst am Schluss, wie in der echten Prüfung. Danach führt jede falsche Frage zur Erklärung.</p>
         </article>
         <article class="card">
-          <img class="phone small" src="/bzf-pruefung/bilder/07-funk-sprechgruppen.png" width="540" height="960" alt="Sprechgruppen zum Nachschlagen in der App">
+          <img class="phone small" src="/bzf-pruefung/bilder/07-funk-sprechgruppen.png" width="540" height="960" alt="Sprechgruppen zum Nachschlagen in der App" loading="lazy">
           <h3>Sprechgruppen <span class="tag">Kostenlos</span></h3>
           <p>Was du sagst und was der Boden antwortet, mit Turm und bei RADIO: 489 Sprechgruppen im Wortlaut der NfL, mit Suche und Fundstelle.</p>
         </article>
         <article class="card">
-          <img class="phone small" src="/bzf-pruefung/bilder/06-app-profil-dunkel.png" width="540" height="960" alt="Der Lernstand mit Karteikasten in der App, dunkler Modus">
+          <img class="phone small" src="/bzf-pruefung/bilder/06-app-profil-dunkel.png" width="540" height="960" alt="Der Lernstand mit Karteikasten in der App, dunkler Modus" loading="lazy">
           <h3>Wiederholung mit System</h3>
           <p>Was hakt, kommt öfter dran; was sitzt, lässt die App in Ruhe. Ein Karteikasten mit fünf Fächern, Runden zu 15 Fragen, und eine Runde nur über deine Schwachstellen.</p>
         </article>
@@ -152,7 +158,7 @@
         <h3 style="margin-top:2rem">BZF I oder BZF II</h3>
         <p>Das Funkzeugnis gibt es als BZF II auf Deutsch und als BZF I mit englischem Teil. Der Prüfungsteil Kenntnisse ist bei beiden derselbe, und genau der sind diese 261 Fragen. Wer per Zusatzprüfung vom BZF II aufrüstet, legt ihn nicht noch einmal ab und braucht diese App dafür nicht.</p>
         <div class="actions">
-          <a class="button" href="https://play.google.com/store/apps/details?id=aero.bzf.app">Bei Google Play laden</a>
+          <a class="play" href="https://play.google.com/store/apps/details?id=aero.bzf.app"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
         </div>
       </div>
     </div>
@@ -170,9 +176,29 @@
 
   <footer class="site">
     <div class="wrap">
-      <span>BZF-Prüfung von Tobias Kummer</span>
+      <span>BZF-Prüfung von <a href="/">Tobias Kummer</a>. Google Play und das Google Play-Logo sind Marken von Google LLC.</span>
       <span><a href="/bzf-pruefung/datenschutz.html">Datenschutz</a><a href="/bzf-pruefung/widerruf.html">Widerruf</a><a href="/impressum.html">Impressum</a></span>
     </div>
   </footer>
+
+  <script>
+    // Die Probefrage: eine Antwort antippen deckt auf, was die App zeigt. Ohne
+    // JavaScript steht alles offen da (siehe noscript im Stylesheet der App).
+    (function () {
+      var frage = document.getElementById("probe");
+      if (!frage) return;
+      frage.classList.add("geschlossen");
+      var knoepfe = frage.querySelectorAll(".antwort");
+      knoepfe.forEach(function (k) {
+        k.addEventListener("click", function () {
+          if (!frage.classList.contains("geschlossen")) return;
+          frage.classList.remove("geschlossen");
+          frage.classList.add("beantwortet");
+          k.classList.add("gewaehlt");
+          knoepfe.forEach(function (j) { j.disabled = true; });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
