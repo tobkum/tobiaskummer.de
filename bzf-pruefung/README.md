@@ -11,7 +11,8 @@ Repo `bzf-pruefung-web` geschoben, von dort zieht ihn das Site-Repo.
   Stylesheet des Schirms, weil sie auf derselben Domain liegt, und bleibt ohne Stylesheet
   lesbar: Plays Anforderung gilt der Erreichbarkeit und dem Inhalt, nicht der Gestaltung.
   Zwilling von `../privacy-de.html` (Wache test_zusagen.py).
-- `widerruf.html`: die Widerrufsbelehrung, aus `../widerruf-de.md`.
+- `kauf.html`: Kauf und Erstattung, seit 18.09.2026 statt einer eigenen Widerrufsbelehrung
+  (Google ist in Deutschland Merchant of Record; Grund und Rest-Unsicherheit in `../kauf-de.md`).
 - `style.css`: der Akzent der App über dem Stylesheet des Schirms (`/style.css`), Amber
   und Grün aus Theme.kt.
 - `bilder/`: die acht Ladenbilder in halber Größe (540×960), aus `../assets/screenshots/`.
