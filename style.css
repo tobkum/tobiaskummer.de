@@ -1,0 +1,48 @@
+/* Farben aus Theme.kt der App BZF-Prüfung (Paper, Ink, InkMuted, Hairline, Amber;
+   Night, NightInk, NightMuted, NightHairline, AmberDark), damit Seite und App
+   zusammengehören. Wer hier einen Wert ändert, ändert ihn dort, oder umgekehrt. */
+:root {
+  --paper: #faf7f1;
+  --ink: #14202a;
+  --muted: #5d6b77;
+  --rule: #e6dfd4;
+  --amber: #c98a18;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0e141a;
+    --ink: #e9eef2;
+    --muted: #8c9ba8;
+    --rule: #26313c;
+    --amber: #e0ac4a;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 3rem 1.25rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main { max-width: 38rem; margin: 0 auto; }
+h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 .5rem; }
+h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
+h2::before {
+  content: ""; display: block; width: 2.5rem; height: 3px;
+  background: var(--amber); border-radius: 2px; margin-bottom: .9rem;
+}
+p { margin: 0 0 1rem; }
+a { color: inherit; text-decoration-color: var(--amber); text-underline-offset: .15em; }
+a:hover { color: var(--amber); }
+.eyebrow { color: var(--muted); font-size: .875rem; margin: 0 0 1.5rem; }
+.apps { list-style: none; padding: 0; margin: 0; }
+.apps li { padding: 1.25rem 0; border-top: 1px solid var(--rule); }
+.apps li:last-child { border-bottom: 1px solid var(--rule); }
+.apps h3 { margin: 0 0 .25rem; font-size: 1.1rem; }
+.apps p { margin: 0; }
+footer {
+  margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+  color: var(--muted); font-size: .875rem;
+}
+footer a + a { margin-left: 1rem; }
