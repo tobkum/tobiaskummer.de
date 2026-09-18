@@ -85,6 +85,11 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 }
 .button:hover { color: var(--paper); filter: brightness(1.08); }
 .price { color: var(--muted); font-size: .95rem; }
+/* Der Google-Play-Badge, unverändert, mindestens 28 px hoch, Freiraum ein Viertel
+   seiner Höhe (Vorgaben von Google); gemeinsam für Schirm und App-Seiten. */
+.play { display: inline-block; line-height: 0; }
+.badge { height: 56px; width: auto; }
+.badge.klein { height: 40px; }
 .phone { width: min(100%, 320px); margin: 0 auto; border-radius: 28px; box-shadow: var(--shadow); }
 .phone.small { width: min(100%, 260px); }
 
@@ -123,5 +128,7 @@ footer.site a:hover { text-decoration: underline; }
   .hero .wrap, .cards, .cols, .app { grid-template-columns: 1fr; }
   .hero .phone { width: min(70%, 260px); margin-top: 1rem; }
   header.site nav { display: none; }
+  .badge { height: 48px; }
+  .badge.klein { height: 36px; }
   .app .phone.small { margin: 0 auto; }
 }
