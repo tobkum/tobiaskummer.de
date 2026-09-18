@@ -3,62 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Datenschutzerklärung — BZF-Prüfung</title>
+<title>BZF-Prüfung: Fragen erklärt</title>
+<meta name="description" content="Prüfungsvorbereitung für das Sprechfunkzeugnis BZF I und BZF II: alle 261 Fragen der Bundesnetzagentur mit Erklärung, ein Funksimulator für den Flugfunk und 489 Sprechgruppen zum Nachschlagen. Android, ohne Konto und ohne Werbung.">
 <meta name="robots" content="index,follow">
-<style>
-  /* Farben aus Theme.kt, damit Seite und App zusammengehören. Alles inline: die Seite
-     muss auf jedem Hoster liegen können, ohne dass etwas nachgeladen wird. */
-  :root { --paper:#faf7f1; --ink:#0e141a; --muted:#5d6b77; --rule:#e6dfd4; --amber:#c98a18; }
-  @media (prefers-color-scheme: dark) {
-    :root { --paper:#0e141a; --ink:#e9eef2; --muted:#8c9ba8; --rule:#26313c; --amber:#e0ac4a; }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; padding: 3rem 1.25rem 6rem;
-    background: var(--paper); color: var(--ink);
-    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  }
-  main { max-width: 38rem; margin: 0 auto; }
-  h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 .5rem; }
-  h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
-  h2::before { content: ""; display: block; width: 2.5rem; height: 3px;
-               background: var(--amber); border-radius: 2px; margin-bottom: .9rem; }
-  p { margin: 0 0 1rem; }
-  code { font: .9em ui-monospace, "Cascadia Mono", Consolas, monospace;
-         background: color-mix(in srgb, var(--muted) 14%, transparent);
-         padding: .1em .35em; border-radius: 4px; }
-  footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
-           color: var(--muted); font-size: .875rem; }
-</style>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/bzf-pruefung/style.css">
 </head>
 <body>
-  <main>
-    <h1>Datenschutzerklärung — BZF-Prüfung</h1>
-    <p>Stand: 31.08.2026</p>
-    <h2>Kurz</h2>
-    <p>Die App erhebt keine personenbezogenen Daten und überträgt keine. Eine Netzverbindung braucht sie ausschliesslich für den Kauf von „Pro" über Google Play; zum Lernen nie.</p>
-    <h2>Ausführlich</h2>
-    <p><strong>Keine Datenerhebung.</strong> Es werden keine personenbezogenen Daten erhoben, verarbeitet oder an Dritte weitergegeben. Es gibt kein Benutzerkonto, keine Anmeldung und keine Registrierung.</p>
-    <p><strong>Netzverbindung nur für den Kauf.</strong> Die App besitzt die Berechtigung <code>android.permission.INTERNET</code> allein deshalb, weil die Kaufabwicklung für „Pro" über Google Play läuft und diese Bibliothek sie voraussetzt. Es gibt keinen Server von uns, zu dem eine Verbindung aufgebaut werden könnte: kein Backend, keine Konten, keine Synchronisierung. Ohne Verbindung funktioniert alles ausser dem Kaufvorgang.</p>
-    <p><strong>Kein Tracking, keine Werbung, keine Analyse.</strong> Es sind keine Analyse-, Werbe- oder Absturzberichts-Bibliotheken eingebunden.</p>
-    <p><strong>Lernstand.</strong> Bearbeitete Fragen, Leitner-Fächer, Serien und Ergebnisse von Probeprüfungen werden ausschließlich lokal auf dem Gerät gespeichert. Sie verlassen das Gerät nicht. Über "Fortschritt zurücksetzen" im Bereich Fortschritt lassen sie sich jederzeit vollständig löschen; das Deinstallieren der App entfernt sie ebenfalls.</p>
-    <p><strong>Berechtigungen.</strong> Die App fordert drei an: <code>android.permission.INTERNET</code> ausschliesslich für die Kaufabwicklung, <code>com.android.vending.BILLING</code>, die die Play-Bibliothek mitbringt, und <code>android.permission.RECORD_AUDIO</code> ausschliesslich für die Übungen mit Mikrofon. Das Mikrofon wird erst gefragt, wenn eine davon zum ersten Mal benutzt wird, und wer ablehnt, verliert nur diese Übungen. Keine Berechtigung für Standort, Kontakte, Kamera, Speicher oder Telefonie. Im zusammengeführten Manifest steht ausserdem eine von androidx.core angelegte Berechtigung im eigenen Namensraum der App (<code>…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>, Schutzstufe "signature"); sie erlaubt nichts ausserhalb der App und wird von Google Play nicht als Berechtigung angezeigt.</p>
-    <p><strong>Mikrofon.</strong> Die Übungen mit Mikrofon hören zu, während gesprochen wird. Die Erkennung läuft vollständig <strong>auf dem Gerät</strong> — je nach Fassung mit einem in der App mitgelieferten Spracherkennungsmodell oder mit der geräteeigenen Erkennung von Android. In beiden Fällen wird <strong>nichts aufgenommen</strong>: es entsteht keine Audiodatei, nichts wird gespeichert, und keine Aufnahme verlässt das Gerät. Erkannt wird gegen die geschlossene Wortliste der jeweiligen Übung; was zurückkommt, ist Text, und er wird mit der erwarteten Antwort verglichen, angezeigt und mit der nächsten Frage verworfen.</p>
-    <p><strong>Kauf.</strong> „Pro" wird einmalig über Google Play gekauft. Den Zahlungsvorgang wickelt Google ab; wir erhalten keine Zahlungsdaten, keinen Namen und keine Adresse, sondern von Google nur die Auskunft, ob für dieses Google-Konto ein Kauf vorliegt. Diese Auskunft wird lokal zwischengespeichert, damit „Pro" auch ohne Verbindung zur Verfügung steht.</p>
-    <h2>Inhalt der Fragen</h2>
-    <p>Der Fragenkatalog stammt von der Bundesnetzagentur ("Prüfungsfragen im Prüfungsteil Kenntnisse", gültig ab 01.05.2024) und ist ein amtliches Werk im Sinne des § 5 UrhG. Die App ist kein Angebot der Bundesnetzagentur und steht in keiner Verbindung zu ihr.</p>
-    <h2>Widerruf</h2>
-    <p>Die Widerrufsbelehrung für den Kauf digitaler Inhalte steht separat und ist von dieser Seite aus erreichbar.</p>
-    <h2>Änderungen</h2>
-    <p>Diese Erklärung wird angepasst, bevor eine Fassung erscheint, die etwas daran ändert.</p>
-    <h2>Verantwortlich</h2>
-    <p>Tobias Kummer<br>Kantstraße 42<br>73312 Geislingen<br>Deutschland</p>
-    <p>E-Mail: tobiaskummer@googlemail.com</p>
-    <p>Diese Angaben sind zugleich das Impressum nach § 5 DDG und benennen den Verantwortlichen im Sinne des Artikels 4 Nummer 7 DSGVO.</p>
-    <footer>
-      BZF-Prüfung ist kein Angebot der Bundesnetzagentur und steht in keiner Verbindung
-      zu ihr.
-    </footer>
-  </main>
+  <header class="site">
+    <div class="wrap">
+      <a class="eyebrow" href="/" style="margin:0">Tobias Kummer</a>
+      <nav><a href="#frage">Eine Frage</a><a href="#flug">Ein Flug</a><a href="#kostenlos">Was es kostet</a></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">BZF-Prüfung · Android · BZF I und BZF II</p>
+        <h1>Das Sprechfunkzeugnis. Alle 261 Fragen, jede erklärt.</h1>
+        <p class="lead">Prüfungsvorbereitung mit dem amtlichen Fragenkatalog der Bundesnetzagentur, einem Funksimulator, der spricht und zuhört, und 489 Sprechgruppen zum Nachschlagen. Für PPL, LAPL, SPL, Ultraleicht, Segelflug und Motorsegler.</p>
+        <div class="actions">
+          <a class="button" href="https://play.google.com/store/apps/details?id=aero.bzf.app">Bei Google Play laden</a>
+          <span class="price">Kostenlos, Pro einmalig 12,99 €, kein Abo</span>
+        </div>
+      </div>
+      <img class="phone" src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Frage 209 mit erklärter richtiger Antwort und Merksatz in der App">
+    </div>
+  </section>
+
+  <section id="frage">
+    <div class="wrap">
+      <div class="narrow">
+        <p class="eyebrow">So sieht eine Frage aus</p>
+        <h2>Auswendiglernen reicht für die Prüfung. Nicht für den Funk.</h2>
+        <p class="lead" style="margin:1rem 0 2rem">Deshalb steht bei jeder Frage, warum die richtige Antwort stimmt, was an den anderen falsch ist und welche Vorschrift dahintersteht.</p>
+        <article class="frage">
+          <div class="kopf"><span><b>209</b>SICHTFLUGREGELN</span><span>Fach 3 von 5</span></div>
+          <p class="stamm">Im Luftraum E unterhalb FL 100 sind Flüge nach Sichtflugregeln so durchzuführen, dass ...</p>
+          <div class="antwort richtig">
+            <span class="zeichen">✓</span>
+            <div>
+              <p>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
+              <p class="warum">Unterhalb FL 100 sind es 5 km Flugsicht, 1500 m waagerecht und 300 m senkrecht. Die 8 km gelten erst ab FL 100.</p>
+            </div>
+          </div>
+          <p class="merksatz">Fünf unten, acht oben, Grenze FL 100. Die Abstände ändern sich dabei nicht.</p>
+          <div class="antwort">
+            <span class="zeichen">B</span>
+            <div>
+              <p>der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
+              <p class="warum">8 km ist der Wert ab FL 100, hier also zu viel.</p>
+            </div>
+          </div>
+          <div class="antwort">
+            <span class="zeichen">C</span>
+            <div>
+              <p>der Pilot eine Flugsicht von mindestens 5 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 300 m, in senkrechter Richtung mindestens 300 ft Abstand hält</p>
+              <p class="warum">Richtige Sicht, falsche Abstände.</p>
+            </div>
+          </div>
+          <div class="antwort">
+            <span class="zeichen">D</span>
+            <div>
+              <p>der Pilot eine Flugsicht von mindestens 8 km hat und das Luftfahrzeug von den Wolken in waagerechter Richtung mindestens 1500 m, in senkrechter Richtung mindestens 300 m (1000 ft) Abstand hält</p>
+              <p class="warum">Die Abstände stimmen, die Sicht nicht: 8 km gelten erst ab FL 100.</p>
+            </div>
+          </div>
+          <p class="quelle">Tabelle S5-1 zu SERA.5005 · Bundesnetzagentur, Prüfungsfragen im Prüfungsteil Kenntnisse (BZF II und BZF I), gültig ab 01.05.2024</p>
+        </article>
+        <p class="bildunterschrift">Frage 209, so wie die App sie zeigt. Weil im amtlichen PDF die richtige Antwort immer oben steht, mischt die App die Antworten. Erklärungen gibt es zu allen 261 Fragen, 27 davon kostenlos, eine je Thema.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="flug">
+    <div class="wrap">
+      <div class="narrow">
+        <p class="eyebrow">So klingt ein Flug</p>
+        <h2>Der Turm antwortet. Hörbar, mit Rauschen und Knacken.</h2>
+        <p class="lead" style="margin:1rem 0 2rem">Anlassen, Rollen, Start, Platzrunde, Landung. Deine Meldungen sprichst du laut, auf Wunsch ins Mikrofon; die App erkennt auf dem Gerät, was du gesagt hast, und legt es neben die Musterantwort.</p>
+        <p class="eyebrow">Wiesenfeld · Katana · D-EVRS · Piste 22</p>
+        <div class="funk">
+          <div class="spruch du"><span class="wer">Du</span>KATANA AM GAT ERBITTE ROLLEN, DELTA ECHO VICTOR ROMEO SIERRA<span class="fund">NfL 2024-1-3266 Anlage 1, 1.4.7</span></div>
+          <div class="spruch"><span class="wer">Turm</span>DELTA ECHO VICTOR ROMEO SIERRA, ROLLEN SIE ZUM ROLLHALT PISTE ZWO ZWO<span class="fund">NfL 2024-1-3266 Anlage 1, 1.4.7 c</span></div>
+          <div class="spruch du"><span class="wer">Du</span>ROLLE ZUM ROLLHALT PISTE ZWO ZWO, DELTA ECHO VICTOR ROMEO SIERRA<span class="fund">Rücklesen nach Kapitel 25 b.1</span></div>
+          <div class="spruch"><span class="wer">Turm</span>DELTA ECHO VICTOR ROMEO SIERRA, PISTE ZWO ZWO START FREI, MELDEN SIE ABGEHOBEN<span class="fund">NfL 2024-1-3266 Anlage 1, 1.4.11 a</span></div>
+          <div class="spruch du"><span class="wer">Du</span>PISTE ZWO ZWO START FREI, DELTA ECHO VICTOR ROMEO SIERRA<span class="fund">Rücklesen nach Kapitel 25 b.1</span></div>
+          <div class="spruch du"><span class="wer">Du</span>ABGEHOBEN VIER ACHT, DELTA ECHO VICTOR ROMEO SIERRA<span class="fund">NfL 2024-1-3266 Anlage 1, 1.4.12 e</span></div>
+        </div>
+        <p class="bildunterschrift">Jede Sprechgruppe im Wortlaut der amtlichen Sprechfunkverfahren, mit Fundstelle. Der Platz ist erfunden, damit niemand falsche Ortskunde lernt; Piste, Wind, QNH und Rufzeichen würfelt die App, kein Flug ist wie der andere.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Und der Rest</p>
+      <h2>Was noch drin ist.</h2>
+      <div class="cards">
+        <article class="card">
+          <img class="phone small" src="/bzf-pruefung/bilder/04-app-pruefung-dunkel.png" width="540" height="960" alt="Die Probeprüfung in der App, dunkler Modus">
+          <h3>Probeprüfung <span class="tag">Pro</span></h3>
+          <p>100 Fragen am Stück, das Ergebnis erst am Schluss, wie in der echten Prüfung. Danach führt jede falsche Frage zur Erklärung.</p>
+        </article>
+        <article class="card">
+          <img class="phone small" src="/bzf-pruefung/bilder/07-funk-sprechgruppen.png" width="540" height="960" alt="Sprechgruppen zum Nachschlagen in der App">
+          <h3>Sprechgruppen <span class="tag">Kostenlos</span></h3>
+          <p>Was du sagst und was der Boden antwortet, mit Turm und bei RADIO: 489 Sprechgruppen im Wortlaut der NfL, mit Suche und Fundstelle.</p>
+        </article>
+        <article class="card">
+          <img class="phone small" src="/bzf-pruefung/bilder/06-app-profil-dunkel.png" width="540" height="960" alt="Der Lernstand mit Karteikasten in der App, dunkler Modus">
+          <h3>Wiederholung mit System</h3>
+          <p>Was hakt, kommt öfter dran; was sitzt, lässt die App in Ruhe. Ein Karteikasten mit fünf Fächern, Runden zu 15 Fragen, und eine Runde nur über deine Schwachstellen.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="kostenlos">
+    <div class="wrap">
+      <div class="narrow">
+        <p class="eyebrow">Was es kostet</p>
+        <h2>Die Fragen sind ein amtliches Dokument. Dafür Geld zu nehmen fänden wir falsch.</h2>
+        <p class="lead" style="margin:1rem 0 0">Bezahlt wird, was wir dazugebaut haben. Einmal, kein Abo.</p>
+        <div class="cols">
+          <div class="kostenlos">
+            <h3>Kostenlos</h3>
+            <ul>
+              <li>Alle 261 Fragen mit Karteikasten, Runden und Fortschritt</li>
+              <li>27 Erklärungen, eine je Thema</li>
+              <li>Buchstabieralphabet mit Vorlesen und Mikrofon</li>
+              <li>Katalog und 489 Sprechgruppen zum Nachschlagen</li>
+            </ul>
+          </div>
+          <div class="kostenlos">
+            <h3>Pro, einmalig 12,99 €</h3>
+            <ul>
+              <li>Erklärungen zu allen 261 Fragen</li>
+              <li>Der Flug: Funksimulator mit Stimme und Mikrofon</li>
+              <li>Zahlen übermitteln und Hören</li>
+              <li>Probeprüfung mit 100 Fragen</li>
+            </ul>
+          </div>
+        </div>
+        <h3 style="margin-top:3rem">Ohne Konto, ohne Werbung</h3>
+        <p>Kein Login, keine Werbung, kein Tracking. Dein Lernstand bleibt auf deinem Gerät; auch Stimme und Spracherkennung laufen komplett lokal, nichts wird aufgenommen oder hochgeladen. Lernen geht auch ohne Empfang. Nur der Kauf läuft über Google Play.</p>
+        <h3 style="margin-top:2rem">BZF I oder BZF II</h3>
+        <p>Das Funkzeugnis gibt es als BZF II auf Deutsch und als BZF I mit englischem Teil. Der Prüfungsteil Kenntnisse ist bei beiden derselbe, und genau der sind diese 261 Fragen. Wer per Zusatzprüfung vom BZF II aufrüstet, legt ihn nicht noch einmal ab und braucht diese App dafür nicht.</p>
+        <div class="actions">
+          <a class="button" href="https://play.google.com/store/apps/details?id=aero.bzf.app">Bei Google Play laden</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="narrow">
+        <p class="eyebrow">Quelle</p>
+        <p>Bundesnetzagentur, „Prüfungsfragen im Prüfungsteil Kenntnisse bei Prüfungen zum Erwerb des Beschränkt Gültigen Sprechfunkzeugnis II für den Flugfunkdienst (BZF II) und des Beschränkt Gültigen Sprechfunkzeugnis I für den Flugfunkdienst (BZF I)", gültig ab 01. Mai 2024. Amtliches Werk, § 5 UrhG. Original und jeweils aktuelle Fassung: <a href="https://www.bundesnetzagentur.de/Flugfunkzeugnisse">bundesnetzagentur.de/Flugfunkzeugnisse</a>.</p>
+        <p><strong>Keine amtliche App.</strong> Diese App ist ein privates Lernangebot. Sie ist kein Angebot der Bundesnetzagentur oder einer anderen Behörde und steht in keiner Verbindung zu ihnen. Verbindlich ist immer der dort veröffentlichte amtliche Katalog.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>BZF-Prüfung von Tobias Kummer</span>
+      <span><a href="/bzf-pruefung/datenschutz.html">Datenschutz</a><a href="/bzf-pruefung/widerruf.html">Widerruf</a><a href="/impressum.html">Impressum</a></span>
+    </div>
+  </footer>
 </body>
 </html>
