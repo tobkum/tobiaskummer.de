@@ -1,11 +1,13 @@
 /* Der Akzent der App BZF-Prüfung über dem Schirm-Stylesheet: Amber und AmberDark aus
-   Theme.kt, dazu Grün für die richtige Antwort (SignalGreen, SignalGreenDark). Die
-   Basis (Papier, Tinte, Schrift) kommt von /style.css. */
+   Theme.kt, dazu Grün und Rot für richtige und falsche Antwort (SignalGreen, SignalRed
+   und ihre Nachtwerte). Die Basis (Papier, Tinte, Schrift) kommt von /style.css. */
 :root {
   --accent: #c98a18;
   --accent-ink: #94640a;
   --green: #2e7d32;
   --green-bg: rgba(46, 125, 50, .08);
+  --red: #b3261e;
+  --red-bg: rgba(179, 38, 30, .07);
   --amber-bg: rgba(201, 138, 24, .10);
 }
 @media (prefers-color-scheme: dark) {
@@ -14,26 +16,46 @@
     --accent-ink: #e0ac4a;
     --green: #6abf69;
     --green-bg: rgba(106, 191, 105, .10);
+    --red: #e58077;
+    --red-bg: rgba(229, 128, 119, .10);
     --amber-bg: rgba(224, 172, 74, .12);
   }
 }
-.button { color: #14202a; }
-.button:hover { color: #14202a; }
 
-/* Eine Frage, wie die App sie zeigt. */
+/* Der Google-Play-Badge, unverändert, mindestens 28 px hoch, Freiraum ein Viertel
+   seiner Höhe (Vorgaben von Google). */
+.play { display: inline-block; line-height: 0; }
+.badge { height: 56px; width: auto; }
+.badge.klein { height: 40px; }
+.vertrauen { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--muted); font-size: .95rem; }
+.vertrauen li::before { content: "✓"; color: var(--green); margin-right: .45rem; }
+
+/* Eine Frage, wie die App sie zeigt; antippbar. */
 .frage { background: var(--raised); border: 1px solid var(--rule); border-radius: 20px; padding: 1.75rem; box-shadow: var(--shadow); }
 .frage .kopf { display: flex; justify-content: space-between; gap: 1rem; font: 400 .85rem/1.4 var(--mono); color: var(--muted); letter-spacing: .05em; margin-bottom: .75rem; }
 .frage .kopf b { color: var(--accent-ink); font-weight: 400; margin-right: .6rem; }
 .frage .stamm { font-size: 1.3rem; font-weight: 600; line-height: 1.3; margin-bottom: 1.25rem; }
-.antwort { display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; align-items: start; padding: 1rem 1.1rem; border: 1px solid var(--rule); border-radius: 14px; margin-bottom: .75rem; }
+.antwort {
+  display: grid; grid-template-columns: 2.25rem 1fr; gap: 1rem; align-items: start;
+  width: 100%; text-align: left; padding: 1rem 1.1rem; margin: 0 0 .75rem;
+  border: 1px solid var(--rule); border-radius: 14px; background: transparent;
+  color: inherit; font: inherit; cursor: pointer;
+}
+.antwort:disabled { cursor: default; }
+.geschlossen .antwort:hover { border-color: var(--accent); }
 .antwort .zeichen { width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; font: 400 1rem var(--mono); color: var(--muted); }
-.antwort.richtig { border-color: var(--green); background: var(--green-bg); }
-.antwort.richtig .zeichen { background: var(--green); border-color: var(--green); color: #fff; }
-.antwort p { margin: 0; }
-.antwort .warum { color: var(--muted); font-size: .95rem; margin-top: .4rem; }
+.antwort .warum { display: block; color: var(--muted); font-size: .95rem; margin-top: .4rem; }
 .merksatz { background: var(--amber-bg); border-left: 3px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem; margin: 0 0 .75rem; font-size: 1.05rem; }
 .quelle { color: var(--muted); font-size: .85rem; margin-top: 1rem; }
 .bildunterschrift { color: var(--muted); font-size: .95rem; margin-top: 1.25rem; }
+
+/* Geschlossen: nur die vier Antworten. Beantwortet: Grün an der richtigen, Rot an einer
+   falschen Wahl, Erklärungen und Merksatz sichtbar, wie in der App nach dem Antippen. */
+.geschlossen .warum, .geschlossen .merksatz { display: none; }
+.beantwortet .antwort[data-richtig] { border-color: var(--green); background: var(--green-bg); }
+.beantwortet .antwort[data-richtig] .zeichen { background: var(--green); border-color: var(--green); color: #fff; }
+.beantwortet .antwort.gewaehlt:not([data-richtig]) { border-color: var(--red); background: var(--red-bg); }
+.beantwortet .antwort.gewaehlt:not([data-richtig]) .zeichen { background: var(--red); border-color: var(--red); color: #fff; }
 
 /* Ein Flug, wie die App ihn führt. */
 .funk { display: flex; flex-direction: column; gap: .75rem; max-width: 34rem; }
@@ -44,3 +66,8 @@
 
 .kostenlos { border: 1px solid var(--rule); border-radius: 20px; padding: 1.75rem; }
 .kostenlos h3 { margin-bottom: .75rem; }
+
+@media (max-width: 760px) {
+  .badge { height: 48px; }
+  .badge.klein { height: 36px; }
+}
