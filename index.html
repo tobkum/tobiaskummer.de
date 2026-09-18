@@ -9,20 +9,46 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <main>
-    <p class="eyebrow">Tobias Kummer</p>
-    <h1>Apps für die Prüfung, die man nicht zweimal machen will.</h1>
-    <p>Ich baue Lern-Apps für amtliche Prüfungen. Kein Konto, keine Werbung, keine Analyse: was gelernt wird, bleibt auf dem Gerät.</p>
-    <ul class="apps">
-      <li>
-        <h3><a href="/bzf-pruefung/">BZF-Prüfung</a></h3>
-        <p>Der amtliche Fragenkatalog der Bundesnetzagentur für BZF I und BZF II, mit Erklärung zu jeder Frage, Sprechfunk-Übungen mit Mikrofon und einem Nachschlagewerk der Sprechgruppen. Android.</p>
-      </li>
-    </ul>
-    <footer>
-      <a href="/impressum.html">Impressum</a>
-      <a href="/datenschutz.html">Datenschutz</a>
-    </footer>
-  </main>
+  <header class="site">
+    <div class="wrap">
+      <a class="eyebrow" href="/" style="margin:0">Tobias Kummer</a>
+      <nav><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap" style="grid-template-columns: 1fr">
+      <div>
+        <h1>Apps für Prüfungen, die man nur einmal machen will.</h1>
+        <p class="lead">Amtlicher Stoff, sauber erklärt, ohne Konto und ohne Werbung. Was gelernt wird, bleibt auf dem Gerät.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0; border-top:0">
+    <div class="wrap">
+      <div class="apps">
+        <article class="app">
+          <div>
+            <p class="eyebrow">Android · BZF I und BZF II</p>
+            <h2>BZF-Prüfung</h2>
+            <p>Alle 261 Fragen der Bundesnetzagentur, jede erklärt. Ein Funksimulator, der spricht und zuhört. 489 Sprechgruppen zum Nachschlagen.</p>
+            <div class="actions">
+              <a class="button" href="/bzf-pruefung/">Zur App</a>
+              <span class="price">Kostenlos, Pro einmalig 12,99 €</span>
+            </div>
+          </div>
+          <a href="/bzf-pruefung/"><img class="phone small" src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Eine Frage mit erklärter Antwort in der App BZF-Prüfung"></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Tobias Kummer, Geislingen</span>
+      <span><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+    </div>
+  </footer>
 </body>
 </html>
