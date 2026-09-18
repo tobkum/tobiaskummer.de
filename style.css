@@ -112,6 +112,14 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 .cols ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
 .cols li { margin-bottom: .4rem; }
 
+/* Über mich: ein kleines Porträt neben drei Sätzen. */
+.ueber { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; align-items: start; max-width: 44rem; }
+.ueber .portrait { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
+.ueber p { margin-bottom: .75rem; }
+.ueber .links { color: var(--muted); font-size: .95rem; }
+.ueber .links a { margin-right: 1.25rem; text-decoration: none; }
+.ueber .links a:hover { text-decoration: underline; }
+
 footer.site { border-top: 1px solid var(--rule); padding: 2rem 0 4rem; color: var(--muted); font-size: .9rem; }
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
 footer.site a { text-decoration: none; margin-right: 1.25rem; }
@@ -131,4 +139,6 @@ footer.site a:hover { text-decoration: underline; }
   .badge { height: 48px; }
   .badge.klein { height: 36px; }
   .app .phone.small { margin: 0 auto; }
+  .ueber { grid-template-columns: 5rem 1fr; gap: 1.25rem; }
+  .ueber .portrait { width: 5rem; height: 5rem; }
 }
