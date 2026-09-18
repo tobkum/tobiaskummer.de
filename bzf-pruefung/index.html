@@ -27,24 +27,62 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "BZF-Prüfung: Fragen erklärt",
-  "alternateName": "BZF-Prüfung",
-  "operatingSystem": "Android",
-  "applicationCategory": "EducationalApplication",
-  "inLanguage": "de",
-  "url": "https://tobiaskummer.de/bzf-pruefung/",
-  "installUrl": "https://play.google.com/store/apps/details?id=aero.bzf.app",
-  "image": "https://tobiaskummer.de/bzf-pruefung/bilder/og.png",
-  "screenshot": "https://tobiaskummer.de/bzf-pruefung/bilder/03-fragen-erklaerung.png",
-  "description": "Lern-App für das Sprechfunkzeugnis BZF I und BZF II: alle 261 Prüfungsfragen der Bundesnetzagentur mit Erklärung, ein Funksimulator für den Flugfunk und 489 Sprechgruppen zum Nachschlagen.",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "EUR",
-    "description": "Kostenlos; Pro als einmaliger Kauf für 12,99 €"
-  },
-  "author": { "@type": "Person", "name": "Tobias Kummer", "url": "https://tobiaskummer.de/" }
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://tobiaskummer.de/bzf-pruefung/#app",
+      "name": "BZF-Prüfung: Fragen erklärt",
+      "alternateName": "BZF-Prüfung",
+      "operatingSystem": "Android",
+      "applicationCategory": "EducationalApplication",
+      "applicationSubCategory": "Prüfungsvorbereitung",
+      "inLanguage": "de",
+      "countriesSupported": "DE",
+      "isAccessibleForFree": true,
+      "softwareVersion": "1.0.0",
+      "url": "https://tobiaskummer.de/bzf-pruefung/",
+      "installUrl": "https://play.google.com/store/apps/details?id=aero.bzf.app",
+      "image": "https://tobiaskummer.de/bzf-pruefung/bilder/og.png",
+      "screenshot": [
+        "https://tobiaskummer.de/bzf-pruefung/bilder/03-fragen-erklaerung.png",
+        "https://tobiaskummer.de/bzf-pruefung/bilder/05-flug-gespraech.png",
+        "https://tobiaskummer.de/bzf-pruefung/bilder/07-funk-sprechgruppen.png"
+      ],
+      "description": "Lern-App für das Sprechfunkzeugnis BZF I und BZF II: alle 261 Prüfungsfragen der Bundesnetzagentur mit Erklärung, ein Funksimulator für den Flugfunk und 489 Sprechgruppen zum Nachschlagen.",
+      "featureList": [
+        "Alle 261 Prüfungsfragen der Bundesnetzagentur, gültig seit 01.05.2024",
+        "Erklärung und Fundstelle zu jeder Antwort",
+        "Funksimulator: ein ganzer Flug mit dem Turm, gesprochen und gehört",
+        "489 Sprechgruppen zum Nachschlagen",
+        "Probeprüfung mit 100 Fragen",
+        "Kein Konto, keine Werbung, kein Tracking"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Kostenlos; Pro als einmaliger Kauf für 12,99 €"
+      },
+      "author": { "@id": "https://tobiaskummer.de/#person" },
+      "publisher": { "@id": "https://tobiaskummer.de/#person" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tobiaskummer.de/bzf-pruefung/",
+      "url": "https://tobiaskummer.de/bzf-pruefung/",
+      "name": "BZF-Prüfung App: alle 261 Fragen erklärt, BZF I und BZF II",
+      "inLanguage": "de",
+      "isPartOf": { "@id": "https://tobiaskummer.de/#website" },
+      "about": { "@id": "https://tobiaskummer.de/bzf-pruefung/#app" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Tobias Kummer", "item": "https://tobiaskummer.de/" },
+        { "@type": "ListItem", "position": 2, "name": "BZF-Prüfung", "item": "https://tobiaskummer.de/bzf-pruefung/" }
+      ]
+    }
+  ]
 }
 </script>
 </head>
