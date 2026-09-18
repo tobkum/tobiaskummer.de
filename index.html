@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Datenschutzerklärung — BZF-Prüfung</title>
+<meta name="robots" content="index,follow">
+<style>
+  /* Farben aus Theme.kt, damit Seite und App zusammengehören. Alles inline: die Seite
+     muss auf jedem Hoster liegen können, ohne dass etwas nachgeladen wird. */
+  :root { --paper:#faf7f1; --ink:#0e141a; --muted:#5d6b77; --rule:#e6dfd4; --amber:#c98a18; }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper:#0e141a; --ink:#e9eef2; --muted:#8c9ba8; --rule:#26313c; --amber:#e0ac4a; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 3rem 1.25rem 6rem;
+    background: var(--paper); color: var(--ink);
+    font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 38rem; margin: 0 auto; }
+  h1 { font-size: 1.75rem; line-height: 1.25; margin: 0 0 .5rem; }
+  h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
+  h2::before { content: ""; display: block; width: 2.5rem; height: 3px;
+               background: var(--amber); border-radius: 2px; margin-bottom: .9rem; }
+  p { margin: 0 0 1rem; }
+  code { font: .9em ui-monospace, "Cascadia Mono", Consolas, monospace;
+         background: color-mix(in srgb, var(--muted) 14%, transparent);
+         padding: .1em .35em; border-radius: 4px; }
+  footer { margin-top: 3.5rem; padding-top: 1.25rem; border-top: 1px solid var(--rule);
+           color: var(--muted); font-size: .875rem; }
+</style>
+</head>
+<body>
+  <main>
+    <h1>Datenschutzerklärung — BZF-Prüfung</h1>
+    <p>Stand: 31.08.2026</p>
+    <h2>Kurz</h2>
+    <p>Die App erhebt keine personenbezogenen Daten und überträgt keine. Eine Netzverbindung braucht sie ausschliesslich für den Kauf von „Pro" über Google Play; zum Lernen nie.</p>
+    <h2>Ausführlich</h2>
+    <p><strong>Keine Datenerhebung.</strong> Es werden keine personenbezogenen Daten erhoben, verarbeitet oder an Dritte weitergegeben. Es gibt kein Benutzerkonto, keine Anmeldung und keine Registrierung.</p>
+    <p><strong>Netzverbindung nur für den Kauf.</strong> Die App besitzt die Berechtigung <code>android.permission.INTERNET</code> allein deshalb, weil die Kaufabwicklung für „Pro" über Google Play läuft und diese Bibliothek sie voraussetzt. Es gibt keinen Server von uns, zu dem eine Verbindung aufgebaut werden könnte: kein Backend, keine Konten, keine Synchronisierung. Ohne Verbindung funktioniert alles ausser dem Kaufvorgang.</p>
+    <p><strong>Kein Tracking, keine Werbung, keine Analyse.</strong> Es sind keine Analyse-, Werbe- oder Absturzberichts-Bibliotheken eingebunden.</p>
+    <p><strong>Lernstand.</strong> Bearbeitete Fragen, Leitner-Fächer, Serien und Ergebnisse von Probeprüfungen werden ausschließlich lokal auf dem Gerät gespeichert. Sie verlassen das Gerät nicht. Über "Fortschritt zurücksetzen" im Bereich Fortschritt lassen sie sich jederzeit vollständig löschen; das Deinstallieren der App entfernt sie ebenfalls.</p>
+    <p><strong>Berechtigungen.</strong> Die App fordert drei an: <code>android.permission.INTERNET</code> ausschliesslich für die Kaufabwicklung, <code>com.android.vending.BILLING</code>, die die Play-Bibliothek mitbringt, und <code>android.permission.RECORD_AUDIO</code> ausschliesslich für die Übungen mit Mikrofon. Das Mikrofon wird erst gefragt, wenn eine davon zum ersten Mal benutzt wird, und wer ablehnt, verliert nur diese Übungen. Keine Berechtigung für Standort, Kontakte, Kamera, Speicher oder Telefonie. Im zusammengeführten Manifest steht ausserdem eine von androidx.core angelegte Berechtigung im eigenen Namensraum der App (<code>…DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION</code>, Schutzstufe "signature"); sie erlaubt nichts ausserhalb der App und wird von Google Play nicht als Berechtigung angezeigt.</p>
+    <p><strong>Mikrofon.</strong> Die Übungen mit Mikrofon hören zu, während gesprochen wird. Die Erkennung läuft vollständig <strong>auf dem Gerät</strong> — je nach Fassung mit einem in der App mitgelieferten Spracherkennungsmodell oder mit der geräteeigenen Erkennung von Android. In beiden Fällen wird <strong>nichts aufgenommen</strong>: es entsteht keine Audiodatei, nichts wird gespeichert, und keine Aufnahme verlässt das Gerät. Erkannt wird gegen die geschlossene Wortliste der jeweiligen Übung; was zurückkommt, ist Text, und er wird mit der erwarteten Antwort verglichen, angezeigt und mit der nächsten Frage verworfen.</p>
+    <p><strong>Kauf.</strong> „Pro" wird einmalig über Google Play gekauft. Den Zahlungsvorgang wickelt Google ab; wir erhalten keine Zahlungsdaten, keinen Namen und keine Adresse, sondern von Google nur die Auskunft, ob für dieses Google-Konto ein Kauf vorliegt. Diese Auskunft wird lokal zwischengespeichert, damit „Pro" auch ohne Verbindung zur Verfügung steht.</p>
+    <h2>Inhalt der Fragen</h2>
+    <p>Der Fragenkatalog stammt von der Bundesnetzagentur ("Prüfungsfragen im Prüfungsteil Kenntnisse", gültig ab 01.05.2024) und ist ein amtliches Werk im Sinne des § 5 UrhG. Die App ist kein Angebot der Bundesnetzagentur und steht in keiner Verbindung zu ihr.</p>
+    <h2>Widerruf</h2>
+    <p>Die Widerrufsbelehrung für den Kauf digitaler Inhalte steht separat und ist von dieser Seite aus erreichbar.</p>
+    <h2>Änderungen</h2>
+    <p>Diese Erklärung wird angepasst, bevor eine Fassung erscheint, die etwas daran ändert.</p>
+    <h2>Verantwortlich</h2>
+    <p>Tobias Kummer<br>Kantstraße 42<br>73312 Geislingen<br>Deutschland</p>
+    <p>E-Mail: somnuslacuna@gmail.com</p>
+    <p>Diese Angaben sind zugleich das Impressum nach § 5 DDG und benennen den Verantwortlichen im Sinne des Artikels 4 Nummer 7 DSGVO.</p>
+    <footer>
+      BZF-Prüfung ist kein Angebot der Bundesnetzagentur und steht in keiner Verbindung
+      zu ihr.
+    </footer>
+  </main>
+</body>
+</html>
