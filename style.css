@@ -118,12 +118,22 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 .app > div { padding-bottom: 2.5rem; }
 .app h2 { margin-bottom: .5rem; }
 .app p { color: var(--muted); }
-/* Der Bildschirm im flachen Rahmen, unten aus der Karte laufend, wie die Ladenbilder. */
-.app .schirm { display: block; width: min(100%, 300px); margin: 1rem auto -2px; border: 1px solid var(--rule); border-bottom: 0;
-               border-radius: 28px 28px 0 0; overflow: hidden; box-shadow: var(--shadow); background: var(--paper); }
-.app .schirm img { display: block; width: 100%; height: auto; margin-bottom: -18%; }
+/* Der Bildschirm im flachen Rahmen, unten abgeschnitten, wie die Ladenbilder im Laden:
+   in der App-Karte, im Kopf der Produktseite und in ihren drei Reihen. */
+.schirm { display: block; border: 1px solid var(--rule); border-bottom: 0; border-radius: 28px 28px 0 0;
+          overflow: hidden; box-shadow: var(--shadow); background: var(--paper); transition: transform .2s ease; }
+.schirm img { display: block; width: 100%; height: auto; }
+.app .schirm { width: min(100%, 300px); margin: 1rem auto -2px; }
+.app .schirm img { margin-bottom: -18%; }
 .app:hover .schirm { transform: translateY(-4px); }
-.app .schirm { transition: transform .2s ease; }
+.hero.produkt { padding-bottom: 0; overflow: hidden; }
+.hero.produkt .wrap { align-items: end; }
+.hero.produkt > .wrap > div { padding-bottom: 4.5rem; }
+.hero.produkt .schirm { width: min(100%, 320px); margin: 0 auto -2px; }
+.hero.produkt .schirm img { margin-bottom: -22%; }
+.card .schirm { height: 20rem; width: min(100%, 260px); }
+.card .schirm img { height: auto; }
+.card:hover .schirm { transform: translateY(-4px); }
 
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-top: 2rem; }
 .cols ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
@@ -139,7 +149,8 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 
 footer.site { border-top: 1px solid var(--rule); padding: 2rem 0 4rem; color: var(--muted); font-size: .9rem; }
 footer.site .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
-footer.site a { text-decoration: none; margin-right: 1.25rem; }
+footer.site a { text-decoration: none; }
+footer.site span:last-child a { margin-left: 1.25rem; }
 footer.site a:hover { text-decoration: underline; }
 
 /* Textseiten: Impressum, Datenschutz, Widerruf. */
@@ -152,6 +163,9 @@ footer.site a:hover { text-decoration: underline; }
   section { padding: 3rem 0; }
   .hero .wrap, .cards, .cols, .app { grid-template-columns: 1fr; }
   .hero .phone { width: min(70%, 260px); margin-top: 1rem; }
+  .hero.produkt > .wrap > div { padding-bottom: 2.5rem; }
+  .hero.produkt .schirm { width: min(75%, 280px); }
+  .card .schirm { height: 16rem; }
   header.site nav { display: none; }
   .badge { height: 48px; }
   .badge.klein { height: 36px; }
