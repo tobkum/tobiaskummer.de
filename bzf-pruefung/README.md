@@ -11,8 +11,11 @@ Repo `bzf-pruefung-web` geschoben, von dort zieht ihn das Site-Repo.
   Stylesheet des Schirms, weil sie auf derselben Domain liegt, und bleibt ohne Stylesheet
   lesbar: Plays Anforderung gilt der Erreichbarkeit und dem Inhalt, nicht der Gestaltung.
   Zwilling von `../privacy-de.html` (Wache test_zusagen.py).
-- `kauf.html`: Kauf und Erstattung, seit 18.09.2026 statt einer eigenen Widerrufsbelehrung
-  (Google ist in Deutschland Merchant of Record; Grund und Rest-Unsicherheit in `../kauf-de.md`).
+- `kauf.html`: Kauf und Erstattung. Erklärt, dass der Kauf über Google Play läuft (Google ist
+  in Deutschland Merchant of Record), und trägt darunter **absichtlich die vollständige
+  gesetzliche Widerrufsbelehrung samt Muster-Widerrufsformular**, weil die deutsche Lesart
+  (IHK, eRecht24) die Belehrungspflicht beim Anbieter lässt. Beide Lesarten, Quellen und
+  der Vermerk zur juristischen Prüfung in `../kauf-de.md`. Nicht kürzen.
 - `style.css`: der Akzent der App über dem Stylesheet des Schirms (`/style.css`), Amber
   und Grün aus Theme.kt.
 - `bilder/`: die acht Ladenbilder in halber Größe (540×960), aus `../assets/screenshots/`.
