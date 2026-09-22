@@ -20,7 +20,11 @@ def datum(pfad: Path) -> str:
     rel = pfad.relative_to(WURZEL).as_posix()
     status = subprocess.run(["git", "status", "--porcelain", "--", rel], capture_output=True, text=True, cwd=WURZEL).stdout
     if status.strip():
-        return subprocess.run(["git", "log", "-1", "--format=%cs"], capture_output=True, text=True, cwd=WURZEL).stdout.strip() or heute()
+        # Heute, wie oben versprochen. Hier stand bis zum 22.09.2026 dieselbe Abfrage wie
+        # unten, nur ohne den Pfad — also das Datum von HEAD: eine Seite, die heute
+        # geändert wurde, bekam das Datum des vorigen Commits. Am 18.09. fiel das nicht
+        # auf, weil an dem Tag ohnehin schon committet worden war.
+        return heute()
     aus = subprocess.run(["git", "log", "-1", "--format=%cs", "--", rel], capture_output=True, text=True, cwd=WURZEL).stdout.strip()
     return aus or heute()
 
