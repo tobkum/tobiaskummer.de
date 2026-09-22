@@ -139,7 +139,7 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 .cols ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
 .cols li { margin-bottom: .4rem; }
 
-/* Über mich: ein kleines Porträt neben drei Sätzen. */
+/* Über mich: ein kleines Porträt neben ein paar Sätzen. */
 .ueber { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; align-items: start; max-width: 44rem; }
 .ueber .portrait { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
 .ueber p { margin-bottom: .75rem; }
