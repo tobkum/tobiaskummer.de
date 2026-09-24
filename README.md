@@ -20,7 +20,8 @@ The pages use the site's shared stylesheet (`/style.css`), fonts and icons.
 
 The policy describes the release build as it is. Update it **before** a release that changes
 any of these: permissions (today only VIBRATE, no INTERNET), what is stored
-(`user://progress.json`: progress, ratings, the puzzle in progress, settings; nothing else),
+(`user://progress.json`: best ratings, solved nights by date, the puzzle in progress, the last
+opened puzzle, seen rule cards, settings; nothing else),
 Android backup (`allowBackup="false"`), purchases (none yet), ads, or any third-party library
 that processes data. The web prototype's tester tools (survey, log export) are not in the app;
 if they ever are, the policy needs a section like Probe's "Gameplay log".
