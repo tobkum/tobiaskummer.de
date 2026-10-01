@@ -19,7 +19,7 @@ The pages use the site's shared stylesheet (`/style.css`), fonts and icons.
 ## Keep the policy true
 
 The policy describes the release build as it is. Update it **before** a release that changes
-any of these: permissions (today only VIBRATE, no INTERNET), what is stored
+any of these: permissions (today none at all; no INTERNET, no VIBRATE), what is stored
 (`user://progress.json`: best ratings, solved nights by date, the puzzle in progress, the last
 opened puzzle, seen rule cards incl. the swipe count, Deep Sky progress (charted skies, chosen
 law/depth, deal order), settings; nothing else),
