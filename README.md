@@ -6,11 +6,11 @@ gemeinsames Stylesheet aus den Farben von Theme.kt, und je App ein Ordner.
 Diese Seite baut nichts. Jedes App-Repo erzeugt seinen Ordner selbst, mit seinem
 Erzeuger und seinen Wachen; hier wird er per Subtree in seinen Pfad geholt:
 
-    git subtree add  --prefix=bzf-pruefung https://github.com/tobkum/BZF-Pruefung.git phase-1 --squash
-    git subtree pull --prefix=bzf-pruefung https://github.com/tobkum/BZF-Pruefung.git phase-1 --squash
+    git subtree pull --prefix=bzf-pruefung https://github.com/tobkum/bzf-pruefung-web.git main --squash
 
-(Der Subtree ist `store/pages/` des App-Repos; bis zum Split-Befehl dort ist das ein
-Platzhalter, siehe docs/release.md im App-Repo.)
+(Das ist `store/pages/` des App-Repos BZF-Pruefung, dort mit
+`git subtree push --prefix=store/pages web main` in das Repo `bzf-pruefung-web` geschoben;
+siehe `store/pages/README.md` im App-Repo.)
 
 Die beiden Spiele (noch ohne GitHub-Remote) kommen aus den lokalen Repos, jeweils aus dem
 Zweig `pages`, den dort `git subtree split --prefix=store/pages -b pages` erzeugt:
