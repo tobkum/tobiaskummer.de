@@ -23,6 +23,6 @@ any of these: permissions (since 12 Oct 2026: INTERNET, ACCESS_NETWORK_STATE and
 (`user://progress.json`: best ratings, solved nights by date, the puzzle in progress, the last
 opened puzzle, seen rule cards incl. the swipe count, Deep Sky progress (charted skies, chosen
 law/depth, deal order), the hint count of a puzzle in progress, whether the full sky is owned, settings; nothing else),
-Android backup (Auto Backup on since 5 Oct 2026, `progress.json` only: release/android), purchases (the one-time "full sky" through Google Play since 12 Oct 2026), ads, or any third-party library
+Android backup (Auto Backup on since 5 Oct 2026, `progress.json` only: release/android), purchases (the one-time "full sky" through Google Play since 12 Oct 2026), sharing (a solve's card and text line through Android's share menu since 12 Oct 2026, only to the app the player picks), ads, or any third-party library
 that processes data. The web prototype's tester tools (survey, log export) are not in the app;
 if they ever are, the policy needs a section like Probe's "Gameplay log".
