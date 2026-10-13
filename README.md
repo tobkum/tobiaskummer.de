@@ -12,15 +12,18 @@ Erzeuger und seinen Wachen; hier wird er per Subtree in seinen Pfad geholt:
 `git subtree push --prefix=store/pages web main` in das Repo `bzf-pruefung-web` geschoben;
 siehe `store/pages/README.md` im App-Repo.)
 
-Die beiden Spiele (noch ohne GitHub-Remote) kommen aus den lokalen Repos, jeweils aus dem
-Zweig `pages`, den dort `git subtree split --prefix=store/pages -b pages` erzeugt:
+Die Spiele und Masinop (noch ohne GitHub-Remote) kommen aus den lokalen Repos, jeweils aus
+dem Zweig `pages`, den dort `git subtree split --prefix=store/pages -b pages` erzeugt:
 
-    git subtree pull --prefix=probe    D:/PyDev/games/probe    pages --squash
-    git subtree pull --prefix=asterism D:/PyDev/games/asterism pages --squash
+    git subtree pull --prefix=probe    D:/PyDev/games/probe            pages --squash
+    git subtree pull --prefix=asterism D:/PyDev/games/asterism         pages --squash
+    git subtree pull --prefix=masinop  D:/PyDev/apps/ph-money-tracker pages --squash
 
-Beide Ordner enthalten bisher nur die Datenschutzerklärung, englisch (`privacy.html`, die
-Adresse für Google Play) und deutsch (`datenschutz.html`). Sobald die Repos einen Remote
-haben, die Quelle hier auf dessen URL umstellen.
+Probe und Asterism enthalten bisher nur die Datenschutzerklärung, englisch (`privacy.html`, die
+Adresse für Google Play) und deutsch (`datenschutz.html`). Masinop hat nur `privacy.html`
+(englisch mit tagalischer Kurzfassung). Probe ist pausiert (seit 29.09.2026): seine Seiten bleiben
+online, stehen aber nicht mehr in der App-Liste von `datenschutz.html`. Sobald die Repos einen
+Remote haben, die Quelle hier auf dessen URL umstellen.
 
 Hosting: GitHub Pages unter der Domain aus `CNAME`; DNS beim Registrar mit vier
 A-Records auf GitHubs Pages-Adressen und einem CNAME für www. Kein Jekyll
