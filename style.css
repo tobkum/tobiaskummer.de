@@ -3,11 +3,16 @@
    Paper, Ink, InkMuted, Hairline und die Nachtwerte kommen aus Theme.kt der App
    BZF-Prüfung, weil sie keine Marke sind, sondern Papier und Tinte. */
 
-@font-face { font-family: "Roboto"; font-weight: 400; font-display: swap; src: url(/fonts/Roboto-Regular.ttf) format("truetype"); }
-@font-face { font-family: "Roboto"; font-weight: 500; font-display: swap; src: url(/fonts/Roboto-Medium.ttf) format("truetype"); }
-@font-face { font-family: "Roboto"; font-weight: 600; font-display: swap; src: url(/fonts/Roboto-SemiBold.ttf) format("truetype"); }
-@font-face { font-family: "B612 Mono"; font-weight: 400; font-display: swap; src: url(/fonts/B612Mono-Regular.ttf) format("truetype"); }
-@font-face { font-family: "B612 Mono"; font-weight: 700; font-display: swap; src: url(/fonts/B612Mono-Bold.ttf) format("truetype"); }
+/* WOFF2 statt TTF, seit 27.10.2026. Die amtlichen Bauten von Google Fonts, nicht selbst
+   umgewandelt: Roboto v51 ist dort eine VARIABLE Schrift, eine Datei traegt 400, 500 und
+   600. Zusammen 81 KB statt rund 250 KB uebertragener TTF je Seitenaufruf.
+   Beschnitten auf Latin: geprueft wurde vorher, welche Zeichen auf dieser Website
+   wirklich vorkommen -- zehn jenseits von Latin-1, alle im Latin-Bereich enthalten.
+   Das Haken-Zeichen der Vertrauensliste fehlte auch der vollen Roboto schon immer und
+   kommt wie bisher aus der Systemschrift. */
+@font-face { font-family: "Roboto"; font-weight: 100 900; font-display: swap; src: url(/fonts/Roboto-latin.woff2) format("woff2"); }
+@font-face { font-family: "B612 Mono"; font-weight: 400; font-display: swap; src: url(/fonts/B612Mono-Regular-latin.woff2) format("woff2"); }
+@font-face { font-family: "B612 Mono"; font-weight: 700; font-display: swap; src: url(/fonts/B612Mono-Bold-latin.woff2) format("woff2"); }
 
 :root {
   --paper: #faf7f1;
