@@ -67,3 +67,35 @@
 .kostenlos.pro::before { content: ""; display: block; width: 2.5rem; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 1rem; }
 .kostenlos.pro h3 { color: var(--accent-ink); }
 
+/* --- Die Themenseiten (store/pages/themen/, erzeugt von `bzf themenseiten`) -----------
+   Sie tragen dieselben Fragen-Stile wie die Produktseite; hier steht nur, was dort nicht
+   gebraucht wurde: eine Kopfzeile ohne zweite Spalte, Abstand zwischen gestapelten
+   Fragen, und die zwei Listen. */
+.hero.schlicht .wrap { display: block; }
+.hero.schlicht .lead { max-width: 44rem; }
+
+/* Gestapelte Fragen brauchen Luft; auf der Produktseite stand nur eine. */
+.frage + .frage { margin-top: 1.25rem; }
+
+/* Die Themenliste der Übersicht: Name links, Fragenzahl rechts. */
+ol.themen { list-style: none; counter-reset: thema; margin: 0; padding: 0; }
+ol.themen li { counter-increment: thema; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .85rem 0; border-bottom: 1px solid var(--rule); }
+ol.themen li::before { content: counter(thema) "."; font: 400 .9rem var(--mono); color: var(--muted); min-width: 2.25rem; }
+ol.themen li a { flex: 1; text-decoration: none; font-weight: 500; }
+ol.themen li a:hover { color: var(--accent-ink); }
+ol.themen .zahl { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+
+/* Die Nachbarthemen am Fuss einer Themenseite: ein Fliesstext aus Links. */
+.themenliste { color: var(--muted); line-height: 2; }
+.themenliste a { text-decoration-color: var(--rule); }
+.themenliste a:hover { text-decoration-color: var(--accent); }
+
+/* Eine Liste aus Tatsachen, nicht aus Vorzuegen: kein Haken. Der gruene Haken von
+   .vertrauen behauptet bei jedem Punkt etwas Gutes, und auf den Inhaltsseiten stehen in
+   derselben Liste auch die Luecken ("nicht gebaut", "nur Android"). Ein Haken davor
+   waere gelogen. */
+ul.punkte { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-direction: column; gap: .85rem; color: var(--muted); }
+ul.punkte li { padding-left: 1.4rem; position: relative; line-height: 1.5; }
+ul.punkte li::before { content: "—"; position: absolute; left: 0; color: var(--rule); }
+ul.punkte li b { color: var(--ink); font-weight: 600; }
+
