@@ -26,6 +26,11 @@ immer dunkel, mit eigenem `style.css` und den Bildern in `press/`). Masinop hat 
 online, stehen aber nicht mehr in der App-Liste von `datenschutz.html`. Sobald die Repos einen
 Remote haben, die Quelle hier auf dessen URL umstellen.
 
+`screentrackr/` ist die Ausnahme: kein Subtree, sondern **hier** gepflegt (seit 04.11.2026), weil das
+App-Repo (`D:/PyDev/screentrackr`, die Web-App für overmind-studios.de) keinen Seiten-Ordner hat. Darin
+nur die Nutzungsbedingungen für Googles Händlerangabe, englisch (`terms.html`, der Link für Google Play)
+und deutsch (`nutzungsbedingungen.html`).
+
 Hosting: GitHub Pages unter der Domain aus `CNAME`; DNS beim Registrar mit vier
 A-Records auf GitHubs Pages-Adressen und einem CNAME für www. Kein Jekyll
 (`.nojekyll`), kein JavaScript, nichts nachgeladen.
