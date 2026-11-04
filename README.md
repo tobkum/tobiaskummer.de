@@ -19,8 +19,9 @@ dem Zweig `pages`, den dort `git subtree split --prefix=store/pages -b pages` er
     git subtree pull --prefix=asterism D:/PyDev/games/asterism         pages --squash
     git subtree pull --prefix=masinop  D:/PyDev/apps/ph-money-tracker pages --squash
 
-Probe und Asterism enthalten bisher nur die Datenschutzerklärung, englisch (`privacy.html`, die
-Adresse für Google Play) und deutsch (`datenschutz.html`). Masinop hat nur `privacy.html`
+Probe enthält nur die Datenschutzerklärung, englisch (`privacy.html`, die Adresse für Google Play)
+und deutsch (`datenschutz.html`). Asterism dazu seit 04.11.2026 ein Pressekit (`press.html`, englisch,
+immer dunkel, mit eigenem `style.css` und den Bildern in `press/`). Masinop hat nur `privacy.html`
 (englisch mit tagalischer Kurzfassung). Probe ist pausiert (seit 29.09.2026): seine Seiten bleiben
 online, stehen aber nicht mehr in der App-Liste von `datenschutz.html`. Sobald die Repos einen
 Remote haben, die Quelle hier auf dessen URL umstellen.
