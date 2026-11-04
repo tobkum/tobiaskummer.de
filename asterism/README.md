@@ -6,6 +6,12 @@ This folder is published at <https://tobiaskummer.de/asterism/>. The site repo
 - `privacy.html`: the English privacy policy. This is the URL for the Google Play listing
   (reachable on its own, no sign-in).
 - `datenschutz.html`: the German twin. Keep both in sync.
+- `press.html` + `press/`: the press kit (English; 2026-11-04): fact sheet, description, features,
+  player quotes, images (full PNGs, JPEG thumbnails, a zip of all), contact and credits. Images come
+  from `out/store/` (the store screenshots of 1.0.2); rebuild them when the store set changes, and
+  keep the facts (counts, price, what is free) in step with `docs/store/listing.md`.
+- `style.css`: Asterism's accent (the gilt) over the site's `/style.css`, plus the press kit's
+  fact sheet and image grid.
 
 The pages use the site's shared stylesheet (`/style.css`), fonts and icons.
 
