@@ -1,0 +1,44 @@
+/* Asterism's accent over the site's /style.css (as /bzf-pruefung/style.css does for its app): the
+   game's gilt (line.gilt, #E8C77E) on the dark page, a deeper gold that reads on paper in the light
+   one. Plus the few things only the press kit needs: the fact sheet and the image grid. */
+/* Always the game's night, whatever the visitor's setting (PO 2026-11-04): the site's paper and ink
+   swapped for the game's palette (sky.deep, sky.high, cell.dark.edge, clue.text, line.gilt). Only the
+   press kit loads this file, so the rest of the site keeps following the system setting. */
+:root {
+  color-scheme: dark;
+  --paper: #0b1024;
+  --raised: #10162e;
+  --ink: #e6eaf7;
+  --muted: #9aa3c6;
+  --rule: #222b4e;
+  --accent: #e8c77e;
+  --accent-ink: #e8c77e;
+  --shadow: 0 24px 48px -24px rgba(0, 0, 0, .8);
+}
+
+/* The fact sheet: a label column and a value column. */
+.fakten { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: .55rem 1.25rem; margin: 1.5rem 0 0; }
+.fakten dt { color: var(--muted); }
+.fakten dd { margin: 0; }
+
+/* Images to download: the thumbnail is the link to the full file. */
+.bilder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 1.25rem; margin-top: 2rem; }
+.bilder.breit { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.bilder figure { margin: 0; }
+.bilder a { display: block; text-decoration: none; }
+.bilder img { width: 100%; border-radius: 10px; border: 1px solid var(--rule); background: #0b1024; }
+.bilder a:hover img { transform: translateY(-2px); box-shadow: var(--shadow); }
+.bilder img { transition: transform .15s ease, box-shadow .15s ease; }
+.bilder figcaption { margin-top: .5rem; color: var(--muted); font-size: .9rem; }
+.bilder .dunkel { background: #0b1024; padding: 1.25rem; border-radius: 10px; border: 1px solid var(--rule); }
+.bilder .dunkel img { border: 0; border-radius: 0; background: transparent; }
+
+.text blockquote p { margin: 0 0 .4rem; color: var(--ink); }
+.text blockquote footer { font-size: .9rem; }
+
+@media (max-width: 760px) {
+  .bilder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bilder.breit { grid-template-columns: minmax(0, 1fr); }
+  .fakten { grid-template-columns: 1fr; gap: .1rem; }
+  .fakten dd { margin-bottom: .6rem; }
+}
