@@ -10,6 +10,13 @@ This folder is published at <https://tobiaskummer.de/asterism/>. The site repo
   player quotes, images (full PNGs, JPEG thumbnails, a zip of all), contact and credits. Images come
   from `out/store/` (the store screenshots of 1.0.2); rebuild them when the store set changes, and
   keep the facts (counts, price, what is free) in step with `docs/store/listing.md`.
+- `terms.html` / `nutzungsbedingungen.html`: the terms (EN/DE twins, 2026-11-04), the Terms of
+  Service link Google Play asks for in the trader declaration. Keep both in sync and true to the game
+  (what is free, what the full sky opens, refunds close it and keep progress).
+- `purchase.html` / `kauf.html`: purchase, refunds and the statutory withdrawal notice with the model
+  form. `kauf.html` is BZF-Prüfung's legally reviewed `kauf.html` (review passed 28.10.2026, see
+  D:/PyDev/bzf-trainer/store/kauf-de.md) with only the product names and the Sie-form changed; do not
+  shorten the notice or the form without a new review. `purchase.html` is a translation (it says so).
 - `style.css`: Asterism's accent (the gilt) over the site's `/style.css`, plus the press kit's
   fact sheet and image grid.
 
