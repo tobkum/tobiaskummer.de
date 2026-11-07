@@ -8,7 +8,7 @@ This folder is published at <https://tobiaskummer.de/asterism/>. The site repo
 - `datenschutz.html`: the German twin. Keep both in sync.
 - `press.html` + `press/`: the press kit (English; 2026-11-04): fact sheet, description, features,
   player quotes, images (full PNGs, JPEG thumbnails, a zip of all), contact and credits. Images come
-  from `out/store/` (the store screenshots of 1.0.2); rebuild them when the store set changes, and
+  from `out/store/` (the store screenshots of 1.1.2); rebuild them when the store set changes, and
   keep the facts (counts, price, what is free) in step with `docs/store/listing.md`.
 - `terms.html` / `nutzungsbedingungen.html`: the terms (EN/DE twins, 2026-11-04), the Terms of
   Service link Google Play asks for in the trader declaration. Keep both in sync and true to the game
