@@ -1,11 +1,16 @@
-/* Der Schirm: Schrift, Papier, Tinte, Abstände. Kein App-Akzent; den setzt jeder
-   App-Ordner mit einem eigenen Stylesheet (--accent), siehe /bzf-pruefung/style.css.
+/* Der Schirm: Schrift, Papier, Tinte, Raster. Kein App-Akzent; den setzt jeder App-Ordner
+   mit einem eigenen Stylesheet (--accent), siehe /bzf-pruefung/style.css.
    Paper, Ink, InkMuted, Hairline und die Nachtwerte kommen aus Theme.kt der App
-   BZF-Prüfung, weil sie keine Marke sind, sondern Papier und Tinte. */
+   BZF-Prüfung, weil sie keine Marke sind, sondern Papier und Tinte.
+
+   Die Gestalt (seit 20.11.2026, README): ein Werkverzeichnis, gesetzt wie ein Flugbuch.
+   Ein Raster aus vier Vierteln; das erste Viertel ist die Randspalte, in der stehen die
+   Überschriften der Abschnitte und die Angaben zu jeder App in B612 Mono, der Schrift aus
+   dem Cockpit. Der Text beginnt im zweiten Viertel. Zeilen sind Haarlinien, keine Karten.
+   Roboto trägt den Text; die grossen Zeilen in einem leichten Schnitt statt fett. */
 
 /* WOFF2 statt TTF, seit 27.10.2026. Die amtlichen Bauten von Google Fonts, nicht selbst
-   umgewandelt: Roboto v51 ist dort eine VARIABLE Schrift, eine Datei traegt 400, 500 und
-   600. Zusammen 81 KB statt rund 250 KB uebertragener TTF je Seitenaufruf.
+   umgewandelt: Roboto v51 ist dort eine VARIABLE Schrift, eine Datei traegt 100 bis 900.
    Beschnitten auf Latin: geprueft wurde vorher, welche Zeichen auf dieser Website
    wirklich vorkommen -- zehn jenseits von Latin-1, alle im Latin-Bereich enthalten.
    Das Haken-Zeichen der Vertrauensliste fehlte auch der vollen Roboto schon immer und
@@ -13,8 +18,19 @@
 @font-face { font-family: "Roboto"; font-weight: 100 900; font-display: swap; src: url(/fonts/Roboto-latin.woff2) format("woff2"); }
 @font-face { font-family: "B612 Mono"; font-weight: 400; font-display: swap; src: url(/fonts/B612Mono-Regular-latin.woff2) format("woff2"); }
 @font-face { font-family: "B612 Mono"; font-weight: 700; font-display: swap; src: url(/fonts/B612Mono-Bold-latin.woff2) format("woff2"); }
+/* Source Serif 4 (Adobe, SIL OFL 1.1, fonts/SourceSerif4-OFL.txt), die Schrift der Seiten des
+   Schirms seit 20.11.2026: aus den Leseschriften der App Ribband (feature/reader/assets) mit
+   fontTools auf Latin und deutsche und typografische Zeichen geschnitten, variabel 380 bis 700. */
+@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 380 700; font-display: swap; src: url(/fonts/SourceSerif4-latin.woff2) format("woff2"); }
+@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 380 700; font-display: swap; src: url(/fonts/SourceSerif4-Italic-latin.woff2) format("woff2"); }
+/* Ersatz aus dem System, auf die Masse der eigenen Schriften gebracht (x-Höhe, Ober- und
+   Unterlänge aus den Dateien gemessen), damit beim Nachladen nichts springt. */
+@font-face { font-family: "Roboto fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 101.9%; ascent-override: 91%; descent-override: 24%; line-gap-override: 0%; }
+@font-face { font-family: "Source Serif fallback"; src: local("Georgia"); size-adjust: 98.7%; ascent-override: 105%; descent-override: 34%; line-gap-override: 0%; }
+@font-face { font-family: "B612 Mono fallback"; src: local("Consolas"), local("Courier New"); size-adjust: 118%; ascent-override: 82%; descent-override: 21%; line-gap-override: 0%; }
 
 :root {
+  color-scheme: light dark;
   --paper: #faf7f1;
   --raised: #ffffff;
   --ink: #14202a;
@@ -23,15 +39,19 @@
   --accent: #14202a;
   --accent-ink: #14202a;
   --shadow: 0 24px 48px -24px rgba(20, 32, 42, .35);
-  --sans: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "B612 Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --sans: "Roboto", "Roboto fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Source Serif 4", "Source Serif fallback", Georgia, serif;
+  --mono: "B612 Mono", "B612 Mono fallback", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  /* Das Raster: vier Viertel mit dieser Fuge; der Text beginnt nach dem ersten. */
+  --fuge: 1.5rem;
+  --rand: calc(25% + var(--fuge) / 4);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #0e141a;
     --raised: #18212a;
     --ink: #e9eef2;
-    --muted: #8c9ba8;
+    --muted: #93a1ad;
     --rule: #26313c;
     --accent: #e9eef2;
     --accent-ink: #e9eef2;
@@ -40,31 +60,29 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font: 400 17px/1.6 var(--sans);
   -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
 }
-a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: .18em; transition: color .15s ease; }
+a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: .2em; transition: color .15s ease, text-decoration-color .15s ease; }
 a:hover { color: var(--accent-ink); }
 /* Bewegung nur, wo eine Hand liegt: 150 ms, und wer keine mag, bekommt keine. */
-.button, .play img, .app, .card img { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
+.button, .play img, .card img, .tafel img { transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
 .play:hover img, .button:hover { transform: translateY(-1px); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } html { scroll-behavior: auto; } }
 img { max-width: 100%; height: auto; display: block; }
-h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -.01em; }
+h1, h2, h3 { margin: 0; line-height: 1.15; letter-spacing: -.01em; text-wrap: balance; }
 h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; }
-/* Die Startseite: eine Aussage, die die Breite besitzt. */
-.hero.portal { padding: 4rem 0 3.5rem; }
-.hero.portal .wrap { display: block; }
-.hero.portal h1 { font-size: clamp(2.5rem, 7vw, 4.75rem); max-width: 14ch; margin-bottom: 1.5rem; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
 h3 { font-size: 1.15rem; font-weight: 600; }
 p { margin: 0 0 1rem; }
+:lang(de) .schirmseite p, :lang(de) .schirmseite li, :lang(de) .text p, :lang(de) .text li, :lang(de) .text dd { hyphens: auto; hyphenate-limit-chars: 10 4 4; }
 .mono { font-family: var(--mono); }
 .eyebrow {
   font: 400 .8rem/1.4 var(--mono);
@@ -80,13 +98,29 @@ p { margin: 0 0 1rem; }
 .narrow { max-width: 40rem; margin: 0 auto; }
 section { padding: 4.5rem 0; }
 section + section { border-top: 1px solid var(--rule); }
-header.site { padding: 1rem 0; }
-header.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-header.site nav a { text-decoration: none; color: var(--muted); font-size: .95rem; margin-left: 1.25rem; }
+
+/* --- Kopf und Fuss: dieselben auf jeder Seite der Website ------------------------------- */
+
+header.site { padding: .5rem 0; }
+header.site .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 3rem; }
+header.site .marke { font-weight: 600; text-decoration: none; letter-spacing: -.005em; padding: .5rem 0; }
+header.site nav { display: flex; gap: 0 1.25rem; }
+header.site nav a { text-decoration: none; color: var(--muted); font-size: .95rem; padding: .6rem 0; }
 header.site nav a:hover { color: var(--ink); }
-header.site .marke { font-weight: 600; text-decoration: none; }
 /* Klebt oben, damit der Laden-Link auf jeder Bildschirmhöhe da ist. */
 header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--rule); }
+
+footer.site { border-top: 1px solid var(--rule); padding: 1.75rem 0 3.5rem; color: var(--muted); font-size: .875rem; line-height: 1.55; }
+footer.site .wrap { display: flex; flex-wrap: wrap; gap: .75rem 2rem; justify-content: space-between; align-items: baseline; }
+footer.site .wrap > span:first-child { max-width: 40rem; }
+/* Die Verweise rechts: umbrechen dürfen sie, über den Rand laufen nicht (vorher stand
+   „Impressum“ auf 360 px neben dem Bildschirm, weil zwischen den Links kein Leerzeichen steht). */
+footer.site .wrap > span:last-child { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
+footer.site a { text-decoration: none; }
+footer.site .wrap > span:last-child a { padding: .6rem 0; }
+footer.site a:hover { text-decoration: underline; color: var(--ink); }
+
+/* --- Produktseiten der Apps (Kopf mit Bildschirm, Karten, Spalten) -------------------- */
 
 /* Zwei Spalten: Wort links, Telefon rechts. */
 .hero { padding: 3rem 0 4.5rem; }
@@ -100,37 +134,26 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 .button:hover { color: var(--paper); filter: brightness(1.08); }
 .price { color: var(--muted); font-size: .95rem; }
 /* Der Google-Play-Badge, unverändert, mindestens 28 px hoch, Freiraum ein Viertel
-   seiner Höhe (Vorgaben von Google); gemeinsam für Schirm und App-Seiten. */
+   seiner Höhe (Vorgaben von Google; der Freiraum liegt schon im Bild); gemeinsam für
+   Schirm und App-Seiten. */
 .play { display: inline-block; line-height: 0; }
 .badge { height: 56px; width: auto; }
 .badge.klein { height: 40px; }
 .phone { width: min(100%, 320px); margin: 0 auto; border-radius: 28px; box-shadow: var(--shadow); }
 .phone.small { width: min(100%, 260px); }
 
-/* App-Karten auf der Startseite und Reihen auf der Produktseite. */
+/* Karten und Reihen auf der Produktseite von BZF-Prüfung. */
 .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 2rem; margin-top: 2.5rem; }
 .card h3 { margin: 1.25rem 0 .5rem; }
 .card p { color: var(--muted); margin: 0; }
 .card .tag { font: 400 .75rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase;
              color: var(--accent-ink); border: 1px solid currentColor; border-radius: 999px;
              padding: .3rem .6rem; display: inline-block; margin-left: .5rem; vertical-align: middle; }
-.apps { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
-.app {
-  display: grid; grid-template-columns: 1.1fr .9fr; gap: 2rem; align-items: end;
-  padding: 2.5rem 2.5rem 0; border: 1px solid var(--rule); border-radius: 24px; background: var(--raised);
-  overflow: hidden; position: relative;
-}
-.app > div { padding-bottom: 2.5rem; }
-.app h2 { margin-bottom: .5rem; }
-.app p { color: var(--muted); }
 /* Der Bildschirm im flachen Rahmen, unten abgeschnitten, wie die Ladenbilder im Laden:
-   in der App-Karte, im Kopf der Produktseite und in ihren drei Reihen. */
+   im Kopf der Produktseite und in ihren drei Reihen. */
 .schirm { display: block; border: 1px solid var(--rule); border-bottom: 0; border-radius: 28px 28px 0 0;
           overflow: hidden; box-shadow: var(--shadow); background: var(--paper); transition: transform .2s ease; }
 .schirm img { display: block; width: 100%; height: auto; }
-.app .schirm { width: min(100%, 300px); margin: 1rem auto -2px; }
-.app .schirm img { margin-bottom: -18%; }
-.app:hover .schirm { transform: translateY(-4px); }
 .hero.produkt { padding-bottom: 0; overflow: hidden; }
 .hero.produkt .wrap { align-items: end; }
 .hero.produkt > .wrap > div { padding-bottom: 4.5rem; }
@@ -144,39 +167,140 @@ header.sticky { position: sticky; top: 0; z-index: 10; background: color-mix(in 
 .cols ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
 .cols li { margin-bottom: .4rem; }
 
-/* Über mich: ein kleines Porträt neben ein paar Sätzen. */
-.ueber { display: grid; grid-template-columns: 7rem 1fr; gap: 2rem; align-items: start; max-width: 44rem; }
-.ueber .portrait { width: 7rem; height: 7rem; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow); }
-.ueber p { margin-bottom: .75rem; }
-.ueber .links { color: var(--muted); font-size: .95rem; }
-.ueber .links a { margin-right: 1.25rem; text-decoration: none; }
-.ueber .links a:hover { text-decoration: underline; }
+/* --- Die Startseite: ein Werkverzeichnis ------------------------------------------------ */
 
-footer.site { border-top: 1px solid var(--rule); padding: 2rem 0 4rem; color: var(--muted); font-size: .9rem; }
-footer.site .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between; }
-footer.site a { text-decoration: none; }
-footer.site span:last-child a { margin-left: 1.25rem; }
-footer.site a:hover { text-decoration: underline; }
+/* Zwölf Spalten. Die Randspalte sind die ersten drei, darin Überschriften und Angaben;
+   der Text beginnt in der vierten. */
+.zeile, .werk { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--fuge); }
+.zeile > .rand { grid-column: 1 / 4; }
+.zeile > :not(.rand) { grid-column: 4 / -1; }
+.rand-titel { font: 400 .8125rem/1.5 var(--mono); letter-spacing: .04em; color: var(--muted); margin: .35rem 0 0; }
 
-/* Textseiten: Impressum, Datenschutz, Widerruf. */
+.auftakt { padding: 4.5rem 0 4rem; }
+.auftakt .zeile > h1 { font-size: clamp(2.4rem, 6.4vw, 4.6rem); font-weight: 380; letter-spacing: -.028em; line-height: 1.04; margin: 0 0 2rem; grid-column: 1 / -1; }
+.auftakt h1 .zweite { display: block; color: var(--muted); }
+.auftakt .lead { font-size: 1.25rem; line-height: 1.5; color: var(--ink); max-width: 34rem; margin: 0; }
+
+/* Eine App je Zeile: Angaben in der Randspalte, Name und Text, rechts ihr Bildschirm auf
+   einer Tafel in ihrer eigenen Farbe. Haarlinien trennen, keine Karten. */
+.werke { padding: 0 0 1.75rem; border-top: 0; }
+.werke > .wrap > h2 { padding-bottom: 1.25rem; border-bottom: 1px solid var(--ink); }
+.werk { padding: 2.5rem 0 2.75rem; align-items: baseline; }
+.werk + .werk { border-top: 1px solid var(--rule); }
+.werk .angaben { grid-column: 1 / 4; }
+.werk .text { grid-column: 4 / 9; }
+.werk .tafel { grid-column: 9 / -1; align-self: start; }
+.werk .angaben { font: 400 .8125rem/1.5 var(--mono); color: var(--muted); margin: 0; }
+.werk .angaben span { display: block; }
+.werk .angaben br { display: none; }
+/* Der Preis in Roboto: in der Mono stünde das Komma der 12,99 so breit wie eine Ziffer. */
+.werk .angaben .preis { margin-top: .6rem; font: 400 .875rem/1.45 var(--sans); color: var(--ink); }
+.werk h3 { font-size: clamp(1.75rem, 3.2vw, 2.25rem); font-weight: 450; letter-spacing: -.02em; line-height: 1.1; margin: 0 0 .9rem; }
+.werk h3 a { text-decoration: none; }
+.werk h3 a:hover { color: inherit; text-decoration: underline; text-decoration-color: var(--werk); text-decoration-thickness: 2px; }
+.werk .text { max-width: 30rem; }
+.werk .text p { margin: 0 0 1.5rem; }
+.werk .wege { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; margin: 0; }
+.werk .mehr { font-weight: 500; text-decoration-color: var(--werk); text-decoration-thickness: 2px; text-underline-offset: .3em; padding: .6rem 0; }
+.werk .mehr:hover { color: var(--werk-ink); }
+/* Die Tafel: die Grundfarbe der App, der Bildschirm steht darin und wird unten
+   angeschnitten, wie ein Blatt, das in einer Mappe steckt. */
+.tafel { display: block; position: relative; aspect-ratio: 5 / 4.4; overflow: hidden; background: var(--werk-grund);
+         border-radius: 4px; box-shadow: inset 0 0 0 1px var(--werk-kante, transparent); }
+.tafel img { position: absolute; left: 50%; top: 2rem; width: 62%; transform: translateX(-50%);
+             border-radius: 12px; box-shadow: 0 1px 0 rgba(0, 0, 0, .06), 0 14px 30px -18px rgba(0, 0, 0, .55); }
+.tafel:hover img { transform: translateX(-50%) translateY(-3px); }
+
+/* Die Farben der Apps, aus ihren eigenen Stylesheets: Amber der BZF-Prüfung, der Nachthimmel
+   und das Gold von Asterism, das Leinen von Ribband. */
+.werk.bzf      { --werk: #c98a18; --werk-ink: #94640a; --werk-grund: #efe2c6; }
+.werk.asterism { --werk: #b8914a; --werk-ink: #7d6127; --werk-grund: #0b1024; }
+.werk.ribband  { --werk: #2c3f73; --werk-ink: #2c3f73; --werk-grund: #1f2b47; }
+@media (prefers-color-scheme: dark) {
+  .werke > .wrap > h2 { border-bottom-color: var(--muted); }
+  .werk.bzf      { --werk: #e0ac4a; --werk-ink: #e0ac4a; --werk-grund: #2b2416; }
+  .werk.asterism { --werk: #e8c77e; --werk-ink: #e8c77e; --werk-kante: #222b4e; }
+  .werk.ribband  { --werk: #a0b9d0; --werk-ink: #a0b9d0; --werk-grund: #0f1930; --werk-kante: #26324f; }
+}
+
+/* Über mich: dieselbe Randspalte, darin das Bild. */
+.ueber .rand-titel { margin-bottom: 1.25rem; }
+.ueber .portrait { width: 7.5rem; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
+.ueber .text { max-width: 36rem; }
+.ueber .links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-size: .95rem; }
+.ueber .links a { display: inline-block; padding: .4rem 0; color: var(--muted); text-decoration-color: var(--rule); }
+.ueber .links a:hover { color: var(--ink); text-decoration-color: currentColor; }
+
+/* --- Textseiten: Impressum, Datenschutz, Kauf, Bedingungen ----------------------------- */
+
+/* Die Rechtsseiten der Apps (Datenschutz, Kauf, Bedingungen) behalten ihre bisherige Gestalt:
+   sie kommen aus den App-Repos, und ihre Überschriften leben vom Strich darüber. */
 .text h1 { font-size: 2rem; margin-bottom: .5rem; }
 .text h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
 .text h2::before { content: ""; display: block; width: 2.5rem; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: .9rem; }
 .text blockquote { margin: 1rem 0; padding: 1rem 1.25rem; border-left: 3px solid var(--rule); color: var(--muted); }
 
+/* Die Textseiten des Schirms (Impressum, Datenschutz; ): im Raster der
+   Startseite, der Text nach der Randspalte, Überschriften ohne Strich, Mass 38rem. */
+.schirmseite .narrow { max-width: 38rem; }
+.schirmseite .text h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); font-weight: 450; letter-spacing: -.02em; margin-bottom: .75rem; }
+.schirmseite .text h1 + p { color: var(--muted); margin-bottom: 2.25rem; }
+.schirmseite .text h2 { font-size: 1.15rem; margin: 2.75rem 0 .75rem; letter-spacing: 0; }
+.schirmseite .text h2::before { content: none; }
+.schirmseite .text h1 + h2 { margin-top: 2.5rem; }
+@media (min-width: 900px) {
+  .schirmseite .text .narrow { margin-left: var(--rand); }
+}
+
+/* === Schrift des Schirms: Source Serif (Anfang) ===========================================
+   Auf den Seiten des Schirms spricht eine Antiqua, ruhig und aufrecht, nie kursiv (kursive
+   Überschriften sind Ribbands Leinen); B612 Mono beschriftet nur die Randspalte. Roboto lädt
+   hier gar nicht mehr; die Produktseiten der Apps behalten sie. */
+body.schirmseite { font: 400 18.5px/1.55 var(--serif); font-variant-numeric: oldstyle-nums proportional-nums; }
+.schirmseite h1, .schirmseite h2, .schirmseite h3 { letter-spacing: -.005em; }
+.schirmseite header.site .marke { font-weight: 600; letter-spacing: 0; white-space: nowrap; }
+@media (max-width: 400px) { .schirmseite header.site nav { gap: 0 .9rem; } }
+.schirmseite header.site nav a, .schirmseite footer.site { font-size: .9rem; }
+.schirmseite .auftakt .zeile > h1 { font-weight: 400; letter-spacing: -.018em; line-height: 1.02; }
+.schirmseite .auftakt .lead { font-size: 1.3rem; line-height: 1.45; }
+.schirmseite .werk h3 { font-weight: 500; letter-spacing: -.012em; }
+.schirmseite .werk .angaben .preis { font: 400 .95rem/1.4 var(--serif); font-variant-numeric: lining-nums; }
+.schirmseite .werk .mehr { font-weight: 600; }
+.schirmseite .text h1 { font-weight: 400; letter-spacing: -.012em; }
+.schirmseite .text h2 { font-weight: 600; font-size: 1.2rem; }
+/* === Schrift des Schirms (Ende) =========================================================== */
+
+/* --- Schmal ------------------------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+  .werk { row-gap: .9rem; align-items: start; }
+  .werk .angaben { grid-column: 1 / -1; }
+  .werk .angaben span { display: inline; }
+  .werk .angaben span:not(:first-child):not(.preis)::before { content: " · "; }
+  .werk .angaben .preis { display: block; margin-top: .1rem; }
+  .werk .text { grid-column: 1 / 8; }
+  .werk .tafel { grid-column: 8 / -1; grid-row: 2; }
+}
 @media (max-width: 760px) {
   section { padding: 3rem 0; }
-  .hero .wrap, .cards, .cols, .app { grid-template-columns: 1fr; }
+  .hero .wrap, .cards, .cols { grid-template-columns: 1fr; }
   .hero .phone { width: min(70%, 260px); margin-top: 1rem; }
   .hero.produkt > .wrap > div { padding-bottom: 2.5rem; }
   .hero.produkt .schirm { width: min(75%, 280px); }
   .card .schirm { height: 16rem; }
+  /* Auf dem Handy ist im Kopf der Produktseiten kein Platz für die Navigation neben dem
+     Badge; die Seiten des Schirms haben keinen Badge und behalten ihre zwei Verweise. */
   header.site nav { display: none; }
+  header.site:not(:has(.play)) nav { display: flex; }
   .badge { height: 48px; }
   .badge.klein { height: 36px; }
-  .app { padding: 1.75rem 1.5rem 0; }
-  .app > div { padding-bottom: 1.5rem; }
-  .app .schirm { width: min(75%, 260px); }
-  .ueber { grid-template-columns: 5rem 1fr; gap: 1.25rem; }
-  .ueber .portrait { width: 5rem; height: 5rem; }
+  .zeile > .rand, .zeile > :not(.rand) { grid-column: 1 / -1; }
+  .auftakt { padding: 2.5rem 0 2.75rem; }
+  .auftakt .zeile > h1 { margin-bottom: 1.5rem; }
+  .auftakt .lead { font-size: 1.125rem; }
+  .werk { padding: 1.75rem 0 2.25rem; row-gap: .6rem; }
+  .werk .text, .werk .tafel { grid-column: 1 / -1; grid-row: auto; }
+  .werk .tafel { aspect-ratio: 4 / 3; margin-top: .75rem; }
+  .werk .tafel img { width: 56%; top: 1.5rem; }
+  .ueber .portrait { width: 5.5rem; margin-bottom: 1.25rem; }
 }

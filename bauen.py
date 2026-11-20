@@ -67,12 +67,47 @@ def startseite_mit_stand(text: str) -> str:
     return neu
 
 
+# Was eine Seite lädt (nicht, worauf sie nur verweist): Stylesheets, Vorladen, Symbole,
+# Skripte, Bilder, Quellen, eingebettete Rahmen; in CSS @import und url(). Erlaubt sind
+# Pfade in der Website und die eigene Domain; alles andere ist ein fremder Host.
+LADEN_HTML = re.compile(
+    r'<(?:link\b[^>]*\brel="(?:stylesheet|preload|preconnect|dns-prefetch|modulepreload|icon|apple-touch-icon)"[^>]*\bhref'
+    r'|(?:script|img|source|iframe|video|audio|embed)\b[^>]*\b(?:src|srcset|poster))="([^"]*)"', re.I)
+LADEN_CSS = re.compile(r'@import\s+(?:url\()?["\']?([^"\')\s;]+)|url\(\s*["\']?([^"\')]+)', re.I)
+
+
+def fremd(adresse: str) -> bool:
+    adresse = adresse.strip().split()[0] if adresse.strip() else ""
+    if adresse.startswith("//"):
+        adresse = "https:" + adresse
+    return bool(re.match(r"[a-z][a-z0-9+.-]*://", adresse, re.I)) and not adresse.startswith(DOMAIN + "/")
+
+
+def fremde_quellen(wurzel: Path = WURZEL) -> list[str]:
+    """Jede Stelle, an der eine Seite oder ein Stylesheet etwas von einem anderen Host lädt
+    (Schriften, Stylesheets, Skripte, Bilder). Die Website lädt nichts nach (README)."""
+    funde = []
+    for p in sorted(list(wurzel.rglob("*.html")) + list(wurzel.rglob("*.css"))):
+        if ".git" in p.parts:
+            continue
+        text = p.read_text(encoding="utf-8", errors="replace")
+        css = text if p.suffix == ".css" else " ".join(re.findall(r"<style\b[^>]*>(.*?)</style>", text, re.S | re.I)
+                                                      + re.findall(r'\bstyle="([^"]*)"', text))
+        adressen = [] if p.suffix == ".css" else [a for a in LADEN_HTML.findall(text)]
+        adressen += [a or b for a, b in LADEN_CSS.findall(css)]
+        for a in adressen:
+            for teil in a.split(","):  # srcset
+                if fremd(teil):
+                    funde.append(f"{p.relative_to(wurzel).as_posix()}: lädt von fremdem Host: {teil.strip()}")
+    return funde
+
+
 def main() -> int:
     sm = WURZEL / "sitemap.xml"
     start = WURZEL / "index.html"
     neu_sm, neu_start = sitemap(), startseite_mit_stand(start.read_text(encoding="utf-8"))
     if "--check" in sys.argv:
-        fehler = []
+        fehler = fremde_quellen()
         if sm.read_text(encoding="utf-8") != neu_sm:
             fehler.append("sitemap.xml ist nicht aktuell")
         if start.read_text(encoding="utf-8") != neu_start:
