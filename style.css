@@ -258,7 +258,8 @@ footer.site a:hover { text-decoration: underline; color: var(--ink); }
    hier gar nicht mehr; die Produktseiten der Apps behalten sie. */
 body.schirmseite { font: 400 18.5px/1.55 var(--serif); font-variant-numeric: oldstyle-nums proportional-nums; }
 .schirmseite h1, .schirmseite h2, .schirmseite h3 { letter-spacing: -.005em; }
-.schirmseite header.site .marke { font-weight: 600; letter-spacing: 0; }
+.schirmseite header.site .marke { font-weight: 600; letter-spacing: 0; white-space: nowrap; }
+@media (max-width: 400px) { .schirmseite header.site nav { gap: 0 .9rem; } }
 .schirmseite header.site nav a, .schirmseite footer.site { font-size: .9rem; }
 .schirmseite .auftakt .zeile > h1 { font-weight: 400; letter-spacing: -.018em; line-height: 1.02; }
 .schirmseite .auftakt .lead { font-size: 1.3rem; line-height: 1.45; }
