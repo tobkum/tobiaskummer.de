@@ -7,7 +7,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/symbol-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/symbol-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/symbol-180.png">
-<title>Tobias Kummer</title>
+<title>Tobias Kummer: Apps und Spiele für Android</title>
 <meta name="description" content="Apps und Spiele von Tobias Kummer, ohne Werbung und ohne Abo: BZF-Prüfung, die Lern-App für das Sprechfunkzeugnis BZF I und BZF II, und Asterism, ein Logikrätsel ohne Raten. Beide für Android.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://tobiaskummer.de/">
@@ -59,6 +59,15 @@
       "name": "Tobias Kummer",
       "inLanguage": "de",
       "publisher": { "@id": "https://tobiaskummer.de/#person" }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://tobiaskummer.de/#apps",
+      "name": "Apps von Tobias Kummer",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "BZF-Prüfung", "url": "https://tobiaskummer.de/bzf-pruefung/" },
+        { "@type": "ListItem", "position": 2, "name": "Asterism", "url": "https://tobiaskummer.de/asterism/" }
+      ]
     }
   ]
 }
@@ -68,68 +77,71 @@
   <header class="site">
     <div class="wrap">
       <a class="marke" href="/">Tobias Kummer</a>
-      <nav><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></nav>
+      <nav><a href="/impressum.html">Impressum</a> <a href="/datenschutz.html">Datenschutz</a></nav>
     </div>
   </header>
 
-  <section class="hero portal">
-    <div class="wrap">
-      <h1 style="max-width:none">Apps und Spiele.<br>Ohne Werbung, ohne Abo.</h1>
+  <main>
+  <section class="auftakt">
+    <div class="wrap zeile">
+      <h1>Apps und Spiele. <span class="zweite">Ohne Werbung, ohne Abo.</span></h1>
       <p class="lead">Eine Lern-App für das Sprechfunkzeugnis und ein Logikrätsel ohne Raten, beide für Android.</p>
     </div>
   </section>
 
-  <section style="padding-top:0; border-top:0">
+  <section class="werke" aria-labelledby="apps">
     <div class="wrap">
-      <p class="eyebrow">Apps</p>
-      <div class="apps">
-        <article class="app">
-          <div>
-            <p class="eyebrow">Android · BZF I und BZF II</p>
-            <h2>BZF-Prüfung</h2>
-            <p>Der amtliche Fragenkatalog der Bundesnetzagentur, jede Antwort erklärt. Ein Funksimulator, der spricht und zuhört. Die Sprechgruppen zum Nachschlagen.</p>
-            <div class="actions">
-              <a class="play" href="https://play.google.com/store/apps/details?id=aero.bzf.app"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
-              <a class="button" href="/bzf-pruefung/">Mehr zur App</a>
-              <span class="price">Kostenlos, Pro einmalig 12,99 €</span>
-            </div>
-          </div>
-          <a class="schirm" href="/bzf-pruefung/"><img src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Eine Frage mit erklärter Antwort in der App BZF-Prüfung"></a>
-        </article>
-        <article class="app">
-          <div>
-            <p class="eyebrow">Android · Logikrätsel</p>
-            <h2>Asterism</h2>
-            <p>Ein Logikrätsel auf Sechsecken, wie Minesweeper, nur ohne Raten: Jedes Rätsel lässt sich allein durch Nachdenken lösen. Wer den letzten Stern setzt, sieht die gefundenen Sterne zu einem Sternbild zusammenfinden.</p>
-            <div class="actions">
-              <a class="play" href="https://play.google.com/store/apps/details?id=com.tobkum.asterism"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
-              <a class="button" href="/asterism/" hreflang="en">Mehr zum Spiel (englisch)</a>
-              <span class="price">Kostenlos, alles einmalig 4,99 €</span>
-            </div>
-          </div>
-          <a class="schirm" href="/asterism/"><img src="/asterism/press/thumb-02-constellation.jpg" width="540" height="960" alt="Ein gelöstes Rätsel in Asterism: die gefundenen Sterne bilden ein Sternbild" loading="lazy"></a>
-        </article>
-      </div>
+      <h2 class="rand-titel" id="apps">Apps</h2>
+      <article class="werk bzf">
+        <p class="angaben"><span>Android</span><br><span>BZF I und BZF II</span><br><span class="preis">Kostenlos, Pro einmalig 12,99 €</span></p>
+        <div class="text">
+          <h3><a href="/bzf-pruefung/">BZF-Prüfung</a></h3>
+          <p>Der amtliche Fragenkatalog der Bundesnetzagentur, jede Antwort erklärt. Ein Funksimulator, der spricht und zuhört. Die Sprechgruppen zum Nachschlagen.</p>
+          <p class="wege">
+            <a class="play" href="https://play.google.com/store/apps/details?id=aero.bzf.app"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
+            <a class="mehr" href="/bzf-pruefung/">Mehr zur App</a>
+          </p>
+        </div>
+        <a class="tafel" href="/bzf-pruefung/"><img src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Eine Frage mit erklärter Antwort in der App BZF-Prüfung"></a>
+      </article>
+      <article class="werk asterism">
+        <p class="angaben"><span>Android</span><br><span>Logikrätsel</span><br><span class="preis">Kostenlos, alles einmalig 4,99 €</span></p>
+        <div class="text">
+          <h3><a href="/asterism/" hreflang="en">Asterism</a></h3>
+          <p>Ein Logikrätsel auf Sechsecken, wie Minesweeper, nur ohne Raten: Jedes Rätsel lässt sich allein durch Nachdenken lösen. Wer den letzten Stern setzt, sieht die gefundenen Sterne zu einem Sternbild zusammenfinden.</p>
+          <p class="wege">
+            <a class="play" href="https://play.google.com/store/apps/details?id=com.tobkum.asterism"><img class="badge" src="/bzf-pruefung/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
+            <a class="mehr" href="/asterism/" hreflang="en">Mehr zum Spiel (englisch)</a>
+          </p>
+        </div>
+        <a class="tafel" href="/asterism/" hreflang="en"><img src="/asterism/press/thumb-02-constellation.jpg" width="540" height="960" alt="Ein gelöstes Rätsel in Asterism: die gefundenen Sterne bilden ein Sternbild" loading="lazy"></a>
+      </article>
     </div>
   </section>
 
-  <section id="ueber">
-    <div class="wrap">
-      <div class="ueber">
-        <img class="portrait" src="/portrait.jpg" width="320" height="320" alt="Tobias Kummer" loading="lazy">
-        <div>
-          <p class="eyebrow">Über mich</p>
-          <p>Ich bin Tobias Kummer, VFX Supervisor und Programmierer, Gründer von Overmind Studios. Im Studio mache ich 3D und Compositing, und die Werkzeuge dafür schreibe ich selbst, etwa den <a href="https://github.com/overmindstudios/BlenderUpdater">BlenderUpdater</a>, der Blender-Installationen aktuell hält. Ich fliege im Aero Club Göppingen Salach, mache gerade den Segelflugschein, und dabei soll es nicht bleiben. Die erste App ist entstanden, weil ich für mein eigenes Sprechfunkzeugnis lernen wollte und keine fand, die erklärt, warum eine Antwort richtig ist. Ich baue Dinge, die ich selbst brauche, und baue sie so, dass ich sie gern benutze.</p>
-          <p class="links"><a href="https://www.overmind-studios.de/">Overmind Studios</a><a href="https://github.com/tobkum">GitHub</a><a href="https://aeroclub-gs.de/">Aero Club Göppingen Salach</a></p>
+  <section class="ueber" id="ueber">
+    <div class="wrap zeile">
+        <div class="rand">
+          <h2 class="rand-titel">Über mich</h2>
+          <img class="portrait" src="/portrait.jpg" width="320" height="320" alt="Tobias Kummer" loading="lazy">
         </div>
-      </div>
+        <div class="text">
+          <p>Ich bin Tobias Kummer, VFX Supervisor und Programmierer, Gründer von Overmind Studios. Im Studio mache ich 3D und Compositing, und die Werkzeuge dafür schreibe ich selbst, etwa den <a href="https://github.com/overmindstudios/BlenderUpdater">BlenderUpdater</a>, der Blender-Installationen aktuell hält.</p>
+          <p>Ich fliege im Aero Club Göppingen Salach, mache gerade den Segelflugschein, und dabei soll es nicht bleiben. Die erste App ist entstanden, weil ich für mein eigenes Sprechfunkzeugnis lernen wollte und keine fand, die erklärt, warum eine Antwort richtig ist. Ich baue Dinge, die ich selbst brauche, und baue sie so, dass ich sie gern benutze.</p>
+          <ul class="links">
+            <li><a href="https://www.overmind-studios.de/">Overmind Studios</a></li>
+            <li><a href="https://github.com/tobkum">GitHub</a></li>
+            <li><a href="https://aeroclub-gs.de/">Aero Club Göppingen Salach</a></li>
+          </ul>
+        </div>
     </div>
   </section>
+  </main>
 
   <footer class="site">
     <div class="wrap">
-      <span>Tobias Kummer, Geislingen. <span id="stand">Stand: 13.11.2026</span>. Google Play und das Google Play-Logo sind Marken von Google LLC.</span>
-      <span><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></span>
+      <span>Tobias Kummer, Geislingen. <span id="stand">Stand: 20.11.2026</span>. Google Play und das Google Play-Logo sind Marken von Google LLC.</span>
+      <span><a href="/impressum.html">Impressum</a> <a href="/datenschutz.html">Datenschutz</a></span>
     </div>
   </footer>
 </body>
