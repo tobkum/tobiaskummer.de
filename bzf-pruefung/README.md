@@ -12,7 +12,7 @@ Datenschutzerklärung verlinkt, dem, was die App tat. Seither prüft
 sie setzt ohne Netz aus und lässt dem frisch Committeten fünfzehn Minuten Karenz, damit
 GitHub Pages nachkommen kann. Fällt sie, nennt sie die drei Befehle, die fehlen.
 
-- `index.html`: die Produktseite. Frage 209 und ein Stück Turm-Flug stehen als Text,
+- `index.html`: die Produktseite. Frage 68 und ein Stück Turm-Flug stehen als Text,
   wörtlich aus Katalog (`catalogue.json`) und Erzeuger (`sprechfunk-probe.txt`).
 - `datenschutz.html`: die Datenschutzerklärung der App, die Adresse, die Google Play
   verlangt (allein erreichbar, ohne Anmeldung). Seit dem 18.09.2026 teilt sie das
@@ -26,6 +26,10 @@ GitHub Pages nachkommen kann. Fällt sie, nennt sie die drei Befehle, die fehlen
   der Vermerk zur juristischen Prüfung in `../kauf-de.md`. Nicht kürzen.
 - `style.css`: der Akzent der App über dem Stylesheet des Schirms (`/style.css`), Amber
   und Grün aus Theme.kt.
+  Seit dem 20.11.2026 im Raster des Schirms: ab 900 px steht der Text nach dessen
+  Randspalte (`--rand` aus `/style.css`), die Zeile über einem Abschnitt (`.eyebrow`) in der
+  Randspalte. Ohne die Variable bleibt der Text mittig. Abstände tragen Klassen, keine
+  `style`-Attribute.
 - `bilder/`: die acht Ladenbilder in halber Größe (540×960), aus `../assets/screenshots/`.
 
 Schrift und Grundfarben kommen vom Schirm (`/style.css`, `/fonts/`), auf allen Seiten.
