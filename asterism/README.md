@@ -19,6 +19,12 @@ This folder is published at <https://tobiaskummer.de/asterism/>. The site repo
   shorten the notice or the form without a new review. `purchase.html` is a translation (it says so).
 - `style.css`: Asterism's accent (the gilt) over the site's `/style.css`, plus the press kit's
   fact sheet and image grid.
+  Since 2026-11-20 on the site's grid (text after the margin column, `--rand` from `/style.css`),
+  headings in IM Fell English in the gilt, a swipe strip for a row of three pictures on a phone,
+  and the press kit's own layout (banner in the head, ruled fact sheet, quotations, image tiles).
+- `fonts/`: IM Fell English Regular (Igino Marini, SIL OFL 1.1, `OFL-IMFell.txt` beside it), cut
+  to Latin from `godot/fonts/IMFellEnglish-Regular.ttf` with fontTools (57 KB), for the headings
+  of the product page and the press kit; Georgia stands in, sized to its measures.
 
 The pages use the site's shared stylesheet (`/style.css`), fonts and icons.
 
