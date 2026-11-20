@@ -1,0 +1,125 @@
+/* Die Startseite, und nur sie (seit 20.11.2026, README). Sie lädt dieses Blatt allein, nicht
+   /style.css; Impressum, Datenschutz und die App-Seiten laden es nie, also wirkt hier nichts
+   nach draussen und von draussen nichts herein.
+
+   Ein heller Bogen, eine Schrift (Source Serif 4), drei Grössen: Text, Titel, Angaben. Farbe
+   tragen nur die Apps selbst, mit ihrem Symbol und einem ganzen Bildschirm. Keine Linien,
+   keine Tafeln, keine Schatten. Im dunklen Farbschema derselbe Bogen in warmem Dunkel. */
+
+@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 380 700; font-display: swap; src: url(/fonts/SourceSerif4-latin.woff2) format("woff2"); }
+/* Ersatz aus dem System, auf die Masse der Source Serif gebracht (wie in /style.css). */
+@font-face { font-family: "Source Serif fallback"; src: local("Georgia"); size-adjust: 98.7%; ascent-override: 105%; descent-override: 34%; line-gap-override: 0%; }
+
+:root {
+  color-scheme: light dark;
+  --papier: #f6f3ec;   /* Text 15,6:1, Angaben 6,4:1 (WCAG AA verlangt 4,5:1) */
+  --tinte: #1f1d1a;
+  --leise: #5b554c;
+  --kante: rgba(31, 29, 26, .16);   /* die feine Linie um einen hellen Bildschirm */
+  --serif: "Source Serif 4", "Source Serif fallback", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --papier: #1d1b18;   /* Text 13,9:1, Angaben 7,0:1 */
+    --tinte: #ece7dd;
+    --leise: #aca395;
+    --kante: rgba(236, 231, 221, .2);
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body.start {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font: 400 1.1875rem/1.55 var(--serif);
+  font-variant-numeric: lining-nums proportional-nums;
+  overflow-wrap: break-word;
+}
+.start img { display: block; max-width: 100%; height: auto; }
+.start p { margin: 0 0 1rem; }
+.start :lang(de) p { hyphens: auto; hyphenate-limit-chars: 10 4 4; }
+.start a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.start a:hover { text-decoration-thickness: 2px; }
+.start :focus-visible { outline: 2px solid var(--tinte); outline-offset: 3px; border-radius: 2px; }
+.start h1, .start h2 { margin: 0; font-size: 1.75rem; font-weight: 600; line-height: 1.2; letter-spacing: -.008em; }
+/* Die dritte Grösse: Angaben, Navigation, Fuss. */
+.start .klein, .start .kopf nav, .start .fuss { font-size: .9rem; line-height: 1.5; color: var(--leise); }
+
+/* 64rem und 1,25rem Rand wie .wrap in /style.css: der Name im Kopf steht auf Impressum,
+   Datenschutz und den App-Seiten an derselben Stelle. */
+.start .bogen { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; }
+
+/* Kopf: der Name links, die zwei Pflichtseiten rechts. */
+.start .kopf .bogen { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .25rem 1.5rem; padding-top: 1.75rem; }
+.start .kopf .name { font-size: 1.1875rem; font-weight: 600; line-height: 1.55; }
+.start .kopf .name a { text-decoration: none; display: inline-block; padding: .55rem 0; }
+.start .kopf nav { display: flex; gap: 0 1.25rem; }
+.start .kopf nav a, .start .fuss a { text-decoration: none; display: inline-block; padding: .75rem 0; }
+.start .kopf nav a:hover, .start .fuss a:hover { color: var(--tinte); text-decoration: underline; }
+
+.start .titel { padding-top: 3.5rem; }
+
+/* Eine App: links Symbol, Name, Angaben, Text und der Weg in den Laden; rechts ihr
+   Bildschirm, ganz, in seinen eigenen Farben. */
+.start .app {
+  display: grid;
+  grid-template-columns: minmax(0, 35rem) 18rem;
+  grid-template-areas: "text bild" "wege bild" ". bild";
+  grid-template-rows: auto auto 1fr;
+  justify-content: space-between;
+  column-gap: 3rem;
+  padding-top: 4.5rem;
+}
+.start .app .text { grid-area: text; }
+.start .app .wege { grid-area: wege; }
+.start .app .bild { grid-area: bild; margin: 0; }
+.start .app header { display: flex; align-items: center; gap: 1rem; margin-bottom: .2rem; }
+.start .app .symbol { width: 3.5rem; height: 3.5rem; border-radius: .8rem; flex: none; }
+.start .app h2 a { text-decoration: none; }
+.start .app h2 a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+.start .app header + p { margin-top: 1rem; }
+.start .app .klein { margin: 0; }
+.start .app .bild img { width: 100%; border-radius: .6rem; box-shadow: 0 0 0 1px var(--kante); }
+/* Der Badge von Google, unverändert; der Freiraum (ein Viertel seiner Höhe) liegt im Bild. */
+.start .wege { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; margin: .5rem 0 0; }
+.start .play { display: inline-block; line-height: 0; }
+.start .badge { height: 56px; width: auto; }
+.start .mehr { display: inline-block; padding: .75rem 0; }
+
+/* Über mich: der Text auf der Kante der App-Texte, das Bild in der Spalte der Bildschirme. */
+.start .ueber { display: grid; grid-template-columns: minmax(0, 35rem) 18rem; justify-content: space-between; column-gap: 3rem; align-content: start; padding-top: 6rem; }
+.start .ueber h2 { grid-column: 1; margin-bottom: 1rem; }
+.start .ueber .portrait { grid-column: 2; grid-row: 1 / span 4; width: 9rem; border-radius: .4rem; margin-top: .35rem; }
+.start .ueber p, .start .ueber ul { grid-column: 1; }
+.start .ueber ul { list-style: none; margin: .5rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.start .ueber ul a { display: inline-block; padding: .65rem 0; }
+
+.start .fuss .bogen { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 2rem; padding-top: 5rem; padding-bottom: 2.5rem; }
+.start .fuss .bogen > p { margin: 0; max-width: 36rem; }
+.start .fuss .bogen > p:last-child { display: flex; gap: 0 1.25rem; }
+
+/* Schmal: alles untereinander, der Bildschirm zwischen Text und Laden. */
+@media (max-width: 760px) {
+  body.start { font-size: 1.125rem; }
+  .start h1, .start h2 { font-size: 1.5rem; }
+  .start .bogen { padding: 0 1rem; }
+  .start .kopf .bogen { padding-top: .75rem; }
+  .start .kopf .bogen { column-gap: 1rem; }
+  .start .kopf nav { gap: 0 .9rem; }
+  .start .titel { padding-top: 2rem; }
+  .start .app { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "bild" "wege"; grid-template-rows: none; padding-top: 3.5rem; }
+  .start .app .symbol { width: 3rem; height: 3rem; border-radius: .7rem; }
+  .start .app .bild { width: min(62%, 15rem); margin-top: .75rem; }
+  .start .wege { margin-top: 1.25rem; }
+  .start .ueber { grid-template-columns: minmax(0, 1fr); padding-top: 4.5rem; }
+  .start .ueber h2, .start .ueber p, .start .ueber ul { grid-column: 1; }
+  .start .ueber .portrait { grid-column: 1; grid-row: auto; width: 6.5rem; margin: 0 0 1.25rem; }
+  .start .fuss .bogen { padding-top: 3.5rem; }
+}
+/* 360 px: Name und die zwei Verweise passen noch in eine Zeile. */
+@media (max-width: 400px) {
+  .start .kopf .name { font-size: 1.0625rem; }
+  .start .kopf nav { gap: 0 .75rem; }
+}
