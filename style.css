@@ -24,8 +24,25 @@
 
 /* Der Google-Play-Badge kommt seit dem 18.09.2026 aus /style.css, weil auch die
    Startseite ihn trägt. */
+
+/* Das Raster des Schirms (seit 20.11.2026): auf breiten Bildschirmen steht der Text eines
+   Abschnitts nach der Randspalte, auf derselben Kante wie die Startseite, und die kleine
+   Zeile über dem Abschnitt (.eyebrow) steht in der Randspalte, auf Höhe der Überschrift,
+   wie die Beschriftung neben einem Instrument. */
+@media (min-width: 900px) {
+  section > .wrap { position: relative; }
+  section > .wrap > .narrow { margin-left: var(--rand); }
+  section > .wrap > .narrow > .eyebrow:first-child,
+  section > .wrap > .eyebrow:first-child {
+    position: absolute; left: 1.25rem; width: calc((100% - 2.5rem) / 4 - 1rem); margin: .55rem 0 0;
+  }
+  section > .wrap > .eyebrow:first-child ~ * { margin-left: var(--rand); }
+}
 .vertrauen { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; color: var(--muted); font-size: .95rem; }
 .vertrauen li::before { content: "✓"; color: var(--green); margin-right: .45rem; }
+
+/* Kostenlos oder Pro an einer Karte: eine Beschriftung in Mono, keine Pille. */
+.card .tag { border: 0; border-radius: 0; padding: 0; margin-left: .55rem; font-size: .72rem; vertical-align: .12em; }
 
 /* Eine Frage, wie die App sie zeigt; antippbar. */
 .frage { background: var(--raised); border: 1px solid var(--rule); border-radius: 20px; padding: 1.75rem; box-shadow: var(--shadow); }
@@ -41,9 +58,19 @@
 .antwort:disabled { cursor: default; }
 .geschlossen .antwort:hover { border-color: var(--accent); }
 .antwort .zeichen { width: 2.25rem; height: 2.25rem; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; font: 400 1rem var(--mono); color: var(--muted); }
+/* Lange Wörter in einer Antwort (Flughafeninformationssystem) brechen, statt auf 360 px
+   über den Rand zu laufen. */
+.antwort > span:last-child { min-width: 0; }
+:lang(de) .antwort .text { hyphens: auto; overflow-wrap: break-word; }
 .antwort .warum { display: block; color: var(--muted); font-size: .95rem; margin-top: .4rem; }
 .merksatz { background: var(--amber-bg); border-left: 3px solid var(--accent); border-radius: 8px; padding: .9rem 1.1rem; margin: 0 0 .75rem; font-size: 1.05rem; }
 .quelle { color: var(--muted); font-size: .85rem; margin-top: 1rem; }
+/* Abstände, die das Markup beim Namen nennt statt im style-Attribut (seit 20.11.2026). */
+.lead.vor-inhalt { margin: 1rem 0 2rem; }
+.lead.unter-titel { margin: 1rem 0 0; }
+.lead.nach-inhalt { margin: 1.5rem 0 0; }
+h3.abstand-gross { margin-top: 3rem; }
+h3.abstand { margin-top: 2rem; }
 .bildunterschrift { color: var(--muted); font-size: .95rem; margin-top: 1.25rem; }
 
 /* Geschlossen: nur die vier Antworten. Beantwortet: Grün an der richtigen, Rot an einer
@@ -96,6 +123,7 @@ ol.themen .zahl { color: var(--muted); font-size: .9rem; white-space: nowrap; }
    waere gelogen. */
 ul.punkte { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-direction: column; gap: .85rem; color: var(--muted); }
 ul.punkte li { padding-left: 1.4rem; position: relative; line-height: 1.5; }
-ul.punkte li::before { content: "—"; position: absolute; left: 0; color: var(--rule); }
+/* Ein kurzer Strich aus CSS, kein Gedankenstrich im Text. */
+ul.punkte li::before { content: ""; position: absolute; left: 0; top: .78em; width: .7rem; height: 1px; background: var(--muted); }
 ul.punkte li b { color: var(--ink); font-weight: 600; }
 
