@@ -3,7 +3,17 @@
    one. Plus the few things only the press kit needs: the fact sheet and the image grid. */
 /* Always the game's night, whatever the visitor's setting (PO 2026-11-04): the site's paper and ink
    swapped for the game's palette (sky.deep, sky.high, cell.dark.edge, clue.text, line.gilt). Only the
-   press kit loads this file, so the rest of the site keeps following the system setting. */
+   product page and the press kit load this file; the policy, terms and purchase pages keep the site's
+   own light and dark. */
+
+/* The game's engraved face for the name and the headings, as in the store images (IM Fell English by
+   Igino Marini, OFL, fonts/; cut to Latin from godot/fonts/ with fontTools, 57 KB). Text stays in the
+   site's Roboto. Without the font, Georgia stands in. */
+@font-face { font-family: "IM Fell English"; font-weight: 400; font-display: swap;
+             src: url(/asterism/fonts/IMFellEnglish-latin.woff2) format("woff2"); }
+/* Georgia on IM Fell's measures (x-height, ascent, descent from the file), so nothing jumps. */
+@font-face { font-family: "IM Fell fallback"; src: local("Georgia"); size-adjust: 97.6%;
+             ascent-override: 93%; descent-override: 37%; line-gap-override: 0%; }
 :root {
   color-scheme: dark;
   --paper: #0b1024;
@@ -14,6 +24,23 @@
   --accent: #e8c77e;
   --accent-ink: #e8c77e;
   --shadow: 0 24px 48px -24px rgba(0, 0, 0, .8);
+  --fell: "IM Fell English", "IM Fell fallback", Georgia, serif;
+}
+
+header.site .marke { font: 400 1.35rem/1 var(--fell); color: var(--accent); letter-spacing: .01em; }
+.hero.produkt h1 { font: 400 clamp(2.5rem, 5.6vw, 3.9rem)/1.04 var(--fell); letter-spacing: 0; }
+.hero .eyebrow { color: var(--accent); }
+.text h2 { font: 400 clamp(1.65rem, 3vw, 2.15rem)/1.12 var(--fell); color: var(--accent); letter-spacing: 0; margin: 3.5rem 0 1rem; }
+.text .narrow > h2:first-child { margin-top: 0; }
+/* The site's legal pages keep a short rule over each heading; the game's headings do without. */
+.text h2::before { content: none; }
+.text li::marker { color: var(--accent); }
+
+/* On a wide screen the text stands on the site's grid: it starts after the margin column, on the
+   same edge as the site's start page, and the pictures under it start there too. */
+@media (min-width: 900px) {
+  .text .narrow { margin-left: var(--rand); }
+  .text .bilder { margin-left: var(--rand); grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 
 /* The fact sheet: a label column and a value column. */
@@ -36,9 +63,67 @@
 .text blockquote p { margin: 0 0 .4rem; color: var(--ink); }
 .text blockquote footer { font-size: .9rem; }
 
+/* A row of three on a phone: one strip to swipe through, each picture large enough to read,
+   instead of two and one left over. */
+@media (max-width: 760px) {
+  .bilder:not(.breit):not(:has(> :nth-child(4))) { display: grid; grid-template-columns: none; grid-auto-flow: column;
+    grid-auto-columns: 64%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .5rem; }
+  .bilder:not(.breit):not(:has(> :nth-child(4))) > figure { scroll-snap-align: start; }
+}
 @media (max-width: 760px) {
   .bilder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bilder.breit { grid-template-columns: minmax(0, 1fr); }
   .fakten { grid-template-columns: 1fr; gap: .1rem; }
   .fakten dd { margin-bottom: .6rem; }
+}
+
+/* --- The press kit (press.html), its own pass (20.11.2026) --------------------------------
+   What a journalist needs in ten seconds: what it is, one strong wide image (the banner, not
+   the phone the product page already shows), facts that scan, downloads that are plainly
+   links with their size, a contact. Night and an engraved atlas; gold only where it marks. */
+.hero.presse { padding-bottom: 4rem; }
+.hero.presse .wrap { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: center; }
+.hero.presse > .wrap > div { padding-bottom: 0; }
+.hero.presse .banner { margin: 0; }
+.hero.presse .banner img { width: 100%; border-radius: 6px; border: 1px solid var(--rule); box-shadow: var(--shadow); }
+.hero.presse .banner figcaption { margin-top: .6rem; color: var(--muted); font-size: .85rem; }
+.hero.presse h1 { font-size: clamp(2.3rem, 4.6vw, 3.4rem); }
+
+/* The fact sheet: terms and values on one baseline, a hairline between rows, figures even. */
+.fakten { gap: 0; border-top: 1px solid var(--rule); font-variant-numeric: lining-nums tabular-nums; }
+.fakten dt, .fakten dd { padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+.fakten dd { padding-left: 1.5rem; }
+.fakten dt { font: 400 .8rem/1.9 var(--mono); letter-spacing: .03em; }
+
+/* Quotations set as quotations: the engraved face, no box. */
+#facts blockquote { border-left: 1px solid var(--accent); padding: .1rem 0 .1rem 1.25rem; margin: 1.5rem 0; }
+#facts blockquote p { font: 400 1.3rem/1.4 var(--fell); color: var(--ink); }
+
+/* The downloads in the running text: plainly links, but the ones to look for. */
+a[href$=".zip"] { color: var(--accent); font-weight: 500; text-decoration-color: var(--accent); }
+
+/* The images: the gallery is the content here, so it takes the whole width, four to a row
+   (two rows of four, no orphan); the brand assets below in tiles of one height. */
+#images .bilder { margin-left: 0; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+#images .bilder.breit { grid-template-columns: 2fr 2fr 1fr; align-items: start; }
+#images .bilder.breit figure > a { display: grid; place-items: center; aspect-ratio: 1024 / 500; background: #0b1024;
+  border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+#images .bilder.breit figure:last-child > a { aspect-ratio: 1; }
+#images .bilder.breit img { border: 0; border-radius: 0; width: 100%; height: 100%; object-fit: contain; }
+#images .bilder.breit .dunkel { border: 0; background: transparent; padding: 1.25rem; width: 100%; height: 100%; display: grid; place-items: center; }
+#images .bilder.breit figure:last-child img { width: 78%; height: auto; }
+
+/* About, contact, credits: three short notes, not three chapters. */
+#contact h2 { font-size: clamp(1.4rem, 2.4vw, 1.65rem); margin-top: 2.5rem; }
+#contact .narrow > h2:first-child { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .hero.presse .wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+@media (max-width: 760px) {
+  #images .bilder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #images .bilder.breit { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  #images .bilder.breit figure:first-child { grid-column: 1 / -1; }
+  .fakten dt { border-bottom: 0; padding-bottom: 0; }
+  .fakten dd { padding-top: .1rem; padding-left: 0; }
 }
