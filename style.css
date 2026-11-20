@@ -18,6 +18,16 @@
 @font-face { font-family: "Roboto"; font-weight: 100 900; font-display: swap; src: url(/fonts/Roboto-latin.woff2) format("woff2"); }
 @font-face { font-family: "B612 Mono"; font-weight: 400; font-display: swap; src: url(/fonts/B612Mono-Regular-latin.woff2) format("woff2"); }
 @font-face { font-family: "B612 Mono"; font-weight: 700; font-display: swap; src: url(/fonts/B612Mono-Bold-latin.woff2) format("woff2"); }
+/* Source Serif 4 (Adobe, SIL OFL 1.1, fonts/SourceSerif4-OFL.txt), die Schrift der Seiten des
+   Schirms seit 20.11.2026: aus den Leseschriften der App Ribband (feature/reader/assets) mit
+   fontTools auf Latin und deutsche und typografische Zeichen geschnitten, variabel 380 bis 700. */
+@font-face { font-family: "Source Serif 4"; font-style: normal; font-weight: 380 700; font-display: swap; src: url(/fonts/SourceSerif4-latin.woff2) format("woff2"); }
+@font-face { font-family: "Source Serif 4"; font-style: italic; font-weight: 380 700; font-display: swap; src: url(/fonts/SourceSerif4-Italic-latin.woff2) format("woff2"); }
+/* Ersatz aus dem System, auf die Masse der eigenen Schriften gebracht (x-Höhe, Ober- und
+   Unterlänge aus den Dateien gemessen), damit beim Nachladen nichts springt. */
+@font-face { font-family: "Roboto fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 101.9%; ascent-override: 91%; descent-override: 24%; line-gap-override: 0%; }
+@font-face { font-family: "Source Serif fallback"; src: local("Georgia"); size-adjust: 98.7%; ascent-override: 105%; descent-override: 34%; line-gap-override: 0%; }
+@font-face { font-family: "B612 Mono fallback"; src: local("Consolas"), local("Courier New"); size-adjust: 118%; ascent-override: 82%; descent-override: 21%; line-gap-override: 0%; }
 
 :root {
   color-scheme: light dark;
@@ -29,8 +39,9 @@
   --accent: #14202a;
   --accent-ink: #14202a;
   --shadow: 0 24px 48px -24px rgba(20, 32, 42, .35);
-  --sans: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "B612 Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --sans: "Roboto", "Roboto fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Source Serif 4", "Source Serif fallback", Georgia, serif;
+  --mono: "B612 Mono", "B612 Mono fallback", ui-monospace, "Cascadia Mono", Consolas, monospace;
   /* Das Raster: vier Viertel mit dieser Fuge; der Text beginnt nach dem ersten. */
   --fuge: 1.5rem;
   --rand: calc(25% + var(--fuge) / 4);
@@ -71,7 +82,7 @@ h1 { font-size: clamp(2rem, 5vw, 3.25rem); font-weight: 600; }
 h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 600; }
 h3 { font-size: 1.15rem; font-weight: 600; }
 p { margin: 0 0 1rem; }
-:lang(de) p, :lang(de) li, :lang(de) dd { hyphens: auto; hyphenate-limit-chars: 10 4 4; }
+:lang(de) .schirmseite p, :lang(de) .schirmseite li, :lang(de) .text p, :lang(de) .text li, :lang(de) .text dd { hyphens: auto; hyphenate-limit-chars: 10 4 4; }
 .mono { font-family: var(--mono); }
 .eyebrow {
   font: 400 .8rem/1.4 var(--mono);
@@ -84,7 +95,7 @@ p { margin: 0 0 1rem; }
 .lead { font-size: 1.2rem; color: var(--muted); max-width: 36rem; }
 
 .wrap { max-width: 64rem; margin: 0 auto; padding: 0 1.25rem; }
-.narrow { max-width: 38rem; margin: 0 auto; }
+.narrow { max-width: 40rem; margin: 0 auto; }
 section { padding: 4.5rem 0; }
 section + section { border-top: 1px solid var(--rule); }
 
@@ -106,7 +117,7 @@ footer.site .wrap > span:first-child { max-width: 40rem; }
    „Impressum“ auf 360 px neben dem Bildschirm, weil zwischen den Links kein Leerzeichen steht). */
 footer.site .wrap > span:last-child { display: flex; flex-wrap: wrap; gap: 0 1.25rem; }
 footer.site a { text-decoration: none; }
-footer.site .wrap > span:last-child a { padding: .35rem 0; }
+footer.site .wrap > span:last-child a { padding: .6rem 0; }
 footer.site a:hover { text-decoration: underline; color: var(--ink); }
 
 /* --- Produktseiten der Apps (Kopf mit Bildschirm, Karten, Spalten) -------------------- */
@@ -222,19 +233,41 @@ footer.site a:hover { text-decoration: underline; color: var(--ink); }
 
 /* --- Textseiten: Impressum, Datenschutz, Kauf, Bedingungen ----------------------------- */
 
-.text h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); font-weight: 450; letter-spacing: -.02em; margin-bottom: .75rem; }
-.text h1 + p { color: var(--muted); margin-bottom: 2.25rem; }
-.text h2 { font-size: 1.15rem; margin: 2.75rem 0 .75rem; letter-spacing: 0; }
-.text h1 + h2 { margin-top: 2.5rem; }
-.text h3 { margin: 2rem 0 .5rem; }
-.text ul, .text ol { padding-left: 1.25rem; }
-.text li { margin-bottom: .4rem; }
-.text blockquote { margin: 1rem 0; padding: .25rem 0 .25rem 1.25rem; border-left: 2px solid var(--rule); color: var(--muted); }
-/* Eine reine Textseite (ein einziger Abschnitt) steht im Raster der Startseite: der Text
-   beginnt nach der Randspalte, auf derselben Kante wie dort. */
+/* Die Rechtsseiten der Apps (Datenschutz, Kauf, Bedingungen) behalten ihre bisherige Gestalt:
+   sie kommen aus den App-Repos, und ihre Überschriften leben vom Strich darüber. */
+.text h1 { font-size: 2rem; margin-bottom: .5rem; }
+.text h2 { font-size: 1.1rem; margin: 2.5rem 0 .75rem; }
+.text h2::before { content: ""; display: block; width: 2.5rem; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: .9rem; }
+.text blockquote { margin: 1rem 0; padding: 1rem 1.25rem; border-left: 3px solid var(--rule); color: var(--muted); }
+
+/* Die Textseiten des Schirms (Impressum, Datenschutz; ): im Raster der
+   Startseite, der Text nach der Randspalte, Überschriften ohne Strich, Mass 38rem. */
+.schirmseite .narrow { max-width: 38rem; }
+.schirmseite .text h1 { font-size: clamp(2rem, 4.5vw, 2.6rem); font-weight: 450; letter-spacing: -.02em; margin-bottom: .75rem; }
+.schirmseite .text h1 + p { color: var(--muted); margin-bottom: 2.25rem; }
+.schirmseite .text h2 { font-size: 1.15rem; margin: 2.75rem 0 .75rem; letter-spacing: 0; }
+.schirmseite .text h2::before { content: none; }
+.schirmseite .text h1 + h2 { margin-top: 2.5rem; }
 @media (min-width: 900px) {
-  .text:only-of-type .narrow { margin-left: var(--rand); }
+  .schirmseite .text .narrow { margin-left: var(--rand); }
 }
+
+/* === Schrift des Schirms: Source Serif (Anfang) ===========================================
+   Auf den Seiten des Schirms spricht eine Antiqua, ruhig und aufrecht, nie kursiv (kursive
+   Überschriften sind Ribbands Leinen); B612 Mono beschriftet nur die Randspalte. Roboto lädt
+   hier gar nicht mehr; die Produktseiten der Apps behalten sie. */
+body.schirmseite { font: 400 18.5px/1.55 var(--serif); font-variant-numeric: oldstyle-nums proportional-nums; }
+.schirmseite h1, .schirmseite h2, .schirmseite h3 { letter-spacing: -.005em; }
+.schirmseite header.site .marke { font-weight: 600; letter-spacing: 0; }
+.schirmseite header.site nav a, .schirmseite footer.site { font-size: .9rem; }
+.schirmseite .auftakt .zeile > h1 { font-weight: 400; letter-spacing: -.018em; line-height: 1.02; }
+.schirmseite .auftakt .lead { font-size: 1.3rem; line-height: 1.45; }
+.schirmseite .werk h3 { font-weight: 500; letter-spacing: -.012em; }
+.schirmseite .werk .angaben .preis { font: 400 .95rem/1.4 var(--serif); font-variant-numeric: lining-nums; }
+.schirmseite .werk .mehr { font-weight: 600; }
+.schirmseite .text h1 { font-weight: 400; letter-spacing: -.012em; }
+.schirmseite .text h2 { font-weight: 600; font-size: 1.2rem; }
+/* === Schrift des Schirms (Ende) =========================================================== */
 
 /* --- Schmal ------------------------------------------------------------------------------ */
 

@@ -33,7 +33,12 @@ und deutsch (`nutzungsbedingungen.html`).
 
 Hosting: GitHub Pages unter der Domain aus `CNAME`; DNS beim Registrar mit vier
 A-Records auf GitHubs Pages-Adressen und einem CNAME für www. Kein Jekyll
-(`.nojekyll`), kein JavaScript, nichts nachgeladen.
+(`.nojekyll`), kein JavaScript, nichts nachgeladen. Eine Ausnahme beim JavaScript: die
+Seiten der BZF-Prüfung (Produktseite und die 28 Themenseiten) tragen ein kleines Skript, das eine
+Frage beim Antippen aufdeckt, wie in der App; ohne Skript steht jede Antwort samt Erklärung offen
+da, es fehlt also nichts und nichts ist falsch. Schriften liegen in `/fonts/` und in den
+App-Ordnern (`asterism/fonts/`, `ribband/fonts/`), je mit ihrer Lizenz daneben; nichts kommt von
+einem fremden Host.
 
 ## Die Gestalt des Schirms (seit 20.11.2026)
 
@@ -58,7 +63,9 @@ das Leseband rechnet mit der halben Breite), an `header.site`, `.marke`, `nav`, 
     python bauen.py
 
 schreibt `sitemap.xml` (alle Seiten ohne `noindex`, letztes Commit-Datum je Datei) und die
-Stand-Zeile im Fuss der Startseite. `python bauen.py --check` sagt, ob beides aktuell ist;
-das ist die einzige Wache dieses Repos. Nach einem Subtree-Pull also: `bauen.py`, dann
+Stand-Zeile im Fuss der Startseite. `python bauen.py --check` sagt, ob beides aktuell ist, und
+schlägt fehl, wenn eine Seite oder ein Stylesheet etwas von einem fremden Host lädt (Schrift,
+Stylesheet, Skript, Bild; auch `@import`, `url(…)` und `preconnect`; Verweise wie canonical
+sind erlaubt); das ist die einzige Wache dieses Repos. Nach einem Subtree-Pull also: `bauen.py`, dann
 committen, dann pushen.
 
