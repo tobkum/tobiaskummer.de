@@ -45,9 +45,13 @@ einem fremden Host.
 Die Startseite ist ein Werkverzeichnis, gesetzt wie ein Flugbuch: ein Raster aus zwölf Spalten,
 die ersten drei sind die Randspalte, und darin stehen in B612 Mono (der Schrift aus dem Cockpit,
 die schon im Repo liegt) nur die Angaben, also Abschnitt, Plattform, Art und Preis; der Text
-beginnt in der vierten Spalte, auf derselben Kante wie Impressum und Datenschutz. Roboto trägt
-alles andere, die grossen Zeilen in einem leichten Schnitt (380 bis 450) statt fett, damit die
-Seite ruhig spricht und die Apps lauter sein dürfen als der Schirm. Jede App steht in einer Zeile
+beginnt in der vierten Spalte, auf derselben Kante wie Impressum und Datenschutz. Den Text trägt
+Source Serif 4 (Adobe, SIL OFL 1.1, `fonts/SourceSerif4-OFL.txt`; aus Ribbands Leseschriften auf
+Latin geschnitten), aufrecht und ruhig, die grossen Zeilen im leichtesten Schnitt; kursiv nie,
+das ist Ribbands Leinen. Roboto bleibt die Schrift der Produktseiten von BZF-Prüfung und
+Asterism und lädt auf den Seiten des Schirms nicht. Die neue Gestalt gilt nur unter
+`<body class="schirmseite">` (Startseite, Impressum, Datenschutz); die Rechtsseiten der Apps
+behalten ihre bisherige. Jede App steht in einer Zeile
 zwischen Haarlinien, nicht in einer Karte: Angaben, Name, zwei Sätze, das Badge und ein
 schlichter Verweis, rechts ihr Bildschirm auf einer Tafel in ihrer eigenen Grundfarbe (Amber,
 Nachthimmel, Leinen), so trägt jede App ihren Akzent und der Schirm keinen. Die Texte bleiben
