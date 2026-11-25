@@ -1,0 +1,57 @@
+/* The comparison page (compare.html, de/vergleich.html): the product page's look (style.css, loaded before this file)
+   plus what only this page needs: a short cover without screens, the table, the cards that stand in for the table on a
+   narrow screen, and the two lists of when which app fits. Nothing here is loaded by the product page.
+
+   Ribband's own column is marked as the app marks Pro: the ribbon's rule over it and the raised paper under it, in
+   the colours style.css already defines for light and for Ink night. */
+
+/* The cover: the product page's cloth, but no screens stand on it, so the cloth runs to its foot. */
+.cover.compare { --cut: 0rem; padding-bottom: 4rem; }
+.cover.compare .kicker { color: var(--ribbon); }
+/* At least 2.25rem, a step over the section headings' 1.9rem on a phone (WEB-1). */
+.cover.compare h1 { font-size: clamp(2.25rem, 4.4vw, 3rem); max-width: 24ch; text-wrap: balance; }
+.nobr { white-space: nowrap; }
+
+/* The table: on a wide screen only. Seven columns of short sentences, set a little smaller than the prose. */
+.vergleich { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: .9rem; line-height: 1.45; }
+.vergleich th, .vergleich td { text-align: left; vertical-align: top; padding: .7rem .7rem .8rem; border-top: 1px solid var(--rule); overflow-wrap: break-word; }
+.vergleich thead th, .vergleich thead td { border-top: 0; border-bottom: 1px solid var(--ink); padding-top: 1rem; font-weight: 600; font-size: 1rem; }
+.vergleich tbody th { width: 9.5rem; font-weight: 600; padding-left: 0; }
+.vergleich thead td { width: 9.5rem; }
+.vergleich tbody tr:first-child > * { border-top: 0; }
+.vergleich .own { background: var(--raised); }
+.vergleich thead .own { box-shadow: inset 0 2px 0 var(--ribbon); }
+
+/* The cards: one per app, the table's rows as a list of terms; on a narrow screen they stand in for the table, so
+   nothing scrolls sideways. pages.py writes them from the table. */
+.apps { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 2.5rem 3rem; }
+.app { border-top: 1px solid var(--ink); padding-top: .9rem; }
+.app.own { border-top: 2px solid var(--ribbon); padding: calc(.9rem - 1px) 1rem 1rem; background: var(--raised); }
+main .app h2 { font-style: normal; font-weight: 600; font-size: 1.2rem; line-height: 1.3; margin: 0 0 .4rem; }
+.app dl { margin: 0; }
+.app dt { font: 600 .74rem/1.3 var(--serif); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-top: .7rem; border-top: 1px solid var(--rule); }
+.app dt:first-child { border-top: 0; padding-top: .2rem; }
+.app dd { margin: .2rem 0 .7rem; }
+/* German cells hyphenate long words, with the product page's limits; English cells do not (WEB-1). */
+:lang(de) .vergleich td, :lang(de) .app dd { hyphens: auto; hyphenate-limit-chars: 12 5 5; -webkit-hyphenate-limit-before: 5; -webkit-hyphenate-limit-after: 5; }
+.app dd:last-child { margin-bottom: 0; }
+
+@media (min-width: 60rem) { .apps { display: none; } }
+@media (max-width: 59.99rem) { .vergleich { display: none; } }
+
+.note { font-size: .92rem; margin: 1.5rem 0 0; }
+.more { margin-top: 2rem; }
+.more p { margin: 0; }
+
+/* When which app fits: two columns under rules, Ribband's under the ribbon, as Free and Pro on the product page. */
+.fits { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 4rem; }
+.fits > div { border-top: 1px solid var(--ink); padding-top: 1.25rem; max-width: none; }
+.fits > .own { border-top: 2px solid var(--ribbon); padding-top: calc(1.25rem - 1px); }
+main .fits h2 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+.fits ul { padding-left: 1.15rem; }
+.fits li { margin-bottom: .8rem; }
+
+@media (max-width: 760px) {
+  .fits { grid-template-columns: 1fr; }
+  .cover.compare { padding-bottom: 3rem; }
+}

@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/symbol-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/symbol-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/symbol-180.png">
+<title>Ribband: Später-lesen-App für Android, offline, ohne Konto</title>
+<meta name="description" content="Artikel und Links aus jeder App speichern. Artikel bleiben als klarer Text offline lesbar. Ohne Konto, ohne Werbung. Für Android und E-Reader.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://tobiaskummer.de/ribband/de/">
+<link rel="alternate" hreflang="en" href="https://tobiaskummer.de/ribband/">
+<link rel="alternate" hreflang="de" href="https://tobiaskummer.de/ribband/de/">
+<link rel="alternate" hreflang="x-default" href="https://tobiaskummer.de/ribband/">
+<meta name="theme-color" content="#1f2b47" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1930" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="Tobias Kummer">
+<meta property="og:url" content="https://tobiaskummer.de/ribband/de/">
+<meta property="og:title" content="Ribband: Artikel und Links speichern, später lesen">
+<meta property="og:description" content="Eine App zum späteren Lesen für Android: Artikel bleiben als klarer Text offline lesbar, jeder andere Link als Karte. Ohne Konto, ohne Werbung; synchronisiert nur über dein eigenes Google Drive, wenn du willst.">
+<meta property="og:image" content="https://tobiaskummer.de/ribband/bilder/ribband-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Das Zeichen von Ribband, ein R, dessen Stamm ein goldenes Leseband ist, über dem Namen und der Zeile Kept for later., auf dunkelblauem Leinen.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/ribband/style.css">
+<link rel="preload" href="/ribband/fonts/Literata-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://tobiaskummer.de/ribband/#app",
+      "name": "Ribband",
+      "description": "Eine App zum späteren Lesen für Android: Artikel und Links aus jeder App speichern. Artikel bleiben als klarer Text samt Bildern offline lesbar; jeder andere Link wird als Karte aufgehoben. Ohne Konto, ohne Werbung.",
+      "operatingSystem": "Android",
+      "applicationCategory": "ProductivityApplication",
+      "inLanguage": [
+        "de",
+        "en"
+      ],
+      "url": "https://tobiaskummer.de/ribband/de/",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.tobkum.ribband",
+      "image": "https://tobiaskummer.de/ribband/bilder/ribband-1200x630.png",
+      "screenshot": [
+        "https://tobiaskummer.de/ribband/bilder/eingang-hell.webp",
+        "https://tobiaskummer.de/ribband/bilder/artikel-hell.webp",
+        "https://tobiaskummer.de/ribband/bilder/eingang-e-ink.webp"
+      ],
+      "featureList": [
+        "Artikel und Links aus dem Teilen-Menü speichern, auch ohne Netz",
+        "Die offene Seite im Browser am Computer speichern, mit einer kostenlosen Erweiterung für Chrome, Edge, Brave, Opera, Vivaldi und Firefox",
+        "Artikel offline lesen, als klarer Text mit Bildern",
+        "Jeden anderen Link als Karte mit Titel, Beschreibung und Bild aufheben",
+        "Eingang, Regal, Archiv, Schlagwörter und Volltextsuche",
+        "E-Ink-Modus mit Seiten und Blättertasten",
+        "Import aus den Exportdateien von Pocket, Instapaper und Omnivore und aus Browser-Lesezeichen",
+        "Freiwillige Synchronisierung über das eigene Google Drive",
+        "Kein Konto, keine Werbung, kein eigener Tracking-Code"
+      ],
+      "author": {
+        "@id": "https://tobiaskummer.de/#person"
+      },
+      "publisher": {
+        "@id": "https://tobiaskummer.de/#person"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://tobiaskummer.de/ribband/de/",
+      "url": "https://tobiaskummer.de/ribband/de/",
+      "name": "Ribband: Später-lesen-App für Android, offline, ohne Konto",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://tobiaskummer.de/#website"
+      },
+      "about": {
+        "@id": "https://tobiaskummer.de/ribband/#app"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tobiaskummer.de/ribband/de/#questions",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://tobiaskummer.de/ribband/de/"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Brauche ich ein Konto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Es gibt keine Anmeldung und keinen Server, bei dem du dich anmelden müsstest. Deine Bibliothek bleibt auf deinem Gerät; die Synchronisierung läuft, wenn du sie willst, über dein eigenes Google Drive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert die App offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Speichern geht ohne Netz; der Text kommt, sobald du wieder online bist. Danach liest du den Artikel offline, mit seinen Bildern. Was kein Artikel ist, wird als Karte aufgehoben: Die Karte ist auch offline da, ihre Seite öffnet sich, wenn du online bist."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann Ribband Pocket ersetzen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Beim Aufheben und Lesen deiner Liste ja: Du speicherst aus dem Teilen-Menü auf dem Handy oder mit der Browser-Erweiterung am Computer, liest Artikel offline als klaren Text, hebst jeden anderen Link als Karte auf und ordnest mit Schlagwörtern, Favoriten, Archiv und Volltextsuche; mit Pro lässt du dir Artikel vorlesen. Deine Pocket-Exportdatei lässt sich importieren. Was Ribband nicht hat: eine Web-Version und empfohlene Artikel. Die App läuft nur auf Android und ohne Konto; ein zweites Android-Gerät gleicht sich über dein eigenes Google Drive ab."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist Ribband eine Alternative zu Instapaper oder Readwise Reader?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wenn du auf Android liest, ja. Beide sind Dienste mit einem Konto. Instapaper lässt sich kostenlos nutzen; Volltextsuche, unbegrenzte Notizen und die Kindle-Anbindung gibt es dort mit Premium, einem Abo. Readwise Reader gehört nach einer kostenlosen Testzeit zu einem Readwise-Abo. Ribband hat kein Konto: Deine Bibliothek liegt auf deinem Gerät und, mit Synchronisierung, in deinem eigenen Google Drive. Volltextsuche, E-Ink-Modus, Import und Export sind kostenlos, und Pro ist ein einmaliger Kauf, kein Abo. Was Ribband nicht hat: eine App für iOS oder eine Web-App (es läuft nur auf Android), Feeds oder Newsletter, KI-Zusammenfassungen und einen Abgleich von Markierungen mit anderen Diensten. Die Vergleichsseite stellt Ribband neben weitere Apps zum späteren Lesen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gibt es eine Browser-Erweiterung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, kostenlos, für Chrome, Edge, Brave, Opera und Vivaldi und für Firefox. Ein Klick speichert die Seite, die du gerade liest, über dein eigenes Google Drive in Ribband auf deinem Handy; die Synchronisierung muss dafür eingeschaltet sein. Die Seite kommt so an, wie dein Browser sie geladen hatte, ohne das, was du hineingetippt hast. Die Bilder lädt dein Handy von der Website, darum kann ein Bild fehlen, das die Website nur angemeldeten Lesern zeigt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich meine Leseliste aus Pocket, Instapaper oder Omnivore mitnehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, über deren Exportdateien: Links mit Titel, Datum und Schlagwörtern, Gelesenes und Ungelesenes getrennt, Favoriten, wo die Datei sie kennzeichnet. Deine Markierungen aus Pocket kommen auch mit, aus Omnivore dazu die Artikeltexte und Markierungen. Die Lesezeichendatei des Browsers geht ebenso."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Läuft Ribband auf einem E-Reader?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Auf Android-E-Readern ja. Der E-Ink-Modus zeigt Schwarz auf Weiß ohne Animation, blättert in Seiten statt zu scrollen, und Blätter- und Lautstärketasten blättern um. Pro und die Synchronisierung brauchen Google Play, das vielen E-Readern fehlt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet die App?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ribband ist kostenlos, zum Laden und zum Benutzen, und ohne Werbung. Pro ist ein freiwilliger, einmaliger Kauf über Google Play, kein Abo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wo liegen meine Daten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Auf deinem Gerät, und in einem versteckten Ordner in deinem eigenen Google Drive, wenn du die Synchronisierung einschaltest. Exportieren kannst du jederzeit alles in eine Datei."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist, wenn es Ribband nicht mehr gibt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deine Bibliothek liegt auf deinem Gerät und, mit Synchronisierung, in deinem eigenen Google Drive, nicht auf einem Server von mir. „Alles exportieren“ schreibt eine Datei mit jedem Link aus Eingang und Archiv als Webseite und als Markdown-Datei, die jeder Browser und jeder Texteditor öffnet, dazu eine README-Datei, die sagt, was wo liegt. Das Format dieser Datei ist vollständig beschrieben, auf Englisch."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+  <a class="skip" href="#content">Zum Inhalt springen</a>
+  <header class="site cloth">
+    <div class="wrap">
+      <a class="marke" href="/ribband/de/">Ribband</a>
+      <nav><a href="/ribband/de/vergleich.html">Vergleich</a><a href="/ribband/" hreflang="en" lang="en">English</a><a href="/impressum.html">Impressum</a></nav>
+    </div>
+  </header>
+
+  <main id="content">
+  <section class="cover">
+    <div class="cover-ribbon" aria-hidden="true"></div>
+    <div class="wrap">
+      <picture>
+        <source srcset="/ribband/bilder/lockup-ink-night.svg" media="(prefers-color-scheme: dark)">
+        <img class="lockup" src="/ribband/bilder/lockup-cloth.svg" width="532" height="469" alt="Ribband">
+      </picture>
+      <p class="tagline" lang="en">Kept for later.</p>
+      <h1><span class="line">Artikel und Links aus jeder App speichern.</span> <span class="line">Später lesen, auch offline.</span></h1>
+      <p class="lead">Ribband ist eine App zum späteren Lesen für Android: für alles, worauf du zurückkommen willst. Du teilst einen Link aus jeder App, und er liegt in deinem Eingang. Ein Artikel wird als klarer Text samt Bildern aufgehoben und lässt sich offline lesen; ein Video, ein Post oder jeder andere Link kommt als Karte mit Titel, Beschreibung und Bild und öffnet seine Seite. Ein eigenes Konto bei Ribband gibt es nicht; ich habe keinen Server, bei dem du dich anmelden müsstest. Die Synchronisierung ist freiwillig und nutzt dein eigenes Google-Konto.</p>
+      <div class="actions">
+        <a class="play" href="https://play.google.com/store/apps/details?id=com.tobkum.ribband"><img class="badge" src="/ribband/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play"></a>
+      </div>
+      <p class="facts">Kostenlos, mit einem freiwilligen Kauf. Auf Deutsch und Englisch.</p>
+      <!-- erweiterung oben: geschrieben von store/tools/pages.py aus store/pages.json -->
+      <div class="also">
+        <p class="also-label">Browser-Erweiterung</p>
+        <div class="stores">
+          <a class="store" href="https://chromewebstore.google.com/detail/eplppabnilephpadfkliilejkngfnljc"><img class="store-badge chrome" src="/ribband/bilder/chrome-web-store-badge.png" width="496" height="150" alt="Im Chrome Web Store verfügbar"></a>
+          <a class="store" href="https://addons.mozilla.org/firefox/addon/ribband/"><img class="store-badge firefox" src="/ribband/bilder/firefox-get-the-add-on.svg" width="172" height="60" alt="Das Add-on für Firefox holen"></a>
+        </div>
+        <p class="also-note">Sie braucht Ribband auf deinem Handy, mit eingeschalteter Synchronisierung.</p>
+      </div>
+      <!-- /erweiterung oben -->
+    </div>
+    <div class="shots">
+      <figure><img class="screen" src="/ribband/bilder/eingang-hell.webp" width="540" height="1170" alt="Der Eingang im hellen Erscheinungsbild: das Neueste von heute groß mit seinem Bild, darunter ein Video als Karte, unten die Leiste mit Eingang, Regal und Archiv."></figure>
+      <figure><picture>
+        <source srcset="/ribband/bilder/artikel-nacht.webp" media="(prefers-color-scheme: dark)">
+        <img class="screen" src="/ribband/bilder/artikel-hell.webp" width="540" height="1030" alt="Ein gespeicherter Artikel im Leser, mitten im Text: Absätze mit deutscher Silbentrennung auf warmem Papier.">
+      </picture></figure>
+    </div>
+  </section>
+
+  <section id="aufheben">
+    <div class="wrap">
+      <div class="chapter">
+        <div class="prose">
+          <p class="kicker">Aufheben</p>
+          <h2>Link teilen, Ribband hebt ihn auf</h2>
+          <p>Im Teilen-Menü jeder App steht „In Ribband aufheben“. Der Link ist sofort gespeichert, auch ohne Netz; den Text holt die App, sobald wieder eine Verbindung da ist. Was kein Artikel ist, etwa ein Video, ein Post oder eine Shopseite, kommt als Karte mit Titel, Beschreibung und Bild in die Liste; die Karte öffnet die Seite, wenn du online bist, und behält, was die Seite zeigte, auch wenn es sie nicht mehr gibt. Lässt sich der Text einer Seite nicht aufheben, zeigt Ribband die Originalseite.</p>
+        </div>
+        <div class="side">
+          <figure class="slip">
+            <img class="screen" src="/ribband/bilder/im-eingang-gespeichert.webp" width="540" height="302" alt="Die Bestätigung nach dem Speichern: Im Eingang gespeichert, Titel und Quelle des Artikels und die drei Aktionen Rückgängig, Schlagwort und Regal." loading="lazy">
+            <figcaption>Was nach dem Speichern erscheint: der Titel, dazu Rückgängig, Schlagwort oder Regal, wenn du sie brauchst.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="chapter after" id="browser">
+        <div class="prose">
+          <h3 class="first">Aus dem Browser am Computer</h3>
+          <p>Mit der Browser-Erweiterung von Ribband speicherst du am Computer mit einem Klick die Seite, die du gerade liest. Sie schickt die Seite so, wie dein Browser sie geladen hat: Ein Artikel, den du lesen kannst, weil du bei der Website angemeldet bist, kommt vollständig an. Die Erweiterung legt sie in Ribbands versteckten Ordner in deinem eigenen Google Drive; dein Handy holt sie dort beim nächsten Synchronisieren ab und speichert sie wie einen geteilten Link, mit den Schlagwörtern und dem Regal, die du beim Speichern gewählt hast.</p>
+          <p>Die Erweiterung ist kostenlos und braucht die Synchronisierung in Ribband auf deinem Handy. Sie liest eine Seite nur, wenn du auf ihren Knopf klickst, und nur diesen Tab; an mich geht nichts. Es gibt sie für Chrome, Edge, Brave, Opera und Vivaldi und für Firefox.</p>
+          <!-- erweiterung: geschrieben von store/tools/pages.py aus store/pages.json -->
+          <div class="stores">
+            <a class="store" href="https://chromewebstore.google.com/detail/eplppabnilephpadfkliilejkngfnljc"><img class="store-badge chrome" src="/ribband/bilder/chrome-web-store-badge.png" width="496" height="150" alt="Im Chrome Web Store verfügbar" loading="lazy"></a>
+            <a class="store" href="https://addons.mozilla.org/firefox/addon/ribband/"><img class="store-badge firefox" src="/ribband/bilder/firefox-get-the-add-on.svg" width="172" height="60" alt="Das Add-on für Firefox holen" loading="lazy"></a>
+          </div>
+          <!-- /erweiterung -->
+        </div>
+        <div class="side">
+          <figure class="popup">
+            <img class="screen" src="/ribband/bilder/erweiterung-gespeichert.webp" width="540" height="621" alt="Das Fenster der Erweiterung nach dem Speichern: Gespeichert, der Artikel über die wandernden Klippen von kuesten-rundschau.example, die Schlagwörter Küste und Lange Texte, Favoriten und das Regal Küstenwege, der Hinweis, dass dein Handy die Seite beim nächsten Synchronisieren speichert, und die Aktionen Rückgängig, Schlagwort und Regal." loading="lazy">
+            <figcaption>Das Fenster der Erweiterung nach dem Speichern: wann die Seite auf deinem Handy ankommt und wo sie dort landet.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="trio">
+        <div class="prose">
+          <h3 class="first">Eingang, Regal, Archiv</h3>
+          <p>Neues landet im Eingang, Gelesenes im Archiv. Ein Regal hält zusammen, was zusammengehört, in der Reihenfolge, die du bestimmst: eine Reise, ein Projekt, eine Liste für jemanden. Schlagwörter sind etwas anderes: Mit ihnen filterst du quer durch alles. Die Suche findet Wörter im ganzen Text, nicht nur im Titel. Einträge lassen sich umbenennen; „Originaltitel verwenden“ holt den alten Titel zurück. Was du löschst, bleibt 30 Tage unter „Kürzlich gelöscht“.</p>
+        </div>
+        <div class="screens" role="group" aria-label="Regal und Suche">
+          <figure><img class="screen" src="/ribband/bilder/regal.webp" width="540" height="1170" alt="Der Reiter Regal: zuerst die Favoriten, dann Regale namens Rezepte, Gartenarbeit übers ganze Jahr, Für Jonas und Analogfotografie und Dunkelkammer, jedes mit seiner Zahl und den ersten Titeln." loading="lazy"><figcaption>Die Regale, jedes mit dem, was darin steht.</figcaption></figure>
+          <figure><img class="screen" src="/ribband/bilder/volltextsuche.webp" width="540" height="1170" alt="Volltextsuche nach nacht: sechs Ergebnisse aus Eingang und Archiv, die gefundenen Wörter in den Titeln und in Stellen aus den Artikeltexten markiert." loading="lazy"><figcaption>Suche nach dem Wort nacht, die Treffer markiert.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lesen">
+    <div class="wrap">
+      <div class="looks" role="group" aria-label="Derselbe Artikel in drei Erscheinungsbildern">
+        <figure><img class="screen" src="/ribband/bilder/artikel-hell.webp" width="540" height="1030" alt="Ein Artikel im hellen Erscheinungsbild: dunkle Schrift auf warmem Papier." loading="lazy"><figcaption><b>Hell</b>Tinte auf Papier, für den Tag.</figcaption></figure>
+        <figure><img class="screen" src="/ribband/bilder/artikel-nacht.webp" width="540" height="1030" alt="Dieselbe Stelle im Erscheinungsbild Nacht: helle Schrift auf dunklem Grund." loading="lazy"><figcaption><b>Nacht</b>Ein eigenes dunkles Schema, nicht das helle umgekehrt.</figcaption></figure>
+        <figure><img class="screen" src="/ribband/bilder/artikel-e-ink.webp" width="540" height="1030" alt="Derselbe Artikel im Erscheinungsbild E-Ink: Schwarz auf Weiß, ein Zitat zwischen zwei Linien." loading="lazy"><figcaption><b>E-Ink</b>Schwarz auf Weiß, in Seiten.</figcaption></figure>
+      </div>
+      <div class="head after-looks">
+        <div>
+          <h2>Der Leser zeigt den Artikel und sonst nichts</h2>
+        </div>
+        <div class="prose">
+        <p>Die Schrift gibt es in sieben Größen, mit drei Zeilenabständen und drei Textbreiten, in Literata, Source Sans oder <span lang="en">Atkinson Hyperlegible</span>. Ribband merkt sich, wo du in jedem Artikel aufgehört hast.</p>
+        <p>Drei Erscheinungsbilder stehen zur Wahl: Hell auf Papier, Nacht als eigenes dunkles Schema und E-Ink. Hell und Nacht können sich auch nach der Einstellung deines Handys richten.</p>
+        </div>
+      </div>
+      <div class="chapter after">
+        <div class="prose">
+          <h3 class="first">Auf dem E-Reader</h3>
+          <p>Auf Android-E-Readern zeigt der E-Ink-Modus Schwarz auf Weiß mit weißen Leisten, nichts bewegt sich, und langer Text blättert in Seiten statt zu scrollen. Blättertasten und Lautstärketasten blättern um, im Artikel und in den Listen: Eingang, Regal, Archiv und Suche. Während vorgelesen wird, regeln die Lautstärketasten wieder die Lautstärke.</p>
+        </div>
+        <div class="side">
+          <figure class="single"><img class="screen" src="/ribband/bilder/eingang-e-ink.webp" width="540" height="1170" alt="Der Eingang im Erscheinungsbild E-Ink: Schwarz auf Weiß, eine feine Linie unter den Leisten, vier Einträge auf der Seite, drei Artikel und ein Video, jeder mit Quelle und Titel, und unten 1 bis 4 von 10." loading="lazy"><figcaption>Der Eingang auf E-Ink: vier Artikel je Seite.</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deine-daten">
+    <div class="wrap">
+      <div class="library">
+        <h2>Wo deine Bibliothek liegt</h2>
+        <p class="statement">Auf deinem Gerät. Ribband hat kein Konto und keinen Server von mir dahinter, und was du speicherst und liest, wird nicht an mich gesendet.</p>
+        <dl class="facts-list">
+          <dt>Werbung und Auswertung</dt>
+          <dd>Gibt es nicht. In der App steckt weder Werbung noch eigener Code, der deine Nutzung auswertet oder dich verfolgt.</dd>
+          <dt>Verbindungen</dt>
+          <dd>Zu den Websites, die du speicherst, und zu dem, was diese Seiten laden, und zu Google: zu deinem Drive, wenn du synchronisierst, zu Google Play für Pro und zur Safe-Browsing-Prüfung von Android, wenn du eine Originalseite öffnest.</dd>
+          <dt>Synchronisierung</dt>
+          <dd>Aus, bis du sie einschaltest. Sie nutzt einen versteckten Ordner in deinem Google Drive, den nur Ribband öffnen kann. Darin liegen deine Artikel mit ihrem Text, deine anderen Links als Karten, deine Regale und Schlagwörter, gespeicherte Suchen, Markierungen, Notizen und Lesepositionen. Bilder gehen nicht über Drive; jedes Gerät lädt sie selbst von ihren Websites. Über mobile Daten wartet ein großer Rückstand auf WLAN; Neues wird in jedem Netz sofort synchronisiert. Die Synchronisierung braucht die Google-Play-Dienste. Seiten, die du mit der Browser-Erweiterung speicherst, warten im selben Ordner, bis ein Handy sie abgeholt hat.</dd>
+          <dt>Import</dt>
+          <dd>Die Exportdateien von Pocket, Instapaper und Omnivore und die Lesezeichendatei deines Browsers. Jeder Link kommt mit seinem Titel, dem Datum, an dem du ihn gespeichert hast, und deinen Schlagwörtern; Ungelesenes kommt in den Eingang, Gelesenes ins Archiv. Favoriten kommen mit, wo die Datei sie kennzeichnet (Pockets Datei tut das nicht). Ordner aus dem Browser können zu Regalen werden. Deine Markierungen aus Pocket kommen auch mit, aus einem Omnivore-Export die Artikeltexte und Markierungen. Doppelt wird nichts angelegt.</dd>
+          <dt>Export</dt>
+          <dd>Deine ganze Bibliothek, jederzeit, in einer Datei: jeder Artikel als Webseite und als Markdown, mit Schlagwörtern, Regalen und Lesepositionen, dazu eine Kopie, die Ribband wieder importieren kann.</dd>
+        </dl>
+        <p class="quiet">Vollständig steht das alles in der <a href="/ribband/datenschutz.html">Datenschutzerklärung</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pro">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <h2>Was kostenlos ist und was Pro dazugibt</h2>
+        </div>
+        <div class="prose">
+        <p>Pro ist ein einmaliger Kauf über Google Play, kein Abo. Was jetzt kostenlos ist, wird nicht nachträglich Teil von Pro. Die Volltextsuche in jedem gespeicherten Artikel, die manche Apps zum späteren Lesen nur im Abo anbieten, ist hier kostenlos und geht auch offline, ebenso der E-Ink-Modus sowie Import und Export. Die <a href="/ribband/de/vergleich.html">Vergleichsseite</a> zeigt Ribband und diese Apps nebeneinander.</p>
+        </div>
+      </div>
+      <div class="offer">
+        <div>
+          <h3>Kostenlos</h3>
+          <ul>
+            <li>Speichern aus jeder App, und Karten für Links, die keine Artikel sind</li>
+            <li>Eingang, Regal, Archiv, Schlagwörter und Volltextsuche</li>
+            <li>Der Leser in Literata, Source Sans und Atkinson Hyperlegible</li>
+            <li>Hell, Nacht und der E-Ink-Modus</li>
+            <li>Import und Export der ganzen Bibliothek</li>
+            <li>Synchronisierung über dein eigenes Google Drive</li>
+            <li>Speichern am Computer mit der Browser-Erweiterung</li>
+          </ul>
+        </div>
+        <div class="pro">
+          <h3>Pro, ein Kauf</h3>
+          <ul>
+            <li>Markierungen und Notizen, als Markdown oder für Obsidian exportierbar</li>
+            <li>Vorlesen: Die Sprachausgabe deines Geräts liest dir Artikel vor, mit Warteschlange. Ribband wählt Stimmen, die ohne Internet auskommen; wie sie klingen, hängt vom Gerät ab.</li>
+            <li>Gespeicherte Suchen: eine Suche unter einem Namen, die zeigt, was jetzt passt, auch was seitdem dazugekommen ist</li>
+            <li>Drei weitere Leseschriften: Source Serif, Merriweather und IBM Plex Sans</li>
+          </ul>
+        </div>
+      </div>
+      <p class="quiet after-offer">Den Preis zeigt Google Play in deiner Währung. Wie Kauf und Erstattung gehen: <a href="/ribband/kauf.html">Kauf und Erstattung</a>; dazu die <a href="/ribband/nutzungsbedingungen.html">Nutzungsbedingungen</a>.</p>
+    </div>
+  </section>
+
+  <section id="fragen">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <h2>Fragen</h2>
+        </div>
+      </div>
+      <div class="questions">
+        <div>
+          <h3>Brauche ich ein Konto?</h3>
+          <p>Nein. Es gibt keine Anmeldung und keinen Server, bei dem du dich anmelden müsstest. Deine Bibliothek bleibt auf deinem Gerät; die Synchronisierung läuft, wenn du sie willst, über dein eigenes Google Drive.</p>
+        </div>
+        <div>
+          <h3>Funktioniert die App offline?</h3>
+          <p>Ja. Speichern geht ohne Netz; der Text kommt, sobald du wieder online bist. Danach liest du den Artikel offline, mit seinen Bildern. Was kein Artikel ist, wird als Karte aufgehoben: Die Karte ist auch offline da, ihre Seite öffnet sich, wenn du online bist.</p>
+        </div>
+        <div>
+          <h3>Kann Ribband Pocket ersetzen?</h3>
+          <p>Beim Aufheben und Lesen deiner Liste ja: Du speicherst aus dem Teilen-Menü auf dem Handy oder mit der Browser-Erweiterung am Computer, liest Artikel offline als klaren Text, hebst jeden anderen Link als Karte auf und ordnest mit Schlagwörtern, Favoriten, Archiv und Volltextsuche; mit Pro lässt du dir Artikel vorlesen. Deine Pocket-Exportdatei lässt sich importieren. Was Ribband nicht hat: eine Web-Version und empfohlene Artikel. Die App läuft nur auf Android und ohne Konto; ein zweites Android-Gerät gleicht sich über dein eigenes Google Drive ab.</p>
+        </div>
+        <div>
+          <h3>Ist Ribband eine Alternative zu Instapaper oder Readwise Reader?</h3>
+          <p>Wenn du auf Android liest, ja. Beide sind Dienste mit einem Konto. Instapaper lässt sich kostenlos nutzen; Volltextsuche, unbegrenzte Notizen und die Kindle-Anbindung gibt es dort mit Premium, einem Abo. Readwise Reader gehört nach einer kostenlosen Testzeit zu einem Readwise-Abo. Ribband hat kein Konto: Deine Bibliothek liegt auf deinem Gerät und, mit Synchronisierung, in deinem eigenen Google Drive. Volltextsuche, E-Ink-Modus, Import und Export sind kostenlos, und Pro ist ein einmaliger Kauf, kein Abo. Was Ribband nicht hat: eine App für iOS oder eine Web-App (es läuft nur auf Android), Feeds oder Newsletter, KI-Zusammenfassungen und einen Abgleich von Markierungen mit anderen Diensten. Die <a href="/ribband/de/vergleich.html">Vergleichsseite</a> stellt Ribband neben weitere Apps zum späteren Lesen.</p>
+        </div>
+        <div>
+          <h3>Gibt es eine Browser-Erweiterung?</h3>
+          <p>Ja, kostenlos, für Chrome, Edge, Brave, Opera und Vivaldi und für Firefox. Ein Klick speichert die Seite, die du gerade liest, über dein eigenes Google Drive in Ribband auf deinem Handy; die Synchronisierung muss dafür eingeschaltet sein. Die Seite kommt so an, wie dein Browser sie geladen hatte, ohne das, was du hineingetippt hast. Die Bilder lädt dein Handy von der Website, darum kann ein Bild fehlen, das die Website nur angemeldeten Lesern zeigt.</p>
+        </div>
+        <div>
+          <h3>Kann ich meine Leseliste aus Pocket, Instapaper oder Omnivore mitnehmen?</h3>
+          <p>Ja, über deren Exportdateien: Links mit Titel, Datum und Schlagwörtern, Gelesenes und Ungelesenes getrennt, Favoriten, wo die Datei sie kennzeichnet. Deine Markierungen aus Pocket kommen auch mit, aus Omnivore dazu die Artikeltexte und Markierungen. Die Lesezeichendatei des Browsers geht ebenso.</p>
+        </div>
+        <div>
+          <h3>Läuft Ribband auf einem E-Reader?</h3>
+          <p>Auf Android-E-Readern ja. Der E-Ink-Modus zeigt Schwarz auf Weiß ohne Animation, blättert in Seiten statt zu scrollen, und Blätter- und Lautstärketasten blättern um. Pro und die Synchronisierung brauchen Google Play, das vielen E-Readern fehlt.</p>
+        </div>
+        <div>
+          <h3>Was kostet die App?</h3>
+          <p>Ribband ist kostenlos, zum Laden und zum Benutzen, und ohne Werbung. Pro ist ein freiwilliger, einmaliger Kauf über Google Play, kein Abo.</p>
+        </div>
+        <div>
+          <h3>Wo liegen meine Daten?</h3>
+          <p>Auf deinem Gerät, und in einem versteckten Ordner in deinem eigenen Google Drive, wenn du die Synchronisierung einschaltest. Exportieren kannst du jederzeit alles in eine Datei.</p>
+        </div>
+        <div>
+          <h3>Was ist, wenn es Ribband nicht mehr gibt?</h3>
+          <p>Deine Bibliothek liegt auf deinem Gerät und, mit Synchronisierung, in deinem eigenen Google Drive, nicht auf einem Server von mir. „Alles exportieren“ schreibt eine Datei mit jedem Link aus Eingang und Archiv als Webseite und als Markdown-Datei, die jeder Browser und jeder Texteditor öffnet, dazu eine README-Datei, die sagt, was wo liegt. Das <a href="/ribband/export-format.html" hreflang="en">Format dieser Datei</a> ist vollständig beschrieben, auf Englisch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="back">
+    <div class="wrap">
+      <p class="tagline" lang="en">Kept for later.</p>
+      <div class="actions">
+        <a class="play" href="https://play.google.com/store/apps/details?id=com.tobkum.ribband"><img class="badge" src="/ribband/bilder/google-play-badge-de.png" width="646" height="250" alt="Jetzt bei Google Play" loading="lazy"></a>
+      </div>
+      <p class="links"><a href="/ribband/datenschutz.html">Datenschutz</a> <a href="/ribband/kauf.html">Kauf und Erstattung</a> <a href="/ribband/nutzungsbedingungen.html">Nutzungsbedingungen</a></p>
+      <p class="colophon">Ich mache Ribband allein. Gesetzt ist diese Seite in Literata, der Leseschrift der App.</p>
+    </div>
+  </section>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <span>Ribband, eine Lese-App von <a href="/">Tobias Kummer</a>. Google Play und das Google Play-Logo, Chrome und der Chrome Web Store sind Marken von Google LLC. Firefox und das Firefox-Logo sind Marken von Mozilla.org in den USA und anderen Ländern.</span>
+      <span><a href="/ribband/nutzungsbedingungen.html">Nutzungsbedingungen</a><a href="/ribband/datenschutz.html">Datenschutz</a><a href="/ribband/press.html">Presse</a><a href="/ribband/de/vergleich.html">Vergleich</a><a href="/impressum.html">Impressum</a></span>
+    </div>
+  </footer>
+</body>
+</html>

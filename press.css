@@ -1,0 +1,61 @@
+/* The press kit (press.html, LAUNCH-1): the product page's look (style.css, loaded before this file) plus the few
+   things only a press kit needs: a shorter cover without screens, the fact sheet, the image grids with their
+   download lines, the brand colours and the open slots the owner fills before publishing. Nothing here is loaded by
+   the product page. */
+
+/* The cover: the product page's cloth, but no screens stand on it, so the cloth runs to its foot. */
+.cover.press { --cut: 0rem; padding-bottom: 4rem; }
+.cover.press .lockup { width: clamp(104px, 12vw, 132px); }
+.cover.press .tagline { margin-bottom: 2rem; }
+/* At least 2.25rem, a step over the section headings' 1.9rem on a phone (WEB-1). */
+.cover.press h1 { font-size: clamp(2.25rem, 4.4vw, 3rem); max-width: 26ch; }
+.nobr { white-space: nowrap; }
+.cover.press .kicker { color: var(--ribbon); }
+
+/* The fact sheet and the other term lists use the product page's .facts-list; a term list wider than the prose. */
+.press-facts { max-width: 50rem; }
+.press-facts .facts-list ul { margin: .25rem 0 0; padding-left: 1.15rem; }
+.press-facts .facts-list li { margin-bottom: .2rem; }
+
+/* What the owner still writes himself: plainly visible on every rendering, so it cannot be published unnoticed. */
+.offen { display: inline-block; padding: .1rem .5rem; border: 1px dashed var(--accent); border-radius: 4px; color: var(--accent); font-style: italic; }
+p.offen { display: block; padding: .8rem 1rem; }
+
+/* Images: thumbnails in a grid; each set ends with its download line. */
+.bilder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem clamp(.75rem, 2.5vw, 2rem); margin: 2rem 0 1rem; }
+.bilder.quer { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bilder .screen { border-radius: 14px; }
+.bilder.quer .screen { border-radius: 10px; }
+.download { margin: .5rem 0 0; }
+.download a { font-weight: 600; }
+
+/* The mark and the icon on their own grounds. */
+.marken { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem clamp(.75rem, 2.5vw, 2rem); margin: 2rem 0 1rem; }
+.marken .grund { display: flex; align-items: center; justify-content: center; aspect-ratio: 1 / 1; border: 1px solid var(--screen-edge); border-radius: 14px; padding: 12%; }
+.marken .grund img { display: block; width: 100%; height: auto; }
+.marken .grund.hell { background: #f1ebdf; }
+.marken .grund.dunkel { background: #1f2b47; }
+.marken .grund.symbol { background: transparent; padding: 18%; }
+.marken .grund.symbol img { border-radius: 22%; }
+
+/* Brand colours: a chip and its name and value. The chips carry the colour; the text says it. */
+.farben { list-style: none; padding: 0; margin: 1.5rem 0 1rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem 2rem; }
+.farben li { display: flex; align-items: center; gap: .8rem; }
+.farben .chip { flex: none; width: 2.75rem; height: 2.75rem; border-radius: 50%; border: 1px solid var(--screen-edge); }
+.farben code { font-size: .9rem; color: var(--muted); }
+.chip.cloth { background: #1f2b47; }
+.chip.ribbon { background: #e8c76f; }
+.chip.cream { background: #f1e9d6; }
+.chip.paper { background: #f1ebdf; }
+.chip.ink { background: #1d1b17; }
+.chip.blue { background: #2c3f73; }
+
+@media (max-width: 900px) {
+  .bilder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .farben { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .bilder.quer, .marken { grid-template-columns: 1fr; }
+  .marken { max-width: 13rem; }
+  .farben { grid-template-columns: 1fr; }
+}
