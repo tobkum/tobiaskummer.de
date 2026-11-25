@@ -21,6 +21,8 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1d1b18" media="(prefers-color-scheme: dark)">
 <link rel="stylesheet" href="/start.css">
 <link rel="preload" href="/fonts/SourceSerif4-latin.woff2" as="font" type="font/woff2" crossorigin>
 <script type="application/ld+json">
@@ -75,6 +77,7 @@
 </script>
 </head>
 <body class="start">
+  <a class="sprung" href="#inhalt">Zum Inhalt springen</a>
   <header class="kopf">
     <div class="bogen">
       <p class="name"><a href="/">Tobias Kummer</a></p>
@@ -82,8 +85,9 @@
     </div>
   </header>
 
-  <main class="bogen">
+  <main class="bogen" id="inhalt">
     <h1 class="titel">Apps für Android</h1>
+    <p class="vorspann">Ich bin Tobias Kummer, VFX Supervisor und Programmierer. Die Apps auf dieser Seite habe ich geschrieben.</p>
 
     <article class="app" aria-labelledby="bzf">
       <div class="text">
@@ -91,7 +95,7 @@
           <img class="symbol" src="/bzf-pruefung/bilder/symbol-512.png" width="512" height="512" alt="">
           <h2 id="bzf"><a href="/bzf-pruefung/">BZF-Prüfung</a></h2>
         </header>
-        <p>Mit BZF-Prüfung lernst du für das Sprechfunkzeugnis BZF I oder BZF II. Die App enthält alle 261 Fragen aus dem amtlichen Katalog der Bundesnetzagentur und erklärt zu jeder Frage, warum die richtige Antwort richtig ist. Im Funksimulator sprichst du einen ganzen Flug mit dem Turm, vom Anlassen bis zur Landung, und der Turm antwortet.</p>
+        <p>Mit BZF-Prüfung lernst du für das <span class="ganz">Sprechfunkzeugnis</span> BZF I oder BZF II. Die App enthält alle 261 Fragen aus dem amtlichen Katalog der Bundesnetzagentur und erklärt zu jeder Frage, warum die richtige Antwort richtig ist. Im Funksimulator sprichst du einen ganzen Flug mit dem Turm, vom Anlassen bis zur Landung, und der Turm antwortet.</p>
         <p class="klein">Kostenlos, Pro einmalig 12,99 €.</p>
       </div>
       <figure class="bild"><picture><source srcset="/bzf-pruefung/bilder/02-uebung-lang-richtig-dunkel.png" media="(prefers-color-scheme: dark)"><img src="/bzf-pruefung/bilder/03-fragen-erklaerung.png" width="540" height="960" alt="Bildschirm der App: Frage 209 zu den Sichtflugregeln, die richtige Antwort grün markiert und darunter erklärt, danach ein Merksatz zu den Abständen von den Wolken."></picture></figure>
@@ -107,7 +111,7 @@
           <img class="symbol" src="/asterism/press/asterism-icon-512.png" width="512" height="512" alt="" loading="lazy">
           <h2 id="asterism"><a href="/asterism/" hreflang="en">Asterism</a></h2>
         </header>
-        <p>Asterism ist ein Logikrätsel auf Sechsecken. Die Zahlen sagen, wie viele Sterne an ein Feld grenzen, ähnlich wie bei Minesweeper, und jedes Rätsel lässt sich allein aus den Zahlen lösen, ohne zu raten. Die gefundenen Sterne ergeben am Ende ein Sternbild, und jede Nacht kommt ein neues Rätsel dazu.</p>
+        <p>Asterism ist ein Logikrätsel auf Sechsecken. Die Zahlen sagen, wie viele Sterne an ein Feld grenzen, ähnlich wie bei <span lang="en">Minesweeper</span>, und jedes Rätsel lässt sich allein aus den Zahlen lösen, ohne zu raten. Die gefundenen Sterne ergeben am Ende ein Sternbild, und jede Nacht kommt ein neues Rätsel dazu.</p>
         <p class="klein">Kostenlos, alle Rätsel einmalig 4,99 €.</p>
       </div>
       <figure class="bild"><img src="/asterism/press/thumb-02-constellation.jpg" width="540" height="960" alt="Ein gelöstes Rätsel in Asterism: Sechsecke mit Zahlen auf dunkelblauem Nachthimmel, die gefundenen Sterne mit goldenen Linien zu einem Sternbild verbunden, darüber auf Englisch der Satz „Solve a puzzle, draw a constellation“." loading="lazy"></figure>
@@ -120,7 +124,7 @@
     <section class="ueber" aria-labelledby="ueber">
       <h2 id="ueber">Über mich</h2>
       <img class="portrait" src="/portrait.jpg" width="320" height="320" alt="Tobias Kummer" loading="lazy">
-      <p>Ich bin Tobias Kummer, VFX Supervisor und Programmierer, und ich habe Overmind Studios gegründet. Im Studio mache ich 3D und Compositing. Die Werkzeuge dafür schreibe ich selbst, zum Beispiel den <a href="https://github.com/overmindstudios/BlenderUpdater">BlenderUpdater</a>, der Blender-Installationen aktuell hält.</p>
+      <p>Ich bin Tobias Kummer, VFX Supervisor und Programmierer, und ich habe Overmind Studios gegründet. Im Studio mache ich 3D und Compositing. Die Werkzeuge dafür schreibe ich selbst, zum Beispiel den <a href="https://github.com/overmindstudios/BlenderUpdater" lang="en">BlenderUpdater</a>, der <span class="ganz">Blender-Installationen</span> aktuell hält.</p>
       <p>Ich fliege im Aero Club Göppingen Salach und mache gerade den Segelflugschein. Als ich für mein eigenes Sprechfunkzeugnis gelernt habe, fand ich keine App, die erklärt, warum eine Antwort richtig ist. Deshalb habe ich BZF-Prüfung geschrieben, meine erste App.</p>
       <ul>
         <li><a href="https://www.overmind-studios.de/">Overmind Studios</a></li>
