@@ -120,6 +120,41 @@ a[href$=".zip"] { color: var(--accent); font-weight: 500; text-decoration-color:
 @media (max-width: 900px) {
   .hero.presse .wrap { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 }
+
+/* --- The product page (index.html, body.spiel), second pass (25.11.2026) -----------------------
+   A review with the taste skill found two left edges (the hero on the wrap, every section on the
+   site's margin column), a hero that shared the first screen and cut its phone off, and text walls
+   above rows of small captioned screenshots. Now: one container for everything (the wrap's edges),
+   the hero fills the first screen with the phone whole, and each section is one heading, a few
+   lines and one large screenshot beside them, alternating sides. Only this page has body.spiel;
+   the press kit keeps its own layout. */
+body.spiel .hero.produkt { min-height: calc(100svh - 3.1rem); display: grid; align-items: center;
+  padding: 2.5rem 0; overflow: visible; }
+body.spiel .hero.produkt .wrap { align-items: center; }
+body.spiel .hero.produkt > .wrap > div { padding-bottom: 0; }
+body.spiel .hero.produkt .schirm { width: auto; height: min(76svh, 640px); aspect-ratio: 540 / 960; margin: 0 auto;
+  border-bottom: 1px solid var(--rule); border-radius: 28px; }
+body.spiel .hero.produkt .schirm img { margin-bottom: 0; width: 100%; height: 100%; object-fit: cover; }
+
+body.spiel .kapitel .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  gap: 3rem 5rem; align-items: center; }
+body.spiel .kapitel.links .wrap { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); }
+body.spiel .kapitel.links .bild { order: -1; }
+body.spiel .kapitel .inhalt { max-width: 36rem; }
+body.spiel .kapitel h2 { margin-top: 0; }
+body.spiel .kapitel .bild { margin: 0; }
+body.spiel .kapitel .bild img { display: block; width: 100%; height: auto; border-radius: 18px;
+  border: 1px solid var(--rule); box-shadow: var(--shadow); }
+body.spiel .kapitel .presse { margin-top: 1.5rem; color: var(--muted); }
+
+@media (max-width: 900px) {
+  body.spiel .hero.produkt { min-height: 0; }
+  body.spiel .hero.produkt .wrap { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  body.spiel .hero.produkt .schirm { height: auto; width: min(100%, 300px); }
+  body.spiel .kapitel .wrap, body.spiel .kapitel.links .wrap { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  body.spiel .kapitel.links .bild { order: 0; }
+  body.spiel .kapitel .bild { width: min(100%, 300px); margin: 0 auto; }
+}
 @media (max-width: 760px) {
   #images .bilder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   #images .bilder.breit { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
