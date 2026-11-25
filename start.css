@@ -86,9 +86,8 @@ body.start {
 .start .app {
   display: grid;
   grid-template-columns: minmax(0, 35rem) 18rem;
-  /* Text und Weg in den Laden mittig neben dem Bildschirm, statt oben mit leerem Raum darunter (WEB-1). */
-  grid-template-areas: ". bild" "text bild" "wege bild" ". bild";
-  grid-template-rows: 1fr auto auto 1fr;
+  grid-template-areas: "text bild" "wege bild" ". bild";
+  grid-template-rows: auto auto 1fr;
   justify-content: space-between;
   column-gap: 3rem;
   padding-top: 4.5rem;
