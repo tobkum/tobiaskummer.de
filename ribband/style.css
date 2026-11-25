@@ -1,0 +1,341 @@
+/* Ribband's own look over the site's /style.css, for the product page only (index.html and
+   de/index.html); the policy, purchase and terms pages keep the site's plain style.
+
+   Clothbound, the app's design system: a cloth cover, paper inside, ink, one gold ribbon.
+   The colours are the app's tokens (core/designsystem Tokens.kt): light is the paper and the
+   cloth of the day, the dark page is Ink night (designed, not inverted). Reading text is
+   Literata, the app's reading face, shipped here as a Latin subset (OFL, fonts/). Without it
+   the page falls back to Georgia, sized to Literata's metrics so nothing moves when it loads. */
+
+@font-face { font-family: "Literata"; font-style: normal; font-weight: 400 600; font-display: swap;
+             src: url(/ribband/fonts/Literata-latin.woff2) format("woff2"); }
+@font-face { font-family: "Literata"; font-style: italic; font-weight: 400; font-display: swap;
+             src: url(/ribband/fonts/Literata-Italic-latin.woff2) format("woff2"); }
+@font-face { font-family: "Literata fallback"; src: local("Georgia"); size-adjust: 104%;
+             ascent-override: 92%; descent-override: 25%; line-gap-override: 0%; }
+
+:root {
+  /* Light: the app's paper (background, surface), ink (onSurface, onSurfaceVariant), its blue
+     (primary) and the day's cloth, cream and ribbon. */
+  --paper: #f1ebdf;
+  --raised: #f8f4ec;
+  --ink: #1d1b17;
+  --muted: #433e36;
+  --rule: #d5cbb6;
+  --accent: #2c3f73;
+  --accent-ink: #2c3f73;
+  --cloth: #1f2b47;
+  --on-cloth: #f1e9d6;
+  --on-cloth-muted: #c3cadb;
+  --ribbon: #e8c76f;
+  /* The ribbon's shade and contact shadow: color.shadowKey (#473C280F by day, #8C000000 at
+     night); its sheen is white at 3 % in both looks. */
+  --ribbon-key: rgba(60, 40, 15, .278);
+  --ribbon-sheen: rgba(255, 255, 255, .03);
+  --screen-edge: rgba(29, 27, 23, .14);
+  --shadow: 0 22px 44px -22px rgba(31, 43, 71, .45);
+  --serif: "Literata", "Literata fallback", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Ink night: the same names with the night's values. */
+    --paper: #1d2026;
+    --raised: #252932;
+    --ink: #d5d0c4;
+    --muted: #bcb8ae;
+    --rule: #383c46;
+    --accent: #a0b9d0;
+    --accent-ink: #a0b9d0;
+    --cloth: #0f1930;
+    --on-cloth: #d5cec2;
+    --on-cloth-muted: #a6abb6;
+    --ribbon: #d7b161;
+    --ribbon-key: rgba(0, 0, 0, .549);
+    --screen-edge: rgba(0, 0, 0, .5);
+    --shadow: 0 22px 44px -22px rgba(0, 0, 0, .85);
+    color-scheme: dark;
+  }
+}
+
+/* --- Type ------------------------------------------------------------------------------ */
+
+main { font: 400 1.125rem/1.62 var(--serif); font-optical-sizing: auto; }
+main h1, main h2, main h3 { font-family: var(--serif); letter-spacing: 0; }
+main h2 { font-style: italic; font-weight: 400; font-size: clamp(1.9rem, 4.2vw, 2.75rem); line-height: 1.12; margin-bottom: 1.25rem; }
+main h3 { font-weight: 600; font-size: 1.2rem; line-height: 1.3; margin: 2.25rem 0 .6rem; }
+/* Hyphenation (WEB-1): German only, and only in long words with five letters on either side of
+   the break (Chrome and Firefox read hyphenate-limit-chars, Safari its -webkit- pair). English
+   text is not hyphenated: in the narrow columns it broke short words ("re-name"). A word in
+   another language inside German text carries its lang and keeps its own rules (none). */
+:lang(de) main p { hyphens: auto; hyphenate-limit-chars: 12 5 5; -webkit-hyphenate-limit-before: 5; -webkit-hyphenate-limit-after: 5; }
+main [lang]:not([lang|="de"]) { hyphens: manual; }
+main a { text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent); text-decoration-thickness: 1px; }
+main a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+/* The kicker over a section, as the app sets a source over a title: small capitals, spaced. */
+.kicker { font: 600 .78rem/1.3 var(--serif); letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin: 0 0 .9rem; }
+.prose { max-width: 35rem; }
+.prose ul { padding-left: 1.15rem; margin: 0 0 1rem; }
+.prose li { margin-bottom: .35rem; }
+.prose li::marker { color: var(--muted); }
+.quiet { color: var(--muted); }
+
+/* --- Header on the cloth ---------------------------------------------------------------- */
+
+/* The cover's one light runs on into the header, so the two read as one cloth (the cover's
+   gradient is lighter at its top left; a flat header showed a seam). */
+header.site.cloth { background: linear-gradient(90deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 70%), var(--cloth); color: var(--on-cloth); padding: 1rem 0 0; }
+header.site.cloth .wrap { padding-right: 5rem; }
+header.site.cloth .marke { color: var(--on-cloth); }
+header.site.cloth nav a { color: var(--on-cloth-muted); }
+header.site.cloth nav a:hover { color: var(--on-cloth); }
+/* On a phone the one link left beside the name is set as large as the name, and both are
+   44 px targets (WEB-1). */
+@media (max-width: 760px) {
+  header.site.cloth nav { display: block; }
+  header.site.cloth nav a { display: inline-block; font-size: inherit; padding: .65rem 0; }
+}
+
+/* --- Keyboard ------------------------------------------------------------------------------ */
+
+/* The focus ring (WEB-1): /style.css draws it in --accent, the app's blue, which is lost on the
+   cloth (1.4:1 by day). On the cloth, the header, the cover and the back cover, it is drawn in
+   the cloth's cream instead (11.6:1 by day, 11.2:1 at night); on the paper it stays the blue
+   (8.6:1 by day, 8.0:1 at night). A ring in the header is lifted over the cover, which is
+   positioned and would otherwise paint over its lower edge. */
+header.site.cloth :focus-visible, .cover :focus-visible, .back :focus-visible, .skip:focus-visible { outline-color: var(--on-cloth); }
+header.site.cloth :focus-visible { position: relative; z-index: 1; }
+/* The skip link: the first Tab stop, a paper label over the header while it has focus. */
+.skip { position: absolute; top: .75rem; left: .75rem; z-index: 20; padding: .6rem 1rem; border-radius: 4px;
+        background: var(--raised); color: var(--ink); font-weight: 500; text-decoration: none; line-height: 1.5; }
+.skip:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* --- The cover --------------------------------------------------------------------------- */
+
+/* The title page: the stacked lock-up, the tagline, then what the app is. The cloth ends
+   behind the screens, so they stand half on the cover and half on the paper. */
+.cover {
+  --cut: calc(11rem + var(--section));
+  position: relative; text-align: center; color: var(--on-cloth);
+  /* The phones end the cover; under them the same space as between two sections (WEB-1), and
+     the cloth's cut (--cut, from the foot) grows by as much. */
+  padding: 2rem 0 var(--section); border-top: 0;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, .10)) top / 100% calc(100% - var(--cut)) no-repeat,
+    linear-gradient(var(--cloth), var(--cloth)) top / 100% calc(100% - var(--cut)) no-repeat,
+    var(--paper);
+}
+/* The opening's rhythm (WEB-1): on a 1440 x 900 screen the Play badge, the facts line and the
+   whole extension block end above the fold, the phones begin under it. */
+.cover .lockup { width: clamp(96px, 10vw, 128px); height: auto; margin: 0 auto; }
+.cover .tagline { font: italic 400 clamp(1.15rem, 2.2vw, 1.4rem)/1.3 var(--serif); color: var(--on-cloth); margin: .3rem 0 1.75rem; }
+.cover h1 .line { display: block; }
+/* Each sentence of the title on one line from 1024 px up, in German too. */
+.cover h1 { font-weight: 500; font-size: clamp(2rem, 4vw, 2.875rem); line-height: 1.1; max-width: 22em; margin: 0 auto 1rem; text-wrap: balance; }
+.cover .lead { color: var(--on-cloth-muted); font-size: clamp(1.0625rem, 1.6vw, 1.1875rem); line-height: 1.55; max-width: 42rem; margin: 0 auto; text-wrap: pretty; }
+.cover .actions { justify-content: center; margin-top: 1.5rem; }
+.cover .facts { color: var(--on-cloth-muted); font-size: .95rem; margin: .5rem 0 0; }
+
+/* The ribbon: the app's marker, hanging from the top edge of the page. Decoration only. */
+/* It hangs in the room the header keeps free at its right end (padding-right), at every width. */
+.cover {
+  --wrap-half: 32rem;
+}
+/* The app's one ribbon (core/designsystem Ribbons.kt, the D10 hanging ribbon; RIBBON-1), drawn at
+   --rw wide with the app's 14 dp as the unit: the swallowtail 9/14 of the width deep at every
+   width; under the page's top edge, which lies over it, a shade in shadowKey fading over half the
+   width (7 dp); a lengthwise sheen of 3 % white peaking at 40 %; behind it a hard contact shadow
+   1/14 of the width down and to the right, no blur. The top is the page's top edge: the cloth
+   header is 4rem high (1rem above its 3rem row) on every page and width. The shadow sits on the
+   box, the ribbon on ::before: a filter is applied before the clip, so on one element the clip
+   would cut the shadow away. */
+.cover-ribbon {
+  --rw: 1.375rem;
+  position: absolute; top: -4rem; right: max(1.25rem, calc(50% - var(--wrap-half) + 1.25rem)); width: var(--rw); height: 10.5rem;
+  filter: drop-shadow(calc(var(--rw) / 14) calc(var(--rw) / 14) 0 var(--ribbon-key));
+}
+.cover-ribbon::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(var(--ribbon-key), transparent calc(var(--rw) / 2)),
+    linear-gradient(90deg, transparent, var(--ribbon-sheen) 40%, transparent),
+    var(--ribbon);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - var(--rw) * 9 / 14), 0 100%);
+}
+
+/* Google Play: the official badge as the site's other pages carry it (/style.css .play and
+   .badge: unchanged, 56 px high, 48 px on a phone, its clear space inside the image). The black
+   badge with its grey edge reads on the cloth by day and by night; nothing is restyled. */
+.cover .play, .back .play { margin: 0 auto; }
+
+/* The screens: the app's own pixels on a thin edge, no drawn phone around them. */
+.screen { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--screen-edge);
+          box-shadow: var(--shadow); background: var(--raised); }
+.shots { display: flex; justify-content: center; align-items: flex-start; gap: clamp(1rem, 3vw, 2.5rem); margin-top: 4.75rem; padding: 0 1.25rem; }
+.shots figure { margin: 0; width: min(100%, 300px); }
+.shots figure + figure { margin-top: 4rem; }
+.shots .screen { border-color: rgba(241, 233, 214, .22); }
+
+/* --- Sections on the paper --------------------------------------------------------------- */
+
+/* One space between sections, the cover's foot included (WEB-1): --section above and below. */
+main { --section: 5rem; }
+main section { padding: var(--section) 0; }
+main section + section { border-top: 1px solid var(--rule); }
+.cover + section { border-top: 0; }
+/* Every second column on a wide screen starts on the middle line (WEB-1): the chapters, the
+   section heads, the offer and the questions. Only the rows of pictures keep their thirds. */
+.chapter { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2.5rem 4rem; align-items: start; }
+.chapter > .side { padding-top: .5rem; }
+/* A section's head on a wide screen: kicker and title on the left, the opening text on the
+   right, level with the title; what follows (the three looks, the offer, the questions)
+   spans both columns. The chapters mirror it (text left, pictures right), so the page
+   alternates on one pair of columns. */
+.head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 4rem; align-items: start; }
+.head > .prose { padding-top: 2.15rem; }
+.head > div:only-child { grid-column: 1 / -1; }
+.head h2 { margin-bottom: 0; }
+/* A second column of text starts level with the first column's heading, not its kicker. */
+.chapter > .prose + .prose { padding-top: 2.15rem; }
+figure { margin: 0; }
+figcaption { font-size: .92rem; line-height: 1.45; color: var(--muted); margin-top: .8rem; }
+/* Under Keeping: the paragraph about order beside the two screens it describes, on the same
+   three columns as the three looks, so both screens are as large as those (about 300 px at
+   1440); the same width, top line and edge, captions level. */
+.trio { --gap: clamp(.75rem, 3vw, 3rem); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem var(--gap); align-items: start; margin-top: 3.5rem; }
+.trio > .screens { grid-column: 2 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: start; }
+.single { max-width: 17rem; }
+
+/* The browser extension (PAGES-3): its stores' official badges, unchanged, under the text that
+   explains it; never on the cover, which belongs to the app and Google Play. Both are set to the
+   same visible height (Mozilla's button sits about 4 of 60 units inside its image, the Chrome
+   Web Store badge fills its own), large enough that Google's small "Available in the" stays
+   legible; neither rule sets a minimum. The Chrome Web Store badge is the one "with border" for
+   coloured grounds, by day and by night (Google offers no dark one). The gap is the "distance
+   between the badge and other logos" Google asks for. */
+.stores { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1.5rem; }
+.store { display: inline-block; line-height: 0; }
+.store-badge { width: auto; height: 48px; }
+.store-badge.firefox { height: 50px; }
+@media (max-width: 760px) { .store-badge { height: 44px; } .store-badge.firefox { height: 46px; } }
+/* The same two badges in the cover, under the Google Play badge and set apart from it: a hairline, a small
+   label, and the badges a step smaller than the Play badge (56 px), so the app stays the first action. */
+.cover .also { margin: 1.25rem auto 0; padding-top: 1rem; max-width: 22rem; border-top: 1px solid color-mix(in srgb, var(--on-cloth) 22%, transparent); }
+.also-label { font: 600 .72rem/1.3 var(--serif); letter-spacing: .14em; text-transform: uppercase; color: var(--on-cloth-muted); margin: 0; }
+.cover .stores { justify-content: center; margin-top: .4rem; gap: .25rem 1.25rem; }
+.cover .store-badge { height: 40px; }
+.cover .store-badge.firefox { height: 42px; }
+/* Every badge link is a 44 px target (WEB-1): the cover's two badges stay a step smaller than
+   the Play badge, and the link round them takes up the difference. */
+.store { min-height: 44px; display: inline-flex; align-items: center; }
+.also-note { color: var(--on-cloth-muted); font-size: .9rem; line-height: 1.45; margin: .4rem 0 0; text-wrap: balance; }
+/* The extension's window at its own size (340 CSS px wide). Until its picture exists, a marked
+   empty frame of the same proportion holds the place (540 x 380). */
+.popup { max-width: 21.25rem; }
+.popup .screen { border-radius: 14px; }
+.slip { max-width: 22rem; }
+.slip .screen { border-radius: 14px; }
+
+/* The same article in the three looks, side by side, at the same size. */
+.looks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(.75rem, 3vw, 3rem); margin: 0; }
+/* Reading opens with the three looks; the heading and text follow under them. */
+.after-looks { margin-top: 3rem; }
+.looks:focus-visible, .screens:focus-visible { outline-offset: 6px; }
+
+/* Your library: one plain statement, then the facts as a list of terms, set wider than the
+   prose so the terms stand in a margin of their own. */
+.library { max-width: 50rem; }
+.library .statement { font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.4; max-width: 32em; margin: 0 0 2.5rem; text-wrap: pretty; }
+.facts-list { display: grid; grid-template-columns: 11rem minmax(0, 35rem); gap: 0 2.5rem; margin: 0 0 1.5rem; }
+.facts-list dt { font-weight: 600; padding: .85rem 0; border-top: 1px solid var(--rule); }
+.facts-list dd { margin: 0; padding: .85rem 0; border-top: 1px solid var(--rule); }
+.looks figcaption b { display: block; color: var(--ink); font-weight: 600; }
+
+/* Free and Pro: two plain lists; Pro carries the ribbon's rule, as the app marks Pro. */
+/* Free and Pro as a contents page: two plain columns, each under a rule, one line per item
+   with a hairline between. Pro's rule is the ribbon, as the app marks Pro; no boxes. */
+.offer { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; margin-top: 2.5rem; }
+.offer > div { border-top: 1px solid var(--ink); padding-top: .9rem; }
+.offer > .pro { border-top: 2px solid var(--ribbon); padding-top: calc(.9rem - 1px); }
+.offer h3 { margin: 0 0 .4rem; font-size: 1.05rem; }
+.offer ul { list-style: none; padding: 0; margin: 0; }
+.offer li { padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+.offer li:last-child { border-bottom: 0; }
+
+/* Questions: a heading and a plain answer each, two columns on a wide screen. */
+.questions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 4rem; }
+.questions h3 { margin-top: 1.75rem; }
+.questions p { margin: 0; }
+
+/* --- The back cover ---------------------------------------------------------------------- */
+
+.back { background: var(--cloth); color: var(--on-cloth); text-align: center; border-top: 0; }
+main section.back { padding: 4.5rem 0 4rem; border-top: 0; }
+.back .tagline { font: italic 400 clamp(1.6rem, 3.6vw, 2.25rem)/1.2 var(--serif); margin: 0 0 1.75rem; }
+.back p { color: var(--on-cloth-muted); }
+.back a:not(.play) { color: var(--on-cloth); text-decoration-color: color-mix(in srgb, var(--on-cloth) 45%, transparent); }
+.back .links { font-size: .98rem; margin-top: 2rem; }
+.back .links a { display: inline-block; margin: 0 .6rem; padding: .6rem 0; white-space: nowrap; }
+.back .links { margin-bottom: .4rem; }
+footer.site { border-top: 0; }
+
+/* Spacing that the markup asks for by name rather than by inline style. */
+.chapter.after { margin-top: 4rem; }
+main h3.first { margin-top: 0; }
+.after-offer { margin-top: 1.5rem; }
+.back .actions { justify-content: center; }
+.back .colophon { font-size: .95rem; }
+
+/* --- Narrow and wide --------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .chapter { grid-template-columns: 1fr; }
+  .side { max-width: 34rem; }
+  .trio { grid-template-columns: 1fr; }
+  .trio > .screens { grid-column: 1; max-width: 40rem; }
+  .head { grid-template-columns: 1fr; gap: 0; }
+  .head > .prose { padding-top: 0; }
+  .head h2 { margin-bottom: 1.25rem; }
+}
+@media (max-width: 760px) {
+  main { font-size: 1.0625rem; }
+  main { --section: 3.5rem; }
+  .cover h1 .line { display: inline; }
+  header.site.cloth .wrap { padding-right: 3.25rem; }
+  header.site.cloth .marke { white-space: nowrap; }
+  header.site.cloth nav a + a { display: none; }
+  .chapter > .prose + .prose { padding-top: 0; }
+  .cover { --cut: calc(7rem + var(--section)); padding-top: .75rem; }
+  .cover .tagline { margin-bottom: 1rem; }
+  .cover h1 { margin-bottom: .75rem; }
+  .cover .lead { line-height: 1.5; }
+  .cover .actions { margin-top: 1rem; }
+  .cover-ribbon { --rw: 1rem; height: 8rem; }
+  .shots { margin-top: 2.5rem; }
+  .shots figure { width: min(72%, 270px); }
+  .shots figure + figure { display: none; }
+  .offer, .questions { grid-template-columns: 1fr; }
+  .facts-list { grid-template-columns: 1fr; }
+  .facts-list dt { padding-bottom: 0; }
+  .facts-list dd { border-top: 0; padding-top: .25rem; }
+}
+/* Phones: the three looks and the two library screens become a row that snaps, each screen
+   about three quarters of the width with the next one showing at the edge; no script. The row
+   carries no tabindex (WEB-1): on a wide screen nothing scrolls and it would be a dead Tab stop.
+   Chrome (130 and later) and Firefox give a scrolling box without focusable content a Tab stop
+   of their own, so on a phone-wide window the arrow keys still scroll it; without the
+   stylesheet the screens simply stack. */
+@media (max-width: 600px) {
+  .looks, .trio > .screens {
+    display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 76%;
+    gap: 1rem; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    margin-right: -1.25rem; padding-right: 1.25rem; scroll-padding-left: 0; padding-bottom: .75rem;
+    scrollbar-width: thin;
+  }
+  .looks > figure, .trio > .screens > figure { scroll-snap-align: start; }
+}
+
+@media (min-width: 1600px) {
+  main { font-size: 1.1875rem; }
+  .wrap { max-width: 72rem; }
+  .cover { --wrap-half: 36rem; }
+}
